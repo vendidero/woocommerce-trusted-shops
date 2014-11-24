@@ -1,0 +1,205 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce Trusted Shops\n"
+"POT-Creation-Date: 2014-11-24 14:24+0100\n"
+"PO-Revision-Date: 2014-11-24 14:24+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_GB\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.4\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e;_x\n"
+"X-Poedit-SearchPath-0: /Users/dennis/Documents/localhost/trusted/wp-content/"
+"plugins/woocommerce-trusted-shops\n"
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/admin/class-wc-ts-admin.php:28
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/admin/class-wc-ts-admin.php:37
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/woocommerce-trusted-shops.php:64
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/woocommerce-trusted-shops.php:73
+msgid "Cheatin&#8217; huh?"
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/admin/settings/class-wc-ts-settings.php:23
+msgid "Trusted Shops"
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/admin/settings/class-wc-ts-settings.php:37
+msgid "Trusted Shops Options"
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/class-wc-ts-install.php:49
+#, php-format
+msgid ""
+"Please install <a href=\"%s\" target=\"_blank\">WooCommerce</a> before "
+"installing WooCommerce Trusted Shops. Thank you!"
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/class-wc-ts.php:51
+msgid "Prepayment"
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/class-wc-ts.php:52
+msgid "Cash On Delivery"
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/class-wc-ts.php:53
+msgid "Credit Card"
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/class-wc-ts.php:54
+msgid "Paypal"
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/class-wc-ts.php:55
+msgid "Invoice"
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/class-wc-ts.php:56
+msgid "Direct Debit"
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/class-wc-ts.php:57
+msgid "Financing"
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/class-wc-ts.php:197
+#, php-format
+msgid "%s ratings"
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/class-wc-ts.php:198
+#, php-format
+msgid "Rated %s out of %s"
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/class-wc-ts.php:200
+#, php-format
+msgid "out of %s"
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/class-wc-ts.php:205
+#, php-format
+msgid "%s of %s based on %s <a href=\"%s\" target=\"_blank\">ratings</a>."
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/class-wc-ts.php:219
+msgid "Show customer reviews"
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/class-wc-ts.php:269
+msgid "Trusted Shops Customer Reviews"
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/class-wc-ts.php:295
+msgid "None"
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/class-wc-ts.php:299
+msgid "Trusted Shops Integration"
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/class-wc-ts.php:302
+msgid "TS-ID"
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/class-wc-ts.php:303
+msgid "Insert your Trusted Shops ID here."
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/class-wc-ts.php:312
+msgid "Configure the Trustbadge for your shop"
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/class-wc-ts.php:312
+#, php-format
+msgid ""
+"You'll find a step-by-step instruction for your shopsoftware in our "
+"integration center. <a href=\"%s\" target=\"_blank\">Click here</a>"
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/class-wc-ts.php:315
+msgid "Trustbadge code"
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/class-wc-ts.php:318
+msgid "Fill in your trustbadge code here"
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/class-wc-ts.php:318
+msgid ""
+"If no further steps were required in the integration center, the Trustbadge "
+"is already displayed in your shop."
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/class-wc-ts.php:325
+msgid "Configure Customer Reviews"
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/class-wc-ts.php:328
+msgid "Enable Review Widget"
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/class-wc-ts.php:329
+#, php-format
+msgid ""
+"This option will enable a Widget which shows your Trusted Shops Reviews as a "
+"graphic. You may configure your Widgets <a href=\"%s\">here</a>."
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/class-wc-ts.php:337
+msgid "Enable Rich Snippets for Google"
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/class-wc-ts.php:338
+msgid ""
+"This option will update your reviews received via Trusted Shops once per day "
+"and enables a Widget to show your reviews as Rich Snippets."
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/class-wc-ts.php:347
+msgid "Assign payment methods"
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/class-wc-ts.php:377
+#, php-format
+msgid ""
+"Choose a Trusted Shops Payment Gateway linked to WooCommerce Payment Gateway "
+"%s"
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/class-wc-ts.php:396
+msgid "About Trusted Shops"
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/widgets/class-wc-ts-widget-reviews.php:19
+msgid "Display your Trusted Shops Reviews as graphic."
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/widgets/class-wc-ts-widget-reviews.php:21
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/widgets/class-wc-ts-widget-reviews.php:25
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/widgets/class-wc-ts-widget-reviews.php:47
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/widgets/class-wc-ts-widget-rich-snippets.php:45
+msgid "Trusted Shops Reviews"
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/widgets/class-wc-ts-widget-reviews.php:26
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/widgets/class-wc-ts-widget-rich-snippets.php:26
+msgid "Title"
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/widgets/class-wc-ts-widget-rich-snippets.php:19
+msgid "Display your Trusted Shops Reviews as Rich Snippets."
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/widgets/class-wc-ts-widget-rich-snippets.php:21
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/widgets/class-wc-ts-widget-rich-snippets.php:25
+msgid "Trusted Shops Rich Snippets"
+msgstr ""
+
+#: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/woocommerce-trusted-shops.php:298
+msgid "Settings"
+msgstr ""
