@@ -57,7 +57,7 @@ class WC_TS {
 				'financing' =>  __( 'Financing', 'woocommerce-trusted-shops' ),
 			)
 		);
-		$this->et_params = array( 'etcc_med' => 'part', 'etcc_cmp' => 'sofpar', 'etcc_par' => 'woo', 'etcc_mon' => 11 );
+		$this->et_params = array( 'utm_source' => 'par', 'utm_medium' => 'links', 'utm_content' => 'woo', 'utm_campaign' => 'shopsw' );
 		$this->api_url = 'http://www.trustedshops.com/api/ratings/v1/'. $this->id .'.xml';
 		// Schedule
 		if ( $this->is_rich_snippets_enabled() )
