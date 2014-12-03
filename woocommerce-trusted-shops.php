@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WooCommerce Trusted Shops
  * Plugin URI: http://www.vendidero.de/woocommerce-trusted-shops
- * Description: Adds Trusted Shops Products to WooCommerce Shop.
+ * Description: Adds Trusted Shops Integration to your WooCommerce Shop.
  * Version: 1.0.0
  * Author: Vendidero
  * Author URI: http://vendidero.de
@@ -22,14 +22,14 @@ if ( ! class_exists( 'WooCommerce_Trusted_Shops' ) ) :
 final class WooCommerce_Trusted_Shops {
 
 	/**
-	 * Current WooCommerce Germanized Version
+	 * Current WooCommerce Trusted Shops Version
 	 *
 	 * @var string
 	 */
 	public $version = '1.0.0';
 
 	/**
-	 * Single instance of WooCommerce Germanized Main Class
+	 * Single instance of WooCommerce Trusted Shops Main Class
 	 *
 	 * @var object
 	 */
@@ -84,7 +84,7 @@ final class WooCommerce_Trusted_Shops {
 	}
 
 	/**
-	 * adds some initialization hooks and inits WooCommerce Germanized
+	 * adds some initialization hooks and inits WooCommerce Trusted Shops
 	 */
 	public function __construct() {
 
@@ -119,7 +119,7 @@ final class WooCommerce_Trusted_Shops {
 	}
 
 	/**
-	 * Init WooCommerceGermanized when WordPress initializes.
+	 * Init Trusted Shops when WordPress initializes.
 	 */
 	public function init() {
 		if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
@@ -143,7 +143,7 @@ final class WooCommerce_Trusted_Shops {
 	}
 
 	/**
-	 * Auto-load WC_Germanized classes on demand to reduce memory consumption.
+	 * Auto-load WC_Trusted_Shops classes on demand to reduce memory consumption.
 	 *
 	 * @param mixed   $class
 	 * @return void

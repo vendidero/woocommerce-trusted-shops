@@ -1,4 +1,4 @@
-WooCommerce Germanized
+WooCommerce Trusted Shops
 
 Copyright 2011 by the contributors
 
@@ -18,10 +18,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 This program incorporates work covered by the following copyright and
 permission notices:
-
-  WooCommerce German (de_DE)
-
-and
 
   WooCommerce
 
