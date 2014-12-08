@@ -44,9 +44,9 @@ class WC_TS_Install {
 		if ( file_exists( WC_trusted_shops()->plugin_path() . '/i18n/languages/woocommerce-trusted-shops-' . $locale . '.mo' ) )
 			$mofile = WC_trusted_shops()->plugin_path() . '/i18n/languages/woocommerce-trusted-shops-' . $locale . '.mo';
 		load_textdomain( 'woocommerce-trusted-shops', $mofile );
-		if ( ! in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
-			deactivate_plugins( WC_TRUSTED_SHOPS_PLUGIN_FILE );
-			wp_die( sprintf( __( 'Please install <a href="%s" target="_blank">WooCommerce</a> before installing WooCommerce Trusted Shops. Thank you!', 'woocommerce-trusted-shops' ), 'http://wordpress.org/plugins/woocommerce/' ) );
+		if ( ! WC_trusted_shops()->is_woocommerce_activated() ) {
+			deactivate_plugins( WC_GERMANIZED_PLUGIN_FILE );
+			wp_die( sprintf( __( 'Please install <a href="%s" target="_blank">WooCommerce</a> before installing WooCommerce Germanized. Thank you!', 'woocommerce-germanized' ), 'http://wordpress.org/plugins/woocommerce/' ) );
 		}
 		$this->create_options();
 		$this->create_cron_jobs();
