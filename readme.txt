@@ -26,8 +26,7 @@ Trusted Shops has become a benchmark among trust brands by combining high levels
 
 For more than 15 years Trusted Shops has been helping online traders to succeed by building up the trust and confidence of their customers. Trusted Shops equips you perfectly for sales success.
 
-[www.trustedshops.co.uk](http://www.trustedshops.co.uk)
-
+[www.trustedshops.co.uk](http://www.trustedshops.co.uk/?utm_source=par&utm_medium=links&utm_content=woo&utm_campaign=shopsw)
 == Installation ==
 
 = Minimal Requirements =
