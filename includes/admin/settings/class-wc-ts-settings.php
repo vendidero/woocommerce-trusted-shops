@@ -54,6 +54,7 @@ class WC_TS_Settings extends WC_Settings_Page {
 		$settings = $this->get_settings();
 		echo '<div class="wc-gzd-admin-settings">';
 		WC_Admin_Settings::output_fields( $settings );
+		do_action( 'woocommerce_trusted_shops_after_settings', $settings );
 		echo '</div>';
 		echo $sidebar;
 	}
@@ -66,31 +67,13 @@ class WC_TS_Settings extends WC_Settings_Page {
 		global $current_section;
 		
 		$settings = WC_trusted_shops()->trusted_shops->get_settings();
-		$update_rich_snippets = false;
-		$update_reviews = false;
 
-		if ( !empty( $settings ) ) {
-			foreach ( $settings as $setting ) {
-				if ( $setting[ 'id' ] == 'woocommerce_trusted_shops_review_widget_enable' ) {
-					if ( ! empty( $_POST[ 'woocommerce_trusted_shops_review_widget_enable' ] ) && ! WC_trusted_shops()->trusted_shops->is_review_widget_enabled() )
-						$update_reviews = true;
-				} else if ( $setting[ 'id' ] == 'woocommerce_trusted_shops_rich_snippets_enable' ) {
-					if ( ! empty( $_POST[ 'woocommerce_trusted_shops_rich_snippets_enable' ] ) && ! WC_trusted_shops()->trusted_shops->is_rich_snippets_enabled() )
-						$update_rich_snippets = true;
-				}
-			}
-		}
+		do_action( 'woocommerce_trusted_shops_before_save', $settings );
 
 		WC_Admin_Settings::save_fields( $settings );
 
-		// Trusted Shops API
-		if ( $update_rich_snippets || $update_reviews ) {
-			$trusted_shops = new WC_TS();
-			if ( $update_rich_snippets )
-				$trusted_shops->update_reviews();
-			if ( $update_reviews )
-				$trusted_shops->update_review_widget();
-		}
+		do_action( 'woocommerce_trusted_shops_after_save', $settings );
+
 	}
 
 }

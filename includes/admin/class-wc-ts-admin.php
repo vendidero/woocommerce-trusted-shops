@@ -38,7 +38,13 @@ class WC_TS_Admin {
 	}
 	
 	public function __construct() {
-		
+		add_action( 'admin_enqueue_scripts', array( $this, 'add_scripts' ) );
+	}
+
+	public function add_scripts() {
+		$assets_path = WC_trusted_shops()->plugin_url() . '/assets/js/admin/';
+		if ( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'trusted-shops' )
+			wp_enqueue_script( 'wc-ts-admin', $assets_path . 'settings.js', array( 'jquery', 'woocommerce_settings' ), WC_TRUSTED_SHOPS_VERSION, true );
 	}
 
 }

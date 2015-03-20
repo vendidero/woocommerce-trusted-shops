@@ -4,7 +4,7 @@ Tags: woocommerce trusted shops, trusted shops, woocommerce, ts, seal, badge, sh
 Donate link: http://www.trustedshops.co.uk
 Requires at least: 3.8
 Tested up to: 4.1
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -57,6 +57,9 @@ More information regarding your Trusted Shops Membership can be found [here](htt
 1. WooCommerce Trusted Shops Settings
 
 == Changelog ==
+
+= 1.1.0 =
+* Feature - Trusted Shops Review Collector
 
 = 1.0.0 =
 * Feature - Trusted Shops Integration

@@ -3,7 +3,7 @@
  * Plugin Name: WooCommerce Trusted Shops
  * Plugin URI: http://www.trustedshops.co.uk/
  * Description: Adds Trusted Shops Integration to your WooCommerce Shop.
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: Vendidero
  * Author URI: http://vendidero.de
  * Requires at least: 3.8
@@ -26,7 +26,7 @@ final class WooCommerce_Trusted_Shops {
 	 *
 	 * @var string
 	 */
-	public $version = '1.0.0';
+	public $version = '1.1.0';
 
 	/**
 	 * Single instance of WooCommerce Trusted Shops Main Class

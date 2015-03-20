@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WooCommerce Trusted Shops v1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2014-11-24 14:18:17+0000\n"
+"PO-Revision-Date: 2015-03-20 11:02:20+0000\n"
 "Last-Translator: admin <d.nissle@yahoo.de>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -26,35 +26,27 @@ msgstr ""
 #: woocommerce-trusted-shops.php:73
 #@ woocommerce-trusted-shops
 msgid "Cheatin&#8217; huh?"
-msgstr ""
+msgstr "Cheatin&#8217; huh?"
 
-#: includes/class-wc-ts-install.php:49
-#, php-format
-#@ woocommerce-trusted-shops
-msgid "Please install <a href=\"%s\" target=\"_blank\">WooCommerce</a> before installing WooCommerce Trusted Shops. Thank you!"
-msgstr ""
-"Veuillez s'il vous plait installer \n"
-"<a href=\"%s\" target=\"_blank\">WooCommerce</a> avant d'installer WooCommerce Trusted Shops."
-
-#: includes/class-wc-ts.php:197
+#: includes/class-wc-ts.php:205
 #, php-format
 #@ woocommerce-trusted-shops
 msgid "%s ratings"
 msgstr "%s évaluations"
 
-#: includes/class-wc-ts.php:198
+#: includes/class-wc-ts.php:206
 #, php-format
 #@ woocommerce-trusted-shops
 msgid "Rated %s out of %s"
 msgstr "Evalué %s sur %s"
 
-#: includes/class-wc-ts.php:200
+#: includes/class-wc-ts.php:208
 #, php-format
 #@ woocommerce-trusted-shops
 msgid "out of %s"
 msgstr "sur %s"
 
-#: includes/class-wc-ts.php:205
+#: includes/class-wc-ts.php:213
 #, php-format
 #@ woocommerce-trusted-shops
 msgid "%s of %s based on %s <a href=\"%s\" target=\"_blank\">ratings</a>."
@@ -63,19 +55,19 @@ msgstr ""
 "%s <a href=\"%s\" target=\"_blank\"> évaluations\n"
 "</a>."
 
-#: includes/class-wc-ts.php:295
+#: includes/class-wc-ts.php:410
 #@ woocommerce-trusted-shops
 msgid "None"
 msgstr "Aucun(e)"
 
-#: includes/class-wc-ts.php:299
+#: includes/class-wc-ts.php:414
 #@ woocommerce-trusted-shops
 msgid "Trusted Shops Integration"
 msgstr ""
 "Intégration \n"
 "Trusted Shops"
 
-#: includes/class-wc-ts.php:329
+#: includes/class-wc-ts.php:444
 #, php-format
 #@ woocommerce-trusted-shops
 msgid "This option will enable a Widget which shows your Trusted Shops Reviews as a graphic. You may configure your Widgets <a href=\"%s\">here</a>."
@@ -83,18 +75,18 @@ msgstr ""
 "Cette option va activer un widget montrant vos avis sous forme de graphique. Vous pouvez configurer vos Widgets \n"
 "<a href=\"%s\">ici</a>."
 
-#: includes/class-wc-ts.php:338
+#: includes/class-wc-ts.php:453
 #@ woocommerce-trusted-shops
 msgid "This option will update your reviews received via Trusted Shops once per day and enables a Widget to show your reviews as Rich Snippets."
 msgstr "Cette option va mettre à jour une fois par jours vos avis reçus et activer un widget vous permettant d'afficher ces derniers en tant que Rich Snippets.. "
 
-#: includes/class-wc-ts.php:377
+#: includes/class-wc-ts.php:492
 #, php-format
 #@ woocommerce-trusted-shops
 msgid "Choose a Trusted Shops Payment Gateway linked to WooCommerce Payment Gateway %s"
 msgstr "Choisissez un portail de paiement Trusted Shops qui soit lié au portail de paiement WooCommerce"
 
-#: includes/class-wc-ts.php:396
+#: includes/class-wc-ts.php:511
 #@ woocommerce-trusted-shops
 msgid "About Trusted Shops"
 msgstr "À propos de Trusted Shops"
@@ -135,18 +127,6 @@ msgstr "Rich Snippets Trusted Shops"
 msgid "WooCommerce Trusted Shops"
 msgstr "WooCommerce Trusted Shops"
 
-#. translators: plugin header field 'PluginURI'
-#: woocommerce-trusted-shops.php:0
-#@ woocommerce-trusted-shops
-msgid "http://www.vendidero.de/woocommerce-trusted-shops"
-msgstr "http://www.vendidero.de/woocommerce-trusted-shops"
-
-#. translators: plugin header field 'Description'
-#: woocommerce-trusted-shops.php:0
-#@ woocommerce-trusted-shops
-msgid "Adds Trusted Shops Products to WooCommerce Shop."
-msgstr "Ajoute des produits Trusted Shops dans la boutique WooCommerce"
-
 #. translators: plugin header field 'Author'
 #: woocommerce-trusted-shops.php:0
 #@ woocommerce-trusted-shops
@@ -165,7 +145,7 @@ msgstr "http://vendidero.de"
 msgid "1.0.0"
 msgstr "1.0.0"
 
-#: woocommerce-trusted-shops.php:298
+#: woocommerce-trusted-shops.php:313
 #@ woocommerce
 msgid "Settings"
 msgstr "Paramètres"
@@ -215,71 +195,125 @@ msgstr "Prélèvement bancaire\n"
 msgid "Financing"
 msgstr "Financement\n"
 
-#: includes/class-wc-ts.php:219
+#: includes/class-wc-ts.php:227
 #@ woocommerce-trusted-shops
 msgid "Show customer reviews"
 msgstr "Montrer les Avis Clients\n"
 
-#: includes/class-wc-ts.php:269
+#: includes/class-wc-ts.php:274
 #@ woocommerce-trusted-shops
 msgid "Trusted Shops Customer Reviews"
 msgstr "Avis Clients Trusted Shops"
 
-#: includes/class-wc-ts.php:302
+#: includes/class-wc-ts.php:417
 #@ woocommerce-trusted-shops
 msgid "TS-ID"
 msgstr "TS-ID"
 
-#: includes/class-wc-ts.php:303
+#: includes/class-wc-ts.php:418
 #@ woocommerce-trusted-shops
 msgid "Insert your Trusted Shops ID here."
 msgstr "Insérez votre identifiant Trusted Shops (TS-ID) ici.\n"
 
-#: includes/class-wc-ts.php:312
+#: includes/class-wc-ts.php:427
 #@ woocommerce-trusted-shops
 msgid "Configure the Trustbadge for your shop"
 msgstr "Configurez le Trustbadge pour votre site\n"
 
-#: includes/class-wc-ts.php:312
+#: includes/class-wc-ts.php:427
 #, php-format
 #@ woocommerce-trusted-shops
 msgid "You'll find a step-by-step instruction for your shopsoftware in our integration center. <a href=\"%s\" target=\"_blank\">Click here</a>"
 msgstr "Vous trouverez dans notre centre de support et d’intégration des instructions détaillées pour votre solution e-commerce. Cliquez ici.\n"
 
-#: includes/class-wc-ts.php:315
+#: includes/class-wc-ts.php:430
 #@ woocommerce-trusted-shops
 msgid "Trustbadge code"
 msgstr "Code Trustbadge \n"
 
-#: includes/class-wc-ts.php:318
+#: includes/class-wc-ts.php:433
 #@ woocommerce-trusted-shops
 msgid "Fill in your trustbadge code here"
 msgstr "Saisissez votre code Trustbadge ici\n"
 
-#: includes/class-wc-ts.php:318
+#: includes/class-wc-ts.php:433
 #@ woocommerce-trusted-shops
 msgid "If no further steps were required in the integration center, the Trustbadge is already displayed in your shop."
 msgstr "Si le centre de support ne prévoit plus d'étape d’intégration, le Trustbadge est déjà affiché sur votre boutique en ligne. \n"
 
-#: includes/class-wc-ts.php:325
+#: includes/class-wc-ts.php:440
 #@ woocommerce-trusted-shops
 msgid "Configure Customer Reviews"
 msgstr "Configurer les avis clients\n"
 
-#: includes/class-wc-ts.php:328
+#: includes/class-wc-ts.php:443
 #@ woocommerce-trusted-shops
 msgid "Enable Review Widget"
 msgstr "Activer le widget d’évaluation"
 
-#: includes/class-wc-ts.php:337
+#: includes/class-wc-ts.php:452
 #@ woocommerce-trusted-shops
 msgid "Enable Rich Snippets for Google"
 msgstr "Activez l’affichage des Rich Snippets sur Google"
 
-#: includes/class-wc-ts.php:347
+#: includes/class-wc-ts.php:462
 #@ woocommerce-trusted-shops
 msgid "Assign payment methods"
 msgstr ""
 "Attribuer les modes de paiement\n"
 "\n"
+
+#: includes/class-wc-ts-install.php:49
+#, php-format
+#@ woocommerce-germanized
+msgid "Please install <a href=\"%s\" target=\"_blank\">WooCommerce</a> before installing WooCommerce Germanized. Thank you!"
+msgstr ""
+
+#: includes/class-wc-ts.php:386
+#@ woocommerce-trusted-shops
+msgid "Export customer data"
+msgstr "Exporter les données des clients"
+
+#: includes/class-wc-ts.php:390
+#@ woocommerce-trusted-shops
+msgid "30 days"
+msgstr "30 jours"
+
+#: includes/class-wc-ts.php:391
+#@ woocommerce-trusted-shops
+msgid "60 days"
+msgstr "60 jours"
+
+#: includes/class-wc-ts.php:392
+#@ woocommerce-trusted-shops
+msgid "90 days"
+msgstr "90 jours"
+
+#: includes/class-wc-ts.php:394
+#@ woocommerce-trusted-shops
+msgid "Start export"
+msgstr "Demarret l'export"
+
+#: includes/class-wc-ts.php:395
+#, php-format
+#@ woocommerce-trusted-shops
+msgid "Export your customer data and ask consumers for a review with the Trusted Shops <a href=\"%s\" target=\"_blank\">Review Collector</a>."
+msgstr "Exportez les données de vos clients et demandez leur avis avec le <a href=\"%s\" target=\"_blank\">Collecteur d'avis</a> Trusted Shops."
+
+#. translators: plugin header field 'PluginURI'
+#: woocommerce-trusted-shops.php:0
+#@ woocommerce-trusted-shops
+msgid "http://www.trustedshops.co.uk/"
+msgstr "http://www.trustedshops.fr"
+
+#. translators: plugin header field 'Description'
+#: woocommerce-trusted-shops.php:0
+#@ woocommerce-trusted-shops
+msgid "Adds Trusted Shops Integration to your WooCommerce Shop."
+msgstr "Ajoute les outils Trusted Shops à votre Boutique WooCommerce"
+
+#: includes/class-wc-ts.php:381
+#@ woocommerce-trusted-shops
+msgid "Review Collector"
+msgstr "Collecteur d'avis"
 
