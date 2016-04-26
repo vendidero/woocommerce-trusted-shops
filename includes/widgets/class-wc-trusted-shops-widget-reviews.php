@@ -12,18 +12,18 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class WC_TS_Widget_Reviews extends WC_Widget {
+class WC_Trusted_Shops_Widget_Reviews extends WC_Widget {
 
 	public function __construct() {
-		$this->widget_cssclass    = 'woocommerce woocommerce_ts widget_trusted_shops_reviews';
-		$this->widget_description = __( "Display your Trusted Shops Reviews as graphic.", 'woocommerce-trusted-shops' );
-		$this->widget_id          = 'woocommerce_widget_trusted_shops_reviews';
-		$this->widget_name        = __( 'Trusted Shops Reviews', 'woocommerce-trusted-shops' );
+		$this->widget_cssclass    = 'woocommerce woocommerce_gzd widget_trusted_shops_reviews';
+		$this->widget_description = _x( "Display your Trusted Shops Reviews as graphic.", 'trusted-shops', 'woocommerce-germanized' );
+		$this->widget_id          = 'woocommerce_gzd_widget_trusted_shops_reviews';
+		$this->widget_name        = _x( 'Trusted Shops Reviews', 'trusted-shops', 'woocommerce-germanized' );
 		$this->settings           = array(
 			'title'  => array(
 				'type'  => 'text',
-				'std'   => __( 'Trusted Shops Reviews', 'woocommerce-trusted-shops' ),
-				'label' => __( 'Title', 'woocommerce' )
+				'std'   => _x( 'Trusted Shops Reviews', 'trusted-shops', 'woocommerce-germanized' ),
+				'label' => _x( 'Title', 'trusted-shops', 'woocommerce-germanized' ),
 			),
 		);
 		parent::__construct();
@@ -44,7 +44,7 @@ class WC_TS_Widget_Reviews extends WC_Widget {
 
 		if ( is_cart() || is_checkout() ) return;
 
-		$title = apply_filters('widget_title', empty( $instance['title'] ) ? __( 'Trusted Shops Reviews', 'woocommerce-trusted-shops' ) : $instance['title'], $instance, $this->id_base );
+		$title = apply_filters('widget_title', empty( $instance['title'] ) ? _x( 'Trusted Shops Reviews', 'trusted-shops', 'woocommerce-germanized' ) : $instance['title'], $instance, $this->id_base );
 
 		echo $before_widget;
 
@@ -60,7 +60,5 @@ class WC_TS_Widget_Reviews extends WC_Widget {
 		echo $after_widget;
 	}
 }
-
-register_widget( 'WC_TS_Widget_Reviews' );
 
 ?>

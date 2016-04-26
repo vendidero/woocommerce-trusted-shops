@@ -3,8 +3,8 @@ Contributors: vendidero
 Tags: woocommerce trusted shops, trusted shops, woocommerce, ts, seal, badge, shop
 Donate link: http://www.trustedshops.co.uk
 Requires at least: 3.8
-Tested up to: 4.1
-Stable tag: 1.1.0
+Tested up to: 4.5
+Stable tag: 2.0.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -57,6 +57,13 @@ More information regarding your Trusted Shops Membership can be found [here](htt
 1. WooCommerce Trusted Shops Settings
 
 == Changelog ==
+
+= 2.0.0 = 
+* Feature - Product Reviews
+* Feature - Product Review Sticker/Stars
+* Feature - GTIN for Product Reviews
+* Feature - In Standard Mode no need to insert JS Trustbadge Code
+* Feature - Expert Mode for code adjustments
 
 = 1.1.0 =
 * Feature - Trusted Shops Review Collector

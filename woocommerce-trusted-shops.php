@@ -3,11 +3,11 @@
  * Plugin Name: WooCommerce Trusted Shops
  * Plugin URI: http://www.trustedshops.co.uk/
  * Description: Adds Trusted Shops Integration to your WooCommerce Shop.
- * Version: 1.1.0
+ * Version: 2.0.0
  * Author: Vendidero
  * Author URI: http://vendidero.de
  * Requires at least: 3.8
- * Tested up to: 4.1
+ * Tested up to: 4.5
  *
  * Text Domain: woocommerce-trusted-shops
  * Domain Path: /i18n/languages/
@@ -26,7 +26,7 @@ final class WooCommerce_Trusted_Shops {
 	 *
 	 * @var string
 	 */
-	public $version = '1.1.0';
+	public $version = '2.0.0';
 
 	/**
 	 * Single instance of WooCommerce Trusted Shops Main Class
@@ -92,69 +92,97 @@ final class WooCommerce_Trusted_Shops {
 		if ( function_exists( "__autoload" ) ) {
 			spl_autoload_register( "__autoload" );
 		}
+
 		spl_autoload_register( array( $this, 'autoload' ) );
+
+		add_action( 'plugins_loaded', array( $this, 'load_plugin_textdomain' ) );
+			
+		// Check if dependecies are installed
+		$init = WC_TS_Dependencies::instance();
+		
+		if ( ! $init->is_loadable() )
+			return;
 
 		// Define constants
 		$this->define_constants();
 
-		include_once 'includes/class-wc-ts-install.php';
+		// Include required files
+		$this->includes();
 
 		// Hooks
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'action_links' ) );
-		add_action( 'after_setup_theme', array( $this, 'include_template_functions' ), 11 );
 		add_action( 'init', array( $this, 'init' ), 1 );
-		add_action( 'init', array( 'WC_TS_Shortcodes', 'init' ), 2 );
-		add_action( 'widgets_init', array( $this, 'include_widgets' ), 25 );
 		add_action( 'plugins_loaded', array( $this, 'load_plugin_textdomain' ) );
+		add_filter( 'woocommerce_locate_template', array( $this, 'filter_templates' ), 0, 3 );
 
-		$this->trusted_shops  = new WC_TS();
+		// Initialize Trusted Shops module
+		$this->trusted_shops  = new WC_Trusted_Shops( $this, array(
+				'supports'	  => array(),
+				'signup'	  => array( 'utm_source' => 'woocommerce-app', 'utm_campaign' => 'woocommerce-app' ),
+				'urls'		  => array( 
+					'integration' 		=> 'http://support.trustedshops.com/en/apps/woocommerce',
+					'signup' 			=> 'http://www.trustbadge.com/en/pricing/',
+					'trustbadge_custom' => 'http://www.trustedshops.co.uk/support/trustbadge/trustbadge-custom/', 
+					'reviews' 			=> 'http://www.trustedshops.co.uk/support/product-reviews/', 
+				),
+			)
+		);
 
 		// Loaded action
 		do_action( 'woocommerce_trusted_shops_loaded' );
-	}
-
-	public function deactivate() {
-		if ( current_user_can( 'activate_plugins' ) )
-			deactivate_plugins( plugin_basename( __FILE__ ) );
 	}
 
 	/**
 	 * Init Trusted Shops when WordPress initializes.
 	 */
 	public function init() {
-		if ( $this->is_woocommerce_activated() ) {
-			// Before init action
-			do_action( 'before_woocommerce_trusted_shops_init' );
-			// Include required files
-			$this->includes();
-			add_filter( 'woocommerce_locate_template', array( $this, 'filter_templates' ), 0, 3 );
-			add_filter( 'woocommerce_get_settings_pages', array( $this, 'add_settings' ) );
-			add_filter( 'woocommerce_enqueue_styles', array( $this, 'add_styles' ) );
-			//add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts' ) );
-			add_action( 'admin_enqueue_scripts', array( $this, 'add_admin_styles' ) );
-			//add_action( 'wp_print_scripts', array( $this, 'localize_scripts' ), 5 );
-			//add_filter( 'woocommerce_email_classes', array( $this, 'add_emails' ) );
+		
+		// Before init action
+		do_action( 'before_woocommerce_trusted_shops_init' );
+		
+		add_filter( 'woocommerce_get_settings_pages', array( $this, 'add_settings' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'add_admin_styles' ) );
+		add_action( 'admin_init', array( $this, 'redirect_settings' ) );
+		add_filter( 'admin_footer_text', array( $this, 'admin_footer_text' ), 15 );
+		// Change email template path if is germanized email template
+		add_filter( 'woocommerce_template_directory', array( $this, 'set_woocommerce_template_dir' ), 10, 2 );
+		add_filter( 'woocommerce_locate_core_template', array( $this, 'set_woocommerce_core_template_dir' ), 10, 3 );
 
-			// Init action
-			do_action( 'woocommerce_trusted_shops_init' );
-		} else {
-			add_action( 'admin_init', array( $this, 'deactivate' ), 0 );
-		}
+		// Init action
+		do_action( 'woocommerce_trusted_shops_init' );
 	}
 
-	/**
-	 * Checks if WooCommerce is activated
-	 *  
-	 * @return boolean true if WooCommerce is activated
-	 */
-	public function is_woocommerce_activated() {
-		if ( is_multisite() )
-			require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
-		if ( is_multisite() && ! is_plugin_active_for_network( 'woocommerce/woocommerce.php' ) )
-			return false;
-		else if ( ! is_multisite() && ! in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) )
-			return false;
-		return true;
+	public function set_woocommerce_core_template_dir( $core_file, $template, $template_base ) {
+		if ( ! file_exists( $template_base . $template ) && file_exists( $this->plugin_path() . '/templates/' . $template ) )
+			$core_file = $this->plugin_path() . '/templates/' . $template;
+
+		return $core_file;
+	}
+
+	public function set_woocommerce_template_dir( $dir, $template ) {
+		if ( file_exists( WC_trusted_shops()->plugin_path() . '/templates/' . $template ) )
+			return 'woocommerce-trusted-shops';
+		return $dir;
+	}
+
+	public function admin_footer_text( $footer_text ) {
+		if ( ! current_user_can( 'manage_woocommerce' ) ) {
+			return;
+		}
+
+		// Check to make sure we're on a WooCommerce admin page
+		if ( isset( $_GET[ 'tab' ] ) && 'trusted-shops' === $_GET[ 'tab' ] ) {
+			$footer_text = sprintf( _x( 'If the <strong>App</strong> helped you, please leave a %s&#9733;&#9733;&#9733;&#9733;&#9733;%s in the Wordpress plugin repository.', 'trusted-shops', 'woocommerce-trusted-shops' ), '<a href="https://wordpress.org/support/view/plugin-reviews/woocommerce-trusted-shops?rate=5#postform" target="_blank" class="wc-rating-link">', '</a>' );
+		}
+
+		return $footer_text;
+	}
+
+	public function redirect_settings() {
+		if ( ( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] === 'trusted-shops' && ( ! isset( $_GET[ 'section' ] ) || empty( $_GET[ 'section' ] ) ) ) ) {
+			// Redirect
+			wp_safe_redirect( admin_url( 'admin.php?page=wc-settings&tab=trusted-shops&section=trusted_shops' ) );
+		} 
 	}
 
 	/**
@@ -164,6 +192,7 @@ final class WooCommerce_Trusted_Shops {
 	 * @return void
 	 */
 	public function autoload( $class ) {
+		
 		$path = $this->plugin_path() . '/includes/';
 		$class = strtolower( $class );
 		$file = 'class-' . str_replace( '_', '-', $class ) . '.php';
@@ -172,6 +201,7 @@ final class WooCommerce_Trusted_Shops {
 			include_once $path . $file;
 			return;
 		}
+
 	}
 
 	/**
@@ -213,35 +243,7 @@ final class WooCommerce_Trusted_Shops {
 	 * Include required core files used in admin and on the frontend.
 	 */
 	private function includes() {
-
-		if ( is_admin() ) {
-			include_once 'includes/admin/class-wc-ts-admin.php';
-		}
-
-		if ( defined( 'DOING_AJAX' ) ) {
-			// $this->ajax_includes();
-		}
-
-		if ( ! is_admin() || defined( 'DOING_AJAX' ) ) {
-			$this->frontend_includes();
-		}
-
-	}
-
-	/**
-	 * Include required frontend files.
-	 */
-	public function frontend_includes() {
-		include_once 'includes/wc-ts-template-hooks.php';
-	}
-
-	/**
-	 * Function used to Init WooCommerceGermanized Template Functions - This makes them pluggable by plugins and themes.
-	 */
-	public function include_template_functions() {
-		if ( ! is_admin() || defined( 'DOING_AJAX' ) ) {
-			include_once 'includes/wc-ts-template-functions.php';
-		}
+		include_once 'includes/class-wc-ts-install.php';
 	}
 
 	/**
@@ -260,6 +262,7 @@ final class WooCommerce_Trusted_Shops {
 
 		if ( empty( $GLOBALS[ 'template_name' ] ) )
 			$GLOBALS['template_name'] = array();
+		
 		$GLOBALS['template_name'][] = $template_name;
 
 		// Check Theme
@@ -269,6 +272,10 @@ final class WooCommerce_Trusted_Shops {
 				$template_name
 			)
 		);
+
+		// Make filter gzd_compatible
+		$template_name = apply_filters( 'woocommerce_gzd_template_name', $template_name );
+
 		// Load Default
 		if ( ! $theme_template ) {
 			if ( file_exists( $this->plugin_path() . '/templates/' . $template_name ) )
@@ -293,16 +300,6 @@ final class WooCommerce_Trusted_Shops {
 	}
 
 	/**
-	 * Include WooCommerce Germanized Widgets
-	 */
-	public function include_widgets() {
-		if ( is_object( $this->trusted_shops) && $this->trusted_shops->is_rich_snippets_enabled() )
-			include_once 'includes/widgets/class-wc-ts-widget-rich-snippets.php';
-		if ( is_object( $this->trusted_shops) && $this->trusted_shops->is_review_widget_enabled() )
-			include_once 'includes/widgets/class-wc-ts-widget-reviews.php';
-	}
-
-	/**
 	 * Show action links on the plugin screen
 	 *
 	 * @param mixed   $links
@@ -310,7 +307,7 @@ final class WooCommerce_Trusted_Shops {
 	 */
 	public function action_links( $links ) {
 		return array_merge( array(
-			'<a href="' . admin_url( 'admin.php?page=wc-settings&tab=trusted-shops' ) . '">' . __( 'Settings', 'woocommerce' ) . '</a>',
+			'<a href="' . admin_url( 'admin.php?page=wc-settings&tab=trusted-shops&section=trusted_shops' ) . '">' . _x( 'Settings', 'trusted-shops', 'woocommerce-trusted-shops' ) . '</a>',
 		), $links );
 	}
 
@@ -318,23 +315,19 @@ final class WooCommerce_Trusted_Shops {
 	 * Add custom styles to Admin
 	 */
 	public function add_admin_styles() {
-		wp_register_style( 'woocommerce-trusted-shops-admin', WC_trusted_shops()->plugin_url() . '/assets/css/woocommerce-trusted-shops-admin.css', false, WC_trusted_shops()->version );
-		wp_enqueue_style( 'woocommerce-trusted-shops-admin' );
-	}
+		
+		$screen = get_current_screen();
+		
+		if ( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'trusted-shops' ) {
 
-	/**
-	 * Add styles to frontend
-	 *
-	 * @param array   $styles
-	 */
-	public function add_styles( $styles ) {
-		$styles['woocommerce-trusted-shops-layout'] = array(
-			'src'     => str_replace( array( 'http:', 'https:' ), '', WC_trusted_shops()->plugin_url() ) . '/assets/css/woocommerce-trusted-shops-layout.css',
-			'deps'    => '',
-			'version' => WC_TRUSTED_SHOPS_VERSION,
-			'media'   => 'all'
-		);
-		return $styles;
+			if ( isset( $_GET[ 'section' ] ) )
+				$section = sanitize_text_field( $_GET[ 'section' ] );
+
+			if ( $section === 'trusted_shops' )
+				do_action( 'woocommerce_gzd_load_trusted_shops_script' );
+
+		}
+
 	}
 
 	/**
@@ -344,8 +337,7 @@ final class WooCommerce_Trusted_Shops {
 	 * @return array
 	 */
 	public function add_settings( $integrations ) {
-		include_once 'includes/admin/settings/class-wc-ts-settings.php';
-		$integrations[] = new WC_TS_Settings();
+		$integrations[] = new WC_TS_Settings_Handler();
 		return $integrations;
 	}
 
@@ -356,8 +348,7 @@ final class WooCommerce_Trusted_Shops {
 	 * @return array
 	 */
 	public function add_emails( $mails ) {
-		//$mails[] = include 'includes/emails/class-wc-gzd-email-customer-revocation.php';
-		//$mails[] = include 'includes/emails/class-wc-gzd-email-customer-ekomi.php';
+		$mails[ 'WC_TS_Email_Customer_Trusted_Shops' ] = include 'includes/emails/class-wc-ts-email-customer-trusted-shops.php';
 		return $mails;
 	}
 

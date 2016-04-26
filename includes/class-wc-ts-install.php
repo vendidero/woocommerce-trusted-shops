@@ -38,16 +38,21 @@ class WC_TS_Install {
 	 * Install WC_Germanized
 	 */
 	public function install() {
+		
 		// Load Translation for default options
 		$locale = apply_filters( 'plugin_locale', get_locale() );
 		$mofile = WC_trusted_shops()->plugin_path() . '/i18n/languages/woocommerce-trusted-shops.mo';
+		
 		if ( file_exists( WC_trusted_shops()->plugin_path() . '/i18n/languages/woocommerce-trusted-shops-' . $locale . '.mo' ) )
 			$mofile = WC_trusted_shops()->plugin_path() . '/i18n/languages/woocommerce-trusted-shops-' . $locale . '.mo';
+		
 		load_textdomain( 'woocommerce-trusted-shops', $mofile );
-		if ( ! WC_trusted_shops()->is_woocommerce_activated() ) {
-			deactivate_plugins( WC_GERMANIZED_PLUGIN_FILE );
+		
+		if ( ! WC_TS_Dependencies::instance()->is_woocommerce_activated() ) {
+			deactivate_plugins( WC_TRUSTED_SHOPS_PLUGIN_FILE );
 			wp_die( sprintf( __( 'Please install <a href="%s" target="_blank">WooCommerce</a> before installing WooCommerce Germanized. Thank you!', 'woocommerce-germanized' ), 'http://wordpress.org/plugins/woocommerce/' ) );
 		}
+		
 		$this->create_options();
 		$this->create_cron_jobs();
 
@@ -59,6 +64,8 @@ class WC_TS_Install {
 
 		// Update version
 		update_option( 'woocommerce_trusted_shops_version', WC_trusted_shops()->version );
+
+		do_action( 'woocommerce_gzd_installed' );
 
 		// Flush rules after install
 		flush_rewrite_rules();
@@ -79,8 +86,11 @@ class WC_TS_Install {
 	 */
 	private function create_cron_jobs() {
 		// Cron jobs
-		wp_clear_scheduled_hook( 'woocommerce_trusted_shops' );
-		wp_schedule_event( time(), 'twicedaily', 'woocommerce_trusted_shops' );
+		wp_clear_scheduled_hook( 'woocommerce_gzd_trusted_shops_reviews' );
+		wp_schedule_event( time(), 'twicedaily', 'woocommerce_gzd_trusted_shops_reviews' );
+		
+		wp_clear_scheduled_hook( 'woocommerce_gzd_ekomi' );
+		wp_schedule_event( time(), 'daily', 'woocommerce_gzd_ekomi' );
 	}
 
 	/**
@@ -92,11 +102,7 @@ class WC_TS_Install {
 	 */
 	function create_options() {
 		// Include settings so that we can run through defaults
-		include_once( WC()->plugin_path() . '/includes/admin/settings/class-wc-settings-page.php' );
-		include_once( 'admin/settings/class-wc-ts-settings.php' );
-
-		$settings = new WC_TS_Settings();
-		$options = $settings->get_settings();
+		$options = apply_filters( 'woocommerce_gzd_installation_default_settings', array() );
 
 		foreach ( $options as $value ) {
 			if ( isset( $value['default'] ) && isset( $value['id'] ) ) {
