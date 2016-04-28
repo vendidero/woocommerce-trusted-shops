@@ -116,10 +116,10 @@ final class WooCommerce_Trusted_Shops {
 		add_filter( 'woocommerce_locate_template', array( $this, 'filter_templates' ), 0, 3 );
 
 		// Initialize Trusted Shops module
-		$this->trusted_shops  = new WC_Trusted_Shops( $this, array(
-				'supports'	  => array(),
-				'signup'	  => array( 'utm_source' => 'woocommerce-app', 'utm_campaign' => 'woocommerce-app' ),
-				'urls'		  => array( 
+		$this->trusted_shops = new WC_Trusted_Shops( $this, array(
+				'supports'	  	  => array(),
+				'signup_params'	  => array( 'utm_source' => 'woocommerce-app', 'utm_campaign' => 'woocommerce-app' ),
+				'urls'		  	  => array( 
 					'integration' 		=> 'http://support.trustedshops.com/en/apps/woocommerce',
 					'signup' 			=> 'http://www.trustbadge.com/en/pricing/',
 					'trustbadge_custom' => 'http://www.trustedshops.co.uk/support/trustbadge/trustbadge-custom/', 
