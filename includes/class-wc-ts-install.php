@@ -88,9 +88,6 @@ class WC_TS_Install {
 		// Cron jobs
 		wp_clear_scheduled_hook( 'woocommerce_gzd_trusted_shops_reviews' );
 		wp_schedule_event( time(), 'twicedaily', 'woocommerce_gzd_trusted_shops_reviews' );
-		
-		wp_clear_scheduled_hook( 'woocommerce_gzd_ekomi' );
-		wp_schedule_event( time(), 'daily', 'woocommerce_gzd_ekomi' );
 	}
 
 	/**
