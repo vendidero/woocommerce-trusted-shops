@@ -60,7 +60,7 @@ class WC_Trusted_Shops_Template_Hooks {
 
 	public function review_tab( $tabs ) {
 		$tabs[ 'trusted_shops_reviews' ] = array(
-			'title' => _x( 'Reviews', 'trusted-shops', 'woocommerce-germanized' ),
+			'title' => _x( 'Reviews', 'trusted-shops', 'woocommerce-trusted-shops' ),
 			'priority' => 30,
 			'callback' => array( $this, 'template_product_sticker' ),
 		);

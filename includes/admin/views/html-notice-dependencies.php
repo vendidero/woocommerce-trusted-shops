@@ -21,11 +21,11 @@ $version_count = 0;
 
 			<?php if ( $missing_count == 1 ) : ?>
 
-				<p><?php echo _x( 'To use WooCommerce Trusted Shops you may at first install the following plugins:', 'trusted-shops', 'woocommerce-germanized' ); ?></p>
+				<p><?php echo _x( 'To use WooCommerce Trusted Shops you may at first install the following plugins:', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></p>
 
 			<?php endif; ?>
 
-			<p><a class="button button-secondary" href="<?php echo admin_url( "plugin-install.php?tab=search&s=" . urlencode( $data[ 'name' ] ) ); ?>"><?php printf( _x( 'Install %s', 'trusted-shops', 'woocommerce-germanized' ), $data[ 'name' ] ); ?></a></p>
+			<p><a class="button button-secondary" href="<?php echo admin_url( "plugin-install.php?tab=search&s=" . urlencode( $data[ 'name' ] ) ); ?>"><?php printf( _x( 'Install %s', 'trusted-shops', 'woocommerce-trusted-shops' ), $data[ 'name' ] ); ?></a></p>
 
 		<?php endif; ?>
 
@@ -33,11 +33,11 @@ $version_count = 0;
 
 			<?php if ( $version_count == 1 ) : ?>
 
-				<p><?php echo _x( 'To use WooCommerce Trusted Shops you may at first update the following plugins to a newer version:', 'trusted-shops', 'woocommerce-germanized' ); ?></p>
+				<p><?php echo _x( 'To use WooCommerce Trusted Shops you may at first update the following plugins to a newer version:', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></p>
 
 			<?php endif; ?>
 
-			<p>- <?php printf( _x( '%s required in at least version %s', 'trusted-shops', 'woocommerce-germanized' ), $data[ 'name' ], '<strong>' . $data[ 'version' ] . '</strong>' ); ?></p>
+			<p>- <?php printf( _x( '%s required in at least version %s', 'trusted-shops', 'woocommerce-trusted-shops' ), $data[ 'name' ], '<strong>' . $data[ 'version' ] . '</strong>' ); ?></p>
 
 		<?php endif; ?>
 
@@ -46,9 +46,9 @@ $version_count = 0;
 	<?php if ( $version_count > 0 ) : ?>
 
 		<p>
-			<a class="button button-secondary" href="<?php echo admin_url( "update-core.php" ); ?>"><?php echo _x( 'Check for Updates', 'trusted-shops', 'woocommerce-germanized' ); ?></a>
-			<?php echo _x( 'or', 'trusted-shops', 'woocommerce-germanized' ); ?>
-			<a class="" href="https://wordpress.org/plugins/woocommerce-trusted-shops/developers/" target="_blank"><?php echo _x( 'Install an older version', 'trusted-shops', 'woocommerce-germanized' ); ?></a>
+			<a class="button button-secondary" href="<?php echo admin_url( "update-core.php" ); ?>"><?php echo _x( 'Check for Updates', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></a>
+			<?php echo _x( 'or', 'trusted-shops', 'woocommerce-trusted-shops' ); ?>
+			<a class="" href="https://wordpress.org/plugins/woocommerce-trusted-shops/developers/" target="_blank"><?php echo _x( 'Install an older version', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></a>
 		</p>
 
 	<?php endif; ?>

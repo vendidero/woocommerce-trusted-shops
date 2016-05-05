@@ -16,14 +16,14 @@ class WC_Trusted_Shops_Widget_Reviews extends WC_Widget {
 
 	public function __construct() {
 		$this->widget_cssclass    = 'woocommerce woocommerce_gzd widget_trusted_shops_reviews';
-		$this->widget_description = _x( "Display your Trusted Shops Reviews as graphic.", 'trusted-shops', 'woocommerce-germanized' );
+		$this->widget_description = _x( "Display your Trusted Shops Reviews as graphic.", 'trusted-shops', 'woocommerce-trusted-shops' );
 		$this->widget_id          = 'woocommerce_gzd_widget_trusted_shops_reviews';
-		$this->widget_name        = _x( 'Trusted Shops Reviews', 'trusted-shops', 'woocommerce-germanized' );
+		$this->widget_name        = _x( 'Trusted Shops Reviews', 'trusted-shops', 'woocommerce-trusted-shops' );
 		$this->settings           = array(
 			'title'  => array(
 				'type'  => 'text',
-				'std'   => _x( 'Trusted Shops Reviews', 'trusted-shops', 'woocommerce-germanized' ),
-				'label' => _x( 'Title', 'trusted-shops', 'woocommerce-germanized' ),
+				'std'   => _x( 'Trusted Shops Reviews', 'trusted-shops', 'woocommerce-trusted-shops' ),
+				'label' => _x( 'Title', 'trusted-shops', 'woocommerce-trusted-shops' ),
 			),
 		);
 		parent::__construct();
@@ -44,7 +44,7 @@ class WC_Trusted_Shops_Widget_Reviews extends WC_Widget {
 
 		if ( is_cart() || is_checkout() ) return;
 
-		$title = apply_filters('widget_title', empty( $instance['title'] ) ? _x( 'Trusted Shops Reviews', 'trusted-shops', 'woocommerce-germanized' ) : $instance['title'], $instance, $this->id_base );
+		$title = apply_filters('widget_title', empty( $instance['title'] ) ? _x( 'Trusted Shops Reviews', 'trusted-shops', 'woocommerce-trusted-shops' ) : $instance['title'], $instance, $this->id_base );
 
 		echo $before_widget;
 

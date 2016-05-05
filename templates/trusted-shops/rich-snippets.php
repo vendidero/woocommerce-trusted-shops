@@ -20,11 +20,11 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		<p>
 			<?php 
 				printf( 
-					_x( '&#216; %s / %s of %s %s %s customer reviews | Trusted Shops %s', 'trusted-shops', 'woocommerce-germanized' ), 
+					_x( '&#216; %s / %s of %s %s %s customer reviews | Trusted Shops %s', 'trusted-shops', 'woocommerce-trusted-shops' ), 
 					'<span itemprop="ratingValue">' . $rating[ 'avg' ] . '</span>', 
 					'<span itemprop="bestRating">' . $rating[ 'max' ] . '</span>', 
 					'<span itemprop="ratingCount">' . $rating[ 'count' ] . '</span>',
-					'<a href="' . $rating_link . '" title="' . sprintf( _x( '%s custom reviews', 'trusted-shops', 'woocommerce-germanized' ), get_bloginfo( 'name' ) ) . '" target="_blank">',
+					'<a href="' . $rating_link . '" title="' . sprintf( _x( '%s custom reviews', 'trusted-shops', 'woocommerce-trusted-shops' ), get_bloginfo( 'name' ) ) . '" target="_blank">',
 					get_bloginfo( 'name' ),
 					'</a>'
 				); 

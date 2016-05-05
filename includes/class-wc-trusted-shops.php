@@ -102,13 +102,13 @@ class WC_Trusted_Shops {
 		$this->refresh();
 		
 		$this->gateways = apply_filters( 'woocommerce_trusted_shops_gateways', array(
-				'prepayment' => _x( 'Prepayment', 'trusted-shops', 'woocommerce-germanized' ),
-				'cash_on_delivery' => _x( 'Cash On Delivery', 'trusted-shops', 'woocommerce-germanized' ),
-				'credit_card' => _x( 'Credit Card', 'trusted-shops', 'woocommerce-germanized' ),
-				'paypal' => _x( 'Paypal', 'trusted-shops', 'woocommerce-germanized' ),
-				'invoice' => _x( 'Invoice', 'trusted-shops', 'woocommerce-germanized' ),
-				'direct_debit' => _x( 'Direct Debit', 'trusted-shops', 'woocommerce-germanized' ),
-				'financing' =>  _x( 'Financing', 'trusted-shops', 'woocommerce-germanized' ),
+				'prepayment' => _x( 'Prepayment', 'trusted-shops', 'woocommerce-trusted-shops' ),
+				'cash_on_delivery' => _x( 'Cash On Delivery', 'trusted-shops', 'woocommerce-trusted-shops' ),
+				'credit_card' => _x( 'Credit Card', 'trusted-shops', 'woocommerce-trusted-shops' ),
+				'paypal' => _x( 'Paypal', 'trusted-shops', 'woocommerce-trusted-shops' ),
+				'invoice' => _x( 'Invoice', 'trusted-shops', 'woocommerce-trusted-shops' ),
+				'direct_debit' => _x( 'Direct Debit', 'trusted-shops', 'woocommerce-trusted-shops' ),
+				'financing' =>  _x( 'Financing', 'trusted-shops', 'woocommerce-trusted-shops' ),
 			)
 		);
 

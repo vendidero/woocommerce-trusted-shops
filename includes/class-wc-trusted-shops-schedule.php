@@ -90,7 +90,7 @@ class WC_Trusted_Shops_Schedule {
   		$attachment = array(
   			'guid' => $uploads[ 'url' ] . '/' . basename( $filepath ),
   			'post_mime_type' => 'image/gif',
-  			'post_title' => _x( 'Trusted Shops Customer Reviews', 'trusted-shops', 'woocommerce-germanized' ),
+  			'post_title' => _x( 'Trusted Shops Customer Reviews', 'trusted-shops', 'woocommerce-trusted-shops' ),
   			'post_content' => '',
   			'post_status' => 'publish',
   		);

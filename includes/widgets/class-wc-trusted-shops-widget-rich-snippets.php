@@ -16,14 +16,14 @@ class WC_Trusted_Shops_Widget_Rich_Snippets extends WC_Widget {
 
 	public function __construct() {
 		$this->widget_cssclass    = 'woocommerce woocommerce_gzd widget_trusted_shops_rich_snippets';
-		$this->widget_description = _x( "Display your Trusted Shops Reviews as Rich Snippets.", 'trusted-shops', 'woocommerce-germanized' );
+		$this->widget_description = _x( "Display your Trusted Shops Reviews as Rich Snippets.", 'trusted-shops', 'woocommerce-trusted-shops' );
 		$this->widget_id          = 'woocommerce_gzd_widget_trusted_shops_rich_snippets';
-		$this->widget_name        = _x( 'Trusted Shops Rich Snippets', 'trusted-shops', 'woocommerce-germanized' );
+		$this->widget_name        = _x( 'Trusted Shops Rich Snippets', 'trusted-shops', 'woocommerce-trusted-shops' );
 		$this->settings           = array(
 			'title'  => array(
 				'type'  => 'text',
-				'std'   => _x( 'Trusted Shops Rich Snippets', 'trusted-shops', 'woocommerce-germanized' ),
-				'label' => _x( 'Title', 'trusted-shops', 'woocommerce-germanized' ),
+				'std'   => _x( 'Trusted Shops Rich Snippets', 'trusted-shops', 'woocommerce-trusted-shops' ),
+				'label' => _x( 'Title', 'trusted-shops', 'woocommerce-trusted-shops' ),
 			),
 		);
 		parent::__construct();
@@ -42,7 +42,7 @@ class WC_Trusted_Shops_Widget_Rich_Snippets extends WC_Widget {
 
 		extract( $args );
 
-		$title = apply_filters('widget_title', empty( $instance['title'] ) ? _x( 'Trusted Shops Reviews', 'trusted-shops', 'woocommerce-germanized' ) : $instance['title'], $instance, $this->id_base );
+		$title = apply_filters('widget_title', empty( $instance['title'] ) ? _x( 'Trusted Shops Reviews', 'trusted-shops', 'woocommerce-trusted-shops' ) : $instance['title'], $instance, $this->id_base );
 
 		echo $before_widget;
 
