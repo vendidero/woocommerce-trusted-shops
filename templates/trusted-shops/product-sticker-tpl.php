@@ -4,16 +4,16 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+    exit; // Exit if accessed directly
 }
 ?>
 
 <script type="text/javascript">
 _tsProductReviewsConfig = {
-	tsid: '{id}', 
-	sku: [{sku}],
-	variant: 'productreviews',
-	borderColor: '{border_color}',
+    tsid: '{id}', 
+    sku: ['{sku}'],
+    variant: 'productreviews',
+    borderColor: '{border_color}',
     locale: '{locale}',
     starColor: '{star_color}',
     starSize: '{star_size}px',
