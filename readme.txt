@@ -1,5 +1,5 @@
 === WooCommerce Trusted Shops ===
-Contributors: vendidero
+Contributors: vendidero, trustbadge
 Tags: woocommerce trusted shops, trusted shops, woocommerce, ts, seal, badge, shop
 Donate link: http://www.trustedshops.co.uk
 Requires at least: 3.8
@@ -32,7 +32,7 @@ For more than 15 years Trusted Shops has been helping online traders to succeed 
 = Minimal Requirements =
 
 * WordPress 3.8 or newer
-* WooCommerce 2.0
+* WooCommerce 2.4
 * PHP Version 5.2.4 or newer
 * MySQL Version 5.0 or newer
 
