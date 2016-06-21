@@ -1,6 +1,6 @@
 === Trustbadge Reviews for WooCommerce ===
 Contributors: vendidero, trustbadge
-Tags: advanced reviews, badge, best reviews, business ratings, business reviews, confirm email reviews, google rating, google shopping, product ratings, product reviews, rate products, rating summary, Rating Widget, ratings, reputation, review widget, review, reviews easy, reviews, rich snippets, seal,  seo, star rating, stars, trust, trustbadge, trusted reviews, trusted shops, ts, user rating, user reviews,  woocommerce addons, woocommerce add-ons, woocommerce extensions, WooCommerce Plugins,  WooCommerce product comments, woocommerce product reviews, woocommerce reviews, woocommerce trusted shops, woocommerce
+Tags: advanced reviews, badge, best reviews, business ratings, business reviews, confirm email reviews, google rating, google shopping, product ratings, product reviews, rate products, rating summary, Rating Widget, ratings, reputation, review widget, review, reviews easy, reviews, rich snippets, seal,  seo, star rating, stars, trust, trustbadge, trusted reviews, trusted shops, ts, user rating, user reviews, woocommerce trusted shops, woocommerce
 Donate link: http://www.trustbadge.com
 Requires at least: 3.8
 Tested up to: 4.5
