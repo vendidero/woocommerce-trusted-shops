@@ -24,7 +24,7 @@ msgid "Cheatin&#8217; huh?"
 msgstr ""
 
 #: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/admin/settings/class-wc-ts-settings.php:23
-msgid "Trusted Shops"
+msgid "Trustbadge Reviews"
 msgstr ""
 
 #: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/admin/settings/class-wc-ts-settings.php:37
@@ -99,7 +99,7 @@ msgid "None"
 msgstr ""
 
 #: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/class-wc-ts.php:299
-msgid "Trusted Shops Integration"
+msgid "Trustbadge Reviews"
 msgstr ""
 
 #: /Users/dennis/Documents/localhost/trusted/wp-content/plugins/woocommerce-trusted-shops/includes/class-wc-ts.php:302
