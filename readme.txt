@@ -4,7 +4,7 @@ Tags: advanced reviews, badge, best reviews, business ratings, business reviews,
 Donate link: http://www.trustbadge.com
 Requires at least: 3.8
 Tested up to: 4.5
-Stable tag: 2.0.2
+Stable tag: 2.0.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -81,6 +81,9 @@ More information regarding your Trusted Shops Membership can be found [here](htt
 1. WooCommerce Trusted Shops Settings
 
 == Changelog ==
+
+= 2.0.3 =
+* Fix - Better Review Widget Update
 
 = 2.0.2 =
 * Fix - Star Size Option
