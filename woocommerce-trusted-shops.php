@@ -260,11 +260,6 @@ final class WooCommerce_Trusted_Shops {
 			$template_path = WC()->template_path();
 		}
 
-		if ( empty( $GLOBALS[ 'template_name' ] ) )
-			$GLOBALS['template_name'] = array();
-		
-		$GLOBALS['template_name'][] = $template_name;
-
 		// Check Theme
 		$theme_template = locate_template(
 			array(
@@ -274,7 +269,7 @@ final class WooCommerce_Trusted_Shops {
 		);
 
 		// Make filter gzd_compatible
-		$template_name = apply_filters( 'woocommerce_gzd_template_name', $template_name );
+		$template_name = apply_filters( 'woocommerce_trusted_shops_template_name', $template_name );
 
 		// Load Default
 		if ( ! $theme_template ) {
