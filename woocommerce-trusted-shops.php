@@ -243,6 +243,9 @@ final class WooCommerce_Trusted_Shops {
 	 * Include required core files used in admin and on the frontend.
 	 */
 	private function includes() {
+
+		include_once ( 'includes/wc-trusted-shops-core-functions.php' );
+
 		include_once 'includes/class-wc-ts-install.php';
 	}
 

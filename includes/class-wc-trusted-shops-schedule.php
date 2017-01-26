@@ -16,21 +16,25 @@ class WC_Trusted_Shops_Schedule {
 		$this->base = $base;
 
 		if ( $this->base->is_rich_snippets_enabled() ) {
-			
+
 			add_action( 'woocommerce_gzd_trusted_shops_reviews', array( $this, 'update_reviews' ) );
-			
-			if ( empty( $this->base->reviews_cache ) )
+			$reviews = $this->base->reviews_cache;
+
+			// Generate reviews for the first time
+			if ( empty( $reviews ) )
 				add_action( 'init', array( $this, 'update_reviews' ) );
 		}
-		
+
 		if ( $this->base->is_review_widget_enabled() ) {
-			
+
 			add_action( 'woocommerce_gzd_trusted_shops_reviews', array( $this, 'update_review_widget' ) );
-			
-			if ( empty( $this->base->review_widget_attachment ) )
+			$attachment = $this->base->review_widget_attachment;
+
+			// Generate attachment for the first time
+			if ( empty( $attachment ) )
 				add_action( 'init', array( $this, 'update_review_widget' ) );
 		}
-		
+
 		if ( $this->base->is_review_reminder_enabled() )
 			add_action( 'woocommerce_gzd_trusted_shops_reviews', array( $this, 'send_mails' ) );
 	}
@@ -41,11 +45,11 @@ class WC_Trusted_Shops_Schedule {
 	public function update_reviews() {
 
 		$update = array();
-		
+
 		if ( $this->base->is_enabled() ) {
-		
+
 			if ( function_exists( 'curl_version' ) ) {
-				
+
 				$success = false;
 				$ch = curl_init();
 				curl_setopt( $ch, CURLOPT_HEADER, false );
@@ -54,10 +58,10 @@ class WC_Trusted_Shops_Schedule {
 				curl_setopt( $ch, CURLOPT_URL, $this->base->api_url );
 				$output = curl_exec( $ch );
 				$httpcode = curl_getinfo( $ch, CURLINFO_HTTP_CODE );
-				
+
 				if ( ! curl_errno( $ch ) && $httpcode != 503 )
 					$success = true;
-				
+
 				curl_close( $ch );
 
 				if ( $success ) {
@@ -69,6 +73,7 @@ class WC_Trusted_Shops_Schedule {
 				}
 			}
 		}
+
 		update_option( 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_reviews_cache', $update );
 	}
 
@@ -76,9 +81,9 @@ class WC_Trusted_Shops_Schedule {
 	 * Updates the review widget graphic and saves it as an attachment
 	 */
 	public function update_review_widget() {
-		
+
 		$uploads = wp_upload_dir();
-		
+
 		if ( is_wp_error( $uploads ) )
 			return;
 
@@ -90,17 +95,17 @@ class WC_Trusted_Shops_Schedule {
 			return;
 
 		$filepath = trailingslashit( $uploads['path'] ) . $filename;
-  		file_put_contents( $filepath, $raw_data );
-  		
-  		$attachment = array(
-  			'guid' => $uploads[ 'url' ] . '/' . basename( $filepath ),
-  			'post_mime_type' => 'image/gif',
-  			'post_title' => _x( 'Trusted Shops Customer Reviews', 'trusted-shops', 'woocommerce-trusted-shops' ),
-  			'post_content' => '',
-  			'post_status' => 'publish',
-  		);
+		file_put_contents( $filepath, $raw_data );
 
-  		$existing_attachment_id = $this->base->get_review_widget_attachment();
+		$attachment = array(
+			'guid' => $uploads[ 'url' ] . '/' . basename( $filepath ),
+			'post_mime_type' => 'image/gif',
+			'post_title' => _x( 'Trusted Shops Customer Reviews', 'trusted-shops', 'woocommerce-trusted-shops' ),
+			'post_content' => '',
+			'post_status' => 'publish',
+		);
+
+		$existing_attachment_id = $this->base->get_review_widget_attachment();
 
 		if ( ! $existing_attachment_id || ! get_post( $existing_attachment_id ) ) {
 			$attachment_id = wp_insert_attachment( $attachment, $filepath );
@@ -111,8 +116,9 @@ class WC_Trusted_Shops_Schedule {
 			$attachment[ 'ID' ] = $attachment_id;
 			wp_update_post( $attachment );
 		}
+
 		require_once( ABSPATH . 'wp-admin/includes/image.php' );
-		
+
 		// Generate the metadata for the attachment, and update the database record.
 		$attach_data = wp_generate_attachment_metadata( $attachment_id, $filepath );
 		wp_update_attachment_metadata( $attachment_id, $attach_data );
@@ -122,11 +128,11 @@ class WC_Trusted_Shops_Schedule {
 	 * Send review reminder mails after x days
 	 */
 	public function send_mails() {
-		
+
 		$order_query = new WP_Query(
-			array( 
-				'post_type'   => 'shop_order', 
-				'post_status' => array( 'wc-completed' ), 
+			array(
+				'post_type'   => 'shop_order',
+				'post_status' => array( 'wc-completed' ),
 				'showposts'   => -1,
 				'meta_query'  => array(
 					array(
@@ -141,13 +147,13 @@ class WC_Trusted_Shops_Schedule {
 
 			$order_query->next_post();
 			$order = wc_get_order( $order_query->post->ID );
-			$diff = $this->base->plugin->get_date_diff( $order->completed_date, date( 'Y-m-d H:i:s' ) );
-			
+			$diff = $this->base->plugin->get_date_diff( wc_ts_get_crud_data( $order, 'completed_date' ), date( 'Y-m-d H:i:s' ) );
+
 			if ( $diff[ 'd' ] >= (int) $this->base->review_reminder_days ) {
-				
+
 				if ( $mail = $this->base->plugin->emails->get_email_instance_by_id( 'customer_trusted_shops' ) ) {
-					$mail->trigger( $order->id );
-					update_post_meta( $order->id, '_trusted_shops_review_mail_sent', 1 );
+					$mail->trigger( wc_ts_get_crud_data( $order, 'id' ) );
+					update_post_meta( wc_ts_get_crud_data( $order, 'id' ), '_trusted_shops_review_mail_sent', 1 );
 				}
 			}
 		}
@@ -155,26 +161,26 @@ class WC_Trusted_Shops_Schedule {
 
 	/**
 	 * Helper Function which decides between CURL or file_get_contents based on fopen
-	 *  
+	 *
 	 * @param  [type] $url [description]
 	 */
 	private function get_file_content( $url ) {
 
-	    if ( function_exists( 'curl_init' ) ) {
+		if ( function_exists( 'curl_init' ) ) {
 
-	    	$ch = curl_init();
-		    curl_setopt( $ch, CURLOPT_URL, $url );
-		    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
-		    $output = curl_exec( $ch );
-		    curl_close( $ch );
+			$ch = curl_init();
+			curl_setopt( $ch, CURLOPT_URL, $url );
+			curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+			$output = curl_exec( $ch );
+			curl_close( $ch );
 
-		    return $output;
+			return $output;
 
-	    } else if ( ini_get( 'allow_url_fopen' ) ) {
-	    	return file_get_contents( $url );
-	    }
+		} else if ( ini_get( 'allow_url_fopen' ) ) {
+			return file_get_contents( $url );
+		}
 
-	    return false;
+		return false;
 	}
 
 }

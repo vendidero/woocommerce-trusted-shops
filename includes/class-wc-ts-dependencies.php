@@ -86,6 +86,23 @@ class WC_TS_Dependencies {
 	}
 
 	/**
+	 * This method removes accuration from $ver2 if this version is more accurate than $main_ver
+	 */
+	public function compare_versions( $main_ver, $ver2, $operator ) {
+
+		$expl_main_ver = explode( '.', $main_ver );
+		$expl_ver2 = explode( '.', $ver2 );
+
+		// Check if ver2 string is more accurate than main_ver
+		if ( sizeof( $expl_main_ver ) == 2 && sizeof( $expl_ver2 ) > 2 ) {
+			$new_ver_2 = array_slice( $expl_ver2, 0, 2 );
+			$ver2 = implode( '.', $new_ver_2 );
+		}
+
+		return version_compare( $main_ver, $ver2, $operator );
+	}
+
+	/**
 	 * Checks if WooCommerce is activated
 	 *  
 	 * @return boolean true if WooCommerce is activated
@@ -98,6 +115,9 @@ class WC_TS_Dependencies {
 		return ( $this->is_plugin_activated( 'sitepress-multilingual-cms/sitepress.php' ) && $this->is_plugin_activated( 'woocommerce-multilingual/wpml-woocommerce.php' ) );
 	}
 
+	public function woocommerce_version_supports_crud() {
+		return ( $this->compare_versions( $this->get_plugin_version( 'woocommerce' ), '2.7', '>=' ) );
+	}
 
 	public function is_loadable() {
 		return $this->loadable;

@@ -16,9 +16,9 @@ class WC_Trusted_Shops {
 	 * @var mixed
 	 */
 	public $id;
-	
+
 	/**
-	 * Trusted Shops URL Parameters 
+	 * Trusted Shops URL Parameters
 	 * @var array
 	 */
 	public $et_params = array();
@@ -52,7 +52,7 @@ class WC_Trusted_Shops {
 	 * @var array
 	 */
 	public $urls = array();
-	
+
 	/**
 	 * WooCommerce Gateway mapping
 	 * @var array
@@ -81,7 +81,7 @@ class WC_Trusted_Shops {
 	 * Sets Trusted Shops payment gateways and load dependencies
 	 */
 	public function __construct( $plugin, $params = array() ) {
-			
+
 		$this->plugin = $plugin;
 
 		$args = wp_parse_args( $params, array(
@@ -100,17 +100,6 @@ class WC_Trusted_Shops {
 
 		// Refresh TS ID + API URL
 		$this->refresh();
-		
-		$this->gateways = apply_filters( 'woocommerce_trusted_shops_gateways', array(
-				'prepayment' => _x( 'Prepayment', 'trusted-shops', 'woocommerce-trusted-shops' ),
-				'cash_on_delivery' => _x( 'Cash On Delivery', 'trusted-shops', 'woocommerce-trusted-shops' ),
-				'credit_card' => _x( 'Credit Card', 'trusted-shops', 'woocommerce-trusted-shops' ),
-				'paypal' => _x( 'Paypal', 'trusted-shops', 'woocommerce-trusted-shops' ),
-				'invoice' => _x( 'Invoice', 'trusted-shops', 'woocommerce-trusted-shops' ),
-				'direct_debit' => _x( 'Direct Debit', 'trusted-shops', 'woocommerce-trusted-shops' ),
-				'financing' =>  _x( 'Financing', 'trusted-shops', 'woocommerce-trusted-shops' ),
-			)
-		);
 
 		if ( is_admin() )
 			$this->get_dependency( 'admin' );
@@ -122,7 +111,22 @@ class WC_Trusted_Shops {
 
 		if ( $this->is_enabled() )
 			add_action( 'wp_enqueue_scripts', array( $this, 'load_frontend_assets' ), 50 );
-		
+
+		add_action( 'init', array( $this, 'setup_payment_options' ) );
+
+	}
+
+	public function setup_payment_options() {
+		$this->gateways = apply_filters( 'woocommerce_trusted_shops_gateways', array(
+				'prepayment' => _x( 'Prepayment', 'trusted-shops', 'woocommerce-trusted-shops' ),
+				'cash_on_delivery' => _x( 'Cash On Delivery', 'trusted-shops', 'woocommerce-trusted-shops' ),
+				'credit_card' => _x( 'Credit Card', 'trusted-shops', 'woocommerce-trusted-shops' ),
+				'paypal' => _x( 'Paypal', 'trusted-shops', 'woocommerce-trusted-shops' ),
+				'invoice' => _x( 'Invoice', 'trusted-shops', 'woocommerce-trusted-shops' ),
+				'direct_debit' => _x( 'Direct Debit', 'trusted-shops', 'woocommerce-trusted-shops' ),
+				'financing' =>  _x( 'Financing', 'trusted-shops', 'woocommerce-trusted-shops' ),
+			)
+		);
 	}
 
 	public function load_frontend_assets() {
@@ -182,7 +186,7 @@ class WC_Trusted_Shops {
 
 	/**
 	 * Checks whether Trusted Shops Rich Snippets are enabled
-	 * 
+	 *
 	 * @return boolean
 	 */
 	public function is_rich_snippets_enabled() {
@@ -191,7 +195,7 @@ class WC_Trusted_Shops {
 
 	/**
 	 * Checks whether review widget is enabled
-	 *  
+	 *
 	 * @return boolean
 	 */
 	public function is_review_widget_enabled() {
@@ -248,7 +252,7 @@ class WC_Trusted_Shops {
 
 	/**
 	 * Returns add new rating link
-	 * 
+	 *
 	 * @return string
 	 */
 	public function get_new_review_link( $email, $order_id ) {
@@ -266,7 +270,7 @@ class WC_Trusted_Shops {
 
 	/**
 	 * Gets the attachment id of review widget graphic
-	 *  
+	 *
 	 * @return mixed
 	 */
 	public function get_review_widget_attachment() {

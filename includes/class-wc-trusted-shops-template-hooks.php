@@ -13,7 +13,7 @@ class WC_Trusted_Shops_Template_Hooks {
 	}
 
 	private function __construct( $base ) {
-		
+
 		$this->base = $base;
 
 		// Template actions
@@ -27,7 +27,7 @@ class WC_Trusted_Shops_Template_Hooks {
 		if ( $this->base->is_product_sticker_enabled() ) {
 			add_filter( 'woocommerce_product_tabs', array( $this, 'review_tab' ), 50, 1 );
 		}
-		
+
 		if ( $this->base->is_product_widget_enabled() ) {
 			add_filter( 'woocommerce_gzd_template_name', array( $this, 'set_product_widget_template' ), 50, 1 );
 		}
@@ -35,14 +35,14 @@ class WC_Trusted_Shops_Template_Hooks {
 	}
 
 	public function template_hooks() {
-		
+
 		add_action( 'woocommerce_thankyou', array( $this, 'template_thankyou' ), 10, 1 );
 		add_action( 'wp_footer', array( $this, 'template_trustbadge' ), PHP_INT_MAX );
 
 	}
 
 	public function set_product_widget_template( $template ) {
-		
+
 		if ( in_array( $template, array( 'single-product/rating.php' ) ) )
 			$template = 'trusted-shops/product-widget.php';
 
@@ -51,11 +51,11 @@ class WC_Trusted_Shops_Template_Hooks {
 	}
 
 	public function remove_review_tab( $tabs ) {
-		
+
 		if ( isset( $tabs[ 'reviews' ] ) )
 			unset( $tabs[ 'reviews' ] );
 		return $tabs;
-	
+
 	}
 
 	public function review_tab( $tabs ) {
@@ -76,7 +76,12 @@ class WC_Trusted_Shops_Template_Hooks {
 	}
 
 	public function template_thankyou( $order_id ) {
-		wc_get_template( 'trusted-shops/thankyou.php', array( 'order_id' => $order_id, 'gtin_attribute' => $this->base->gtin_attribute ) );
+		wc_get_template( 'trusted-shops/thankyou.php', array(
+			'order_id' => $order_id,
+			'gtin_attribute' => $this->base->gtin_attribute,
+			'brand_attribute' => $this->base->brand_attribute,
+			'mpn_attribute' => $this->base->mpn_attribute,
+		) );
 	}
 
 }
