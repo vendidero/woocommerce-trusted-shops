@@ -82,6 +82,13 @@ More information regarding your Trusted Shops Membership can be found [here](htt
 
 == Changelog ==
 
+= 2.0.1 =
+* Feature - WC 2.7 beta compatibility
+* Feature - Rich snippets image
+* Feature - Brand/MPN attribute
+* Fix - Template globals filter removal
+* Fix - Settings show/hide
+
 = 2.0.3 =
 * Fix - Better Review Widget Update
 
