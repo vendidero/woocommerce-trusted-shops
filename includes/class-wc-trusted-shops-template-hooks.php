@@ -29,7 +29,7 @@ class WC_Trusted_Shops_Template_Hooks {
 		}
 
 		if ( $this->base->is_product_widget_enabled() ) {
-			add_filter( 'woocommerce_gzd_template_name', array( $this, 'set_product_widget_template' ), 50, 1 );
+			add_filter( 'woocommerce_trusted_shops_template_name', array( $this, 'set_product_widget_template' ), 50, 1 );
 		}
 
 	}

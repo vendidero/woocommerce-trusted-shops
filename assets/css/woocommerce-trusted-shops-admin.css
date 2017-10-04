@@ -7,6 +7,15 @@ table.data_table tr td p.form-field {
 	margin-top: -2em;
 }
 
+.wc-gzd-admin-settings-trusted_shops .forminp-select span.description {
+	display: block;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	font-size: 14px;
+	line-height: 1.4em;
+	color: #666;
+}
+
 .wc-gzd-admin-settings {
 	display: inline-block;
 	width: 70%;

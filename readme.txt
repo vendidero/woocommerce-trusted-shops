@@ -3,8 +3,10 @@ Contributors: vendidero, trustbadge
 Tags: advanced reviews, badge, best reviews, business ratings, business reviews, confirm email reviews, google rating, google shopping, product ratings, product reviews, rate products, rating summary, Rating Widget, ratings, reputation, review widget, review, reviews easy, reviews, rich snippets, seal,  seo, star rating, stars, trust, trustbadge, trusted reviews, trusted shops, ts, user rating, user reviews, woocommerce trusted shops, woocommerce
 Donate link: http://www.trustbadge.com
 Requires at least: 3.8
-Tested up to: 4.7
-Stable tag: 2.1.0
+Tested up to: 4.8
+WC requires at least: 2.4
+WC tested up to: 3.2
+Stable tag: 2.2.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -81,6 +83,10 @@ More information regarding your Trusted Shops Membership can be found [here](htt
 1. WooCommerce Trusted Shops Settings
 
 == Changelog ==
+
+= 2.2.0 =
+* Feature - WC 3.2 Compatibility
+* Fix - Review stars not showing on product page
 
 = 2.0.1 =
 * Feature - WC 2.7 beta compatibility
