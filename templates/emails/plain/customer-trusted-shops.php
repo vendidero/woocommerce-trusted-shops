@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 echo "= " . $email_heading . " =\n\n";
 
-echo sprintf( _x( 'Dear %s %s,', 'trusted-shops', 'woocommerce-germanized' ), wc_ts_get_crud_data( $order, 'billing_first_name' ), wc_ts_get_crud_data( $order, 'billing_last_name' ) ) . "\n\n";
+echo sprintf( _x( 'Dear %s %s,', 'trusted-shops', 'woocommerce-trusted-shops' ), wc_ts_get_crud_data( $order, 'billing_first_name' ), wc_ts_get_crud_data( $order, 'billing_last_name' ) ) . "\n\n";
 
 echo sprintf( _x( 'You have recently shopped at %s. Thank you! We would be glad if you spent some time to write a review about your order. To do so please follow follow the link.', 'trusted-shops', 'woocommerce-trusted-shops' ), get_bloginfo( 'name' ) ) . "\n\n";
 

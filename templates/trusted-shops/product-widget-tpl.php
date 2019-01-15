@@ -17,5 +17,6 @@ summaryBadge.showSummary({
 	'starSize' : '{star_size}px',
 	'fontSize' : '{font_size}px',
 	'showRating' : 'true',
+    'enablePlaceholder': 'true',
 	'scrollToReviews' : 'false'
 });</script>

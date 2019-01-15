@@ -10,25 +10,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 ?>
-
-<div itemscope itemtype="http://schema.org/LocalBusiness" class="wc-gzd-trusted-shops-rating-widget">
-	<div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
-		<meta itemprop="name" content="<?php echo bloginfo( 'url' ); ?>">
-		<div class="star-rating">
-			<span style="width:<?php echo ( ( $rating[ 'avg' ] / $rating[ 'max' ] ) * 100 ); ?>%"></span>
-		</div>
-		<p>
-			<?php 
-				printf( 
-					_x( '&#216; %s / %s of %s %s %s customer reviews | Trusted Shops %s', 'trusted-shops', 'woocommerce-trusted-shops' ), 
-					'<span itemprop="ratingValue">' . $rating[ 'avg' ] . '</span>', 
-					'<span itemprop="bestRating">' . $rating[ 'max' ] . '</span>', 
-					'<span itemprop="ratingCount">' . $rating[ 'count' ] . '</span>',
-					'<a href="' . $rating_link . '" title="' . sprintf( _x( '%s custom reviews', 'trusted-shops', 'woocommerce-trusted-shops' ), get_bloginfo( 'name' ) ) . '" target="_blank">',
-					get_bloginfo( 'name' ),
-					'</a>'
-				); 
-			?>
-		</p>
-	</div>
-</div>
+<!-- Module: WooCommerce Germanized -->
+<script type="application/ld+json">
+    <?php echo $plugin->get_rich_snippets_code( true ); ?>
+</script>

@@ -45,7 +45,6 @@ class WC_TS_Settings_Handler extends WC_Settings_Page {
 	}
 
 	public function output() {
-		
 		global $current_section;
 		$settings = $this->get_settings();
 		$sidebar = $this->get_sidebar();
@@ -87,8 +86,9 @@ class WC_TS_Settings_Handler extends WC_Settings_Page {
 				}
 			}
 		}
-		if ( empty( $settings ) )
-			return;
+		if ( empty( $settings ) ) {
+            return;
+        }
 
 		do_action( 'woocommerce_gzd_before_save_section_' . $current_section, $settings );
 

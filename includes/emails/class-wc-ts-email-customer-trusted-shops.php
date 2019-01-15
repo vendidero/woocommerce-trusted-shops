@@ -19,25 +19,48 @@ class WC_TS_Email_Customer_Trusted_Shops extends WC_Email {
      * Constructor
      */
     function __construct() {
+        $this->customer_email = true;
 
         $this->id 				= 'customer_trusted_shops';
         $this->title 			= _x( 'Trusted Shops Review Reminder', 'trusted-shops', 'woocommerce-trusted-shops' );
         $this->description		= _x( 'This E-Mail is being sent to a customer to remind him about the possibility to leave a review at Trusted Shops.', 'trusted-shops', 'woocommerce-trusted-shops' );
 
-        $this->heading 			= _x( 'Please rate your Order', 'trusted-shops', 'woocommerce-trusted-shops' );
-        $this->subject      	= _x( 'Please rate your {site_title} order from {order_date}', 'trusted-shops', 'woocommerce-trusted-shops' );
-
         $this->template_html 	= 'emails/customer-trusted-shops.php';
         $this->template_plain  	= 'emails/plain/customer-trusted-shops.php';
 
+        if ( property_exists( $this, 'placeholders' ) ) {
+            $this->placeholders   = array(
+                '{site_title}'   => $this->get_blogname(),
+                '{order_number}' => '',
+                '{order_date}'   => '',
+            );
+        }
 
         // Triggers for this email
         add_action( 'woocommerce_germanized_trusted_shops_review_notification', array( $this, 'trigger' ) );
 
         // Call parent constuctor
         parent::__construct();
+    }
 
-        $this->customer_email = true;
+    /**
+     * Get email subject.
+     *
+     * @since  3.1.0
+     * @return string
+     */
+    public function get_default_subject() {
+        return _x( 'Please rate your {site_title} order from {order_date}', 'trusted-shops', 'woocommerce-trusted-shops' );
+    }
+
+    /**
+     * Get email heading.
+     *
+     * @since  3.1.0
+     * @return string
+     */
+    public function get_default_heading() {
+        return _x( 'Please rate your Order', 'trusted-shops', 'woocommerce-trusted-shops' );
     }
 
     /**
@@ -46,24 +69,33 @@ class WC_TS_Email_Customer_Trusted_Shops extends WC_Email {
      * @access public
      * @return void
      */
-    function trigger( $order_id ) {
+    public function trigger( $order_id ) {
+        if ( is_callable( array( $this, 'setup_locale' ) ) ) {
+            $this->setup_locale();
+        }
 
         if ( $order_id ) {
             $this->object 		= wc_get_order( $order_id );
             $this->recipient	= wc_ts_get_crud_data( $this->object, 'billing_email' );
 
-            $this->find['order-date']      = '{order_date}';
-            $this->find['order-number']    = '{order_number}';
-
-            $this->replace['order-date']   = date_i18n( wc_date_format(), strtotime( wc_ts_get_crud_data( $this->object, 'order_date' ) ) );
-            $this->replace['order-number'] = $this->object->get_order_number();
+            if ( property_exists( $this, 'placeholders' ) ) {
+                $this->placeholders['{order_date}']   = wc_ts_get_order_date( $this->object, wc_date_format() );
+                $this->placeholders['{order_number}'] = $this->object->get_order_number();
+            } else {
+                $this->find['order-date']      = '{order_date}';
+                $this->find['order-number']    = '{order_number}';
+                $this->replace['order-date']   = wc_ts_get_order_date( $this->object, wc_date_format() );
+                $this->replace['order-number'] = $this->object->get_order_number();
+            }
         }
 
-        if ( ! $this->is_enabled() || ! $this->get_recipient() ) {
-            return;
+        if ( $this->is_enabled() && $this->get_recipient() ) {
+            $this->send( $this->get_recipient(), $this->get_subject(), $this->get_content(), $this->get_headers(), $this->get_attachments() );
         }
 
-        $this->send( $this->get_recipient(), $this->get_subject(), $this->get_content(), $this->get_headers(), $this->get_attachments() );
+        if ( is_callable( array( $this, 'restore_locale' ) ) ) {
+            $this->restore_locale();
+        }
     }
 
     /**

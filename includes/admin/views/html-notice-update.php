@@ -1,0 +1,19 @@
+<?php
+/**
+ * Admin View: Notice - Update
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+?>
+<div id="message" class="updated woocommerce-message woocommerce-gzd-message wc-connect">
+	<p><?php echo _x( '<strong>WooCommerce Trusted Shops Data Update Required</strong> &#8211; We just need to update your install to the latest version', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></p>
+	<p class="submit"><a href="<?php echo esc_url( add_query_arg( 'do_update_woocommerce_ts', 'true', admin_url( 'admin.php?page=wc-settings&tab=trusted-shops' ) ) ); ?>" class="wc-gzd-update-now button-primary"><?php echo _x( 'Run the updater', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></a></p>
+</div>
+<script type="text/javascript">
+	jQuery( '.wc-gzd-update-now' ).click( 'click', function() {
+		return window.confirm( '<?php echo esc_js( _x( 'It is strongly recommended that you backup your database before proceeding. Are you sure you wish to run the updater now?', 'trusted-shops', 'woocommerce-trusted-shops' ) ); ?>' );
+	});
+</script>

@@ -2,162 +2,223 @@
 
 class WC_Trusted_Shops_Schedule {
 
-	public $base = null;
+    public $base = null;
 
-	protected static $_instance = null;
+    protected static $_instance = null;
 
-	public static function instance( $base ) {
-		if ( is_null( self::$_instance ) )
-			self::$_instance = new self( $base );
-		return self::$_instance;
-	}
+    public static function instance( $base ) {
+        if ( is_null( self::$_instance ) )
+            self::$_instance = new self( $base );
 
-	private function __construct( $base ) {
-		$this->base = $base;
+        return self::$_instance;
+    }
 
-		if ( $this->base->is_rich_snippets_enabled() ) {
+    private function __construct( $base ) {
+        $this->base = $base;
 
-			add_action( 'woocommerce_gzd_trusted_shops_reviews', array( $this, 'update_reviews' ) );
-			$reviews = $this->base->reviews_cache;
+        add_action( 'woocommerce_gzd_trusted_shops_reviews', array( $this, 'update_reviews' ) );
+        add_action( 'admin_init', array( $this, 'update_default_reviews' ), 10 );
+        add_action( 'woocommerce_gzd_trusted_shops_reviews', array( $this, 'send_mails' ) );
+    }
 
-			// Generate reviews for the first time
-			if ( empty( $reviews ) )
-				add_action( 'init', array( $this, 'update_reviews' ) );
-		}
+    public function update_default_reviews() {
+        // Generate reviews for the first time
+        $option_key = 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_reviews_cache';
 
-		if ( $this->base->is_review_widget_enabled() ) {
+        $section = isset( $_GET['section'] ) ? wc_clean( $_GET['section'] ) : '';
 
-			add_action( 'woocommerce_gzd_trusted_shops_reviews', array( $this, 'update_review_widget' ) );
-			$attachment = $this->base->review_widget_attachment;
+        // Do only update default reviews if the admin user open the settings page.
+        if ( 'trusted_shops' !== $section ) {
+            return;
+        }
 
-			// Generate attachment for the first time
-			if ( empty( $attachment ) )
-				add_action( 'init', array( $this, 'update_review_widget' ) );
-		}
+        if ( ! get_option( $option_key, false ) ) {
+            $this->_update_reviews();
+        }
 
-		if ( $this->base->is_review_reminder_enabled() )
-			add_action( 'woocommerce_gzd_trusted_shops_reviews', array( $this, 'send_mails' ) );
-	}
+        if ( $this->base->is_multi_language_setup() ) {
+            $compatibility    = $this->base->get_multi_language_compatibility();
+            $current_language = $compatibility->get_current_language();
 
-	/**
-	 * Update Review Cache by grabbing information from xml file
-	 */
-	public function update_reviews() {
-		$update = array();
+            global $wc_ts_original_lang;
 
-		if ( $this->base->is_enabled() ) {
+            $wc_ts_original_lang = $current_language;
 
-			$response = wp_remote_post( $this->base->api_url );
+            foreach( $compatibility->get_languages() as $language ) {
 
-			if ( is_array( $response ) ) {
-				$output = json_decode( $response[ 'body' ], true );
-				$reviews = $output[ 'response' ][ 'data' ][ 'shop' ][ 'qualityIndicators' ][ 'reviewIndicator' ];
-				$update[ 'count' ] = (string) $reviews[ 'activeReviewCount' ];
-				$update[ 'avg' ] = (float) $reviews[ 'overallMark' ];
-				$update[ 'max' ] = '5.00';
-			}
-		}
+                if ( $compatibility->get_default_language() == $language ) {
+                    continue;
+                }
 
-		update_option( 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_reviews_cache', $update );
-	}
+                $option_key .= '_' . $language;
 
-	/**
-	 * Updates the review widget graphic and saves it as an attachment
-	 */
-	public function update_review_widget() {
+                if ( ! get_option( $option_key, false ) ) {
+                    $this->_update_reviews( $language );
+                }
+            }
+        }
+    }
 
-		global $wp_filesystem;
+    /**
+     * Update Review Cache by grabbing information from xml file
+     */
+    public function update_reviews() {
+        $this->_update_reviews();
 
-		$uploads = wp_upload_dir();
+        if ( $this->base->is_multi_language_setup() ) {
 
-		if ( is_wp_error( $uploads ) )
-			return;
+            $compatibility    = $this->base->get_multi_language_compatibility();
+            $current_language = $compatibility->get_current_language();
 
-		$filename = $this->base->id . '.gif';
-		$raw_data = $this->get_file_content( 'https://www.trustedshops.com/bewertung/widget/widgets/' . $filename );
+            global $wc_ts_original_lang;
 
-		// Seems like neither CURL nor file_get_contents does work
-		if ( ! $raw_data )
-			return;
+            $wc_ts_original_lang = $current_language;
 
-		$filepath = trailingslashit( $uploads['path'] ) . $filename;
-		file_put_contents( $filepath, $raw_data );
+            foreach( $compatibility->get_languages() as $language ) {
+                if ( $compatibility->get_default_language() == $language ) {
+                    continue;
+                }
 
-		$attachment = array(
-			'guid' => $uploads[ 'url' ] . '/' . basename( $filepath ),
-			'post_mime_type' => 'image/gif',
-			'post_title' => _x( 'Trusted Shops Customer Reviews', 'trusted-shops', 'woocommerce-trusted-shops' ),
-			'post_content' => '',
-			'post_status' => 'publish',
-		);
+                $this->_update_reviews( $language );
+            }
+        }
+    }
 
-		$existing_attachment_id = $this->base->get_review_widget_attachment();
+    protected function _update_reviews( $lang = '' ) {
+        if ( ! empty( $lang ) ) {
+            wc_ts_switch_language( $lang );
+        }
 
-		if ( ! $existing_attachment_id || ! get_post( $existing_attachment_id ) ) {
-			$attachment_id = wp_insert_attachment( $attachment, $filepath );
-			update_option( 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_review_widget_attachment', $attachment_id );
-		} else {
-			$attachment_id = $existing_attachment_id;
-			update_attached_file( $attachment_id, $filepath );
-			$attachment[ 'ID' ] = $attachment_id;
-			wp_update_post( $attachment );
-		}
+        if ( ! $this->base->is_rich_snippets_enabled() ) {
+            if ( ! empty( $lang ) ) {
+                wc_ts_restore_language();
+            }
 
-		require_once( ABSPATH . 'wp-admin/includes/image.php' );
+            return;
+        }
 
-		// Generate the metadata for the attachment, and update the database record.
-		$attach_data = wp_generate_attachment_metadata( $attachment_id, $filepath );
-		wp_update_attachment_metadata( $attachment_id, $attach_data );
-	}
+        $update = array();
 
-	/**
-	 * Send review reminder mails after x days
-	 */
-	public function send_mails() {
+        if ( $this->base->is_enabled() ) {
 
-		$order_query = new WP_Query(
-			array(
-				'post_type'   => 'shop_order',
-				'post_status' => array( 'wc-completed' ),
-				'showposts'   => -1,
-				'meta_query'  => array(
-					array(
-						'key'     => '_trusted_shops_review_mail_sent',
-						'compare' => 'NOT EXISTS',
-					),
-				),
-			)
-		);
+            $response = wp_remote_post( $this->base->api_url );
 
-		while ( $order_query->have_posts() ) {
+            if ( is_array( $response ) ) {
+                $output          = json_decode( $response['body'], true );
 
-			$order_query->next_post();
-			$order = wc_get_order( $order_query->post->ID );
-			$diff = $this->base->plugin->get_date_diff( wc_ts_get_crud_data( $order, 'completed_date' ), date( 'Y-m-d H:i:s' ) );
+                if ( isset( $output['response']['data'] ) ) {
+                    $reviews         = $output['response']['data']['shop']['qualityIndicators']['reviewIndicator'];
+                    $update['count'] = (string) $reviews['activeReviewCount'];
+                    $update['avg']   = (float) $reviews['overallMark'];
+                    $update['max']   = '5.00';
+                }
+            }
+        }
 
-			if ( $diff[ 'd' ] >= (int) $this->base->review_reminder_days ) {
+        $option_key = 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_reviews_cache';
 
-				if ( $mail = $this->base->plugin->emails->get_email_instance_by_id( 'customer_trusted_shops' ) ) {
-					$mail->trigger( wc_ts_get_crud_data( $order, 'id' ) );
-					update_post_meta( wc_ts_get_crud_data( $order, 'id' ), '_trusted_shops_review_mail_sent', 1 );
-				}
-			}
-		}
-	}
+        if ( ! empty( $lang ) ) {
+            $option_key .= '_' . $lang;
+        }
 
-	/**
-	 * Helper Function which decides between CURL or file_get_contents based on fopen
-	 *
-	 * @param  [type] $url [description]
-	 */
-	private function get_file_content( $url ) {
-		$response = wp_remote_post( $url );
+        update_option( $option_key, $update );
 
-		if ( is_array( $response ) ) {
-			return $response[ 'body' ];
-		}
+        if ( ! empty( $lang ) ) {
+            wc_ts_restore_language();
+        }
+    }
 
-		return false;
-	}
+    /**
+     * Placeholder to avoid fatal errors within scheduled actions.
+     *
+     * @deprecated 2.2.5
+     */
+    public function update_review_widget() {}
 
+    /**
+     * Send review reminder mails after x days
+     */
+    public function send_mails() {
+        if ( $this->base->is_multi_language_setup() ) {
+            $compatibility    = $this->base->get_multi_language_compatibility();
+            $current_language = $compatibility->get_current_language();
+
+            global $wc_ts_original_lang;
+
+            $wc_ts_original_lang = $current_language;
+
+            foreach ( $compatibility->get_languages() as $language ) {
+                $this->_send_mails( $language );
+            }
+
+        } else {
+            $this->_send_mails();
+        }
+    }
+
+    protected function _send_mails( $lang = '' ) {
+        if ( ! empty( $lang ) ) {
+            wc_ts_switch_language( $lang );
+        }
+
+        if ( ! $this->base->is_review_reminder_enabled() ) {
+            if ( ! empty( $lang ) ) {
+                wc_ts_restore_language();
+            }
+
+            return;
+        }
+
+        $args = array(
+            'post_type'   => 'shop_order',
+            'post_status' => apply_filters( 'woocommerce_trusted_shops_review_reminder_valid_order_statuses', array( $this->base->review_reminder_status ) ),
+            'showposts'   => -1,
+            'meta_query'  => array(
+                'relation'        => 'AND',
+                'is_sent'         => array(
+                    'key'         => '_trusted_shops_review_mail_sent',
+                    'compare'     => 'NOT EXISTS',
+                ),
+                'opted_in'        => array(
+                    'key'         => '_ts_review_reminder_opted_in',
+                    'compare'     => '=',
+                    'value'       => 'yes'
+                ),
+            ),
+        );
+
+        if ( ! empty( $lang ) ) {
+            $args['meta_query']['wpml'] = array(
+                'key'     => 'wpml_language',
+                'compare' => '=',
+                'value'   => $lang,
+            );
+        }
+
+        $order_query = new WP_Query( apply_filters( 'woocommerce_trusted_shops_review_reminder_order_args', $args, $lang ) );
+
+        while ( $order_query->have_posts() ) {
+
+            $order_query->next_post();
+            $order          = wc_get_order( $order_query->post->ID );
+            $completed_date = apply_filters( 'woocommerce_trusted_shops_review_reminder_order_completed_date', wc_ts_get_crud_data( $order, 'completed_date' ), $order );
+            $diff           = $this->base->plugin->get_date_diff( $completed_date, date( 'Y-m-d H:i:s' ) );
+            $min_days       = (int) $this->base->review_reminder_days;
+
+            if ( $diff['d'] >= $min_days ) {
+
+                if ( apply_filters( 'woocommerce_trusted_shops_send_review_reminder_email', true, $order ) ) {
+                    if ( $mail = $this->base->plugin->emails->get_email_instance_by_id( 'customer_trusted_shops' ) ) {
+                        $mail->trigger( wc_ts_get_crud_data( $order, 'id' ) );
+                    }
+                }
+
+                update_post_meta( wc_ts_get_crud_data( $order, 'id' ), '_trusted_shops_review_mail_sent', 1 );
+            }
+        }
+
+        if ( ! empty( $lang ) ) {
+            wc_ts_restore_language();
+        }
+    }
 }
