@@ -57,9 +57,9 @@ class WC_TS_Install {
 	 * Install WC_Germanized
 	 */
 	public function install() {
-		
-		// Load Translation for default options
-		$locale = apply_filters( 'plugin_locale', get_locale() );
+
+        // Load Translation for default options
+        $locale = apply_filters( 'plugin_locale', get_locale(), 'woocommerce-trusted-shops' );
 		$mofile = WC_trusted_shops()->plugin_path() . '/i18n/languages/woocommerce-trusted-shops.mo';
 		
 		if ( file_exists( WC_trusted_shops()->plugin_path() . '/i18n/languages/woocommerce-trusted-shops-' . $locale . '.mo' ) )
