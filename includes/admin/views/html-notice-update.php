@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 ?>
 <div id="message" class="updated woocommerce-message woocommerce-gzd-message wc-connect">
-	<p><?php echo _x( '<strong>WooCommerce Trusted Shops Data Update Required</strong> &#8211; We just need to update your install to the latest version', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></p>
+	<p><?php echo _x( '<strong>WooCommerce Trusted Shops Data Update Required</strong> &#8211; We just need to update your installation to the latest version', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></p>
 	<p class="submit"><a href="<?php echo esc_url( add_query_arg( 'do_update_woocommerce_ts', 'true', admin_url( 'admin.php?page=wc-settings&tab=trusted-shops' ) ) ); ?>" class="wc-gzd-update-now button-primary"><?php echo _x( 'Run the updater', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></a></p>
 </div>
 <script type="text/javascript">
