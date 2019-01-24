@@ -116,7 +116,7 @@ if ( ! function_exists( 'wc_ts_set_crud_meta_data' ) ) {
 
 if ( ! function_exists( 'wc_ts_get_order_date' ) ) {
 
-    function wc_ts_get_order_date( $order, $date_format = '' ) {
+    function wc_ts_get_order_date( $order, $format = '' ) {
         $date_formatted = '';
 
         if ( function_exists( 'wc_format_datetime' ) ) {
