@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WooCommerce Trusted Shops\n"
 "POT-Creation-Date: 2019-01-14 15:41+0100\n"
-"PO-Revision-Date: 2019-01-15 11:21+0100\n"
+"PO-Revision-Date: 2019-02-18 15:10+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 2.2.1\n"
 "X-Poedit-Basepath: ../..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
@@ -21,7 +21,7 @@ msgstr ""
 #: includes/admin/views/html-duplicate-plugin-notice.php:19
 msgctxt "trusted-shops"
 msgid "Duplicate Plugin installation"
-msgstr ""
+msgstr "Plugins installés en double"
 
 #: includes/admin/views/html-duplicate-plugin-notice.php:21
 #, php-format
@@ -32,21 +32,25 @@ msgid ""
 "long as you are using WooCommerce Germanized. You can manage your Trusted "
 "Shops configuration within your %s."
 msgstr ""
+"Il semblerait que vous ayez installé WooCommerce Germanized et Trustbadge "
+"Reviews for WooCommerce. Veuillez s’il vous plait désactiver Trustbadge "
+"Reviews for WooCommerce tant que vous utilisez WooCommerce Germanized. Vous "
+"pouvez modifier votre configuration Trusted Shops au sein de vos %s."
 
 #: includes/admin/views/html-duplicate-plugin-notice.php:21
 msgctxt "trusted-shops"
 msgid "Germanized settings"
-msgstr ""
+msgstr "Germanized paramètres"
 
 #: includes/admin/views/html-duplicate-plugin-notice.php:23
 msgctxt "trusted-shops"
 msgid "Deactivate standalone version"
-msgstr ""
+msgstr "Désactivez la version standalone"
 
 #: includes/admin/views/html-notice-dependencies.php:16
 msgctxt "trusted-shops"
 msgid "Dependencies Missing or Outdated"
-msgstr ""
+msgstr "Composants manquantes ou obsolètes"
 
 #: includes/admin/views/html-notice-dependencies.php:24
 msgctxt "trusted-shops"
@@ -54,12 +58,14 @@ msgid ""
 "To use WooCommerce Trusted Shops you may at first install the following "
 "plugins:"
 msgstr ""
+"Pour utiliser Trusted Shops for WooCommerce, il vous faut d’abord installer "
+"les plugins suivants :"
 
 #: includes/admin/views/html-notice-dependencies.php:28
 #, php-format
 msgctxt "trusted-shops"
 msgid "Install %s"
-msgstr ""
+msgstr "Installer %s"
 
 #: includes/admin/views/html-notice-dependencies.php:36
 msgctxt "trusted-shops"
@@ -67,27 +73,29 @@ msgid ""
 "To use WooCommerce Trusted Shops you may at first update the following "
 "plugins to a newer version:"
 msgstr ""
+"Pour utiliser Trusted Shops for WooCommerce, vous devez d’abord actualiser "
+"les plugins suivants et installer une version plus récente:"
 
 #: includes/admin/views/html-notice-dependencies.php:40
 #, php-format
 msgctxt "trusted-shops"
 msgid "%s required in at least version %s"
-msgstr ""
+msgstr "%s requiert la version %s ou supérieure"
 
 #: includes/admin/views/html-notice-dependencies.php:49
 msgctxt "trusted-shops"
 msgid "Check for Updates"
-msgstr ""
+msgstr "Rechercher de mises à jour"
 
 #: includes/admin/views/html-notice-dependencies.php:50
 msgctxt "trusted-shops"
 msgid "or"
-msgstr ""
+msgstr "ou"
 
 #: includes/admin/views/html-notice-dependencies.php:51
 msgctxt "trusted-shops"
 msgid "Install an older version"
-msgstr ""
+msgstr "Installer une version antérieure"
 
 #: includes/admin/views/html-notice-update.php:12
 msgctxt "trusted-shops"
@@ -95,11 +103,14 @@ msgid ""
 "<strong>WooCommerce Trusted Shops Data Update Required</strong> &#8211; We "
 "just need to update your install to the latest version"
 msgstr ""
+"<strong>Mise à jour de la base de données Trusted Shops WooCommerce requise</"
+"strong> &#8211; Nous devons mettre à jour votre installation vers la version "
+"la plus récente."
 
 #: includes/admin/views/html-notice-update.php:13
 msgctxt "trusted-shops"
 msgid "Run the updater"
-msgstr ""
+msgstr "Démarrer l’actualisation"
 
 #: includes/admin/views/html-notice-update.php:17
 msgctxt "trusted-shops"
@@ -107,11 +118,14 @@ msgid ""
 "It is strongly recommended that you backup your database before proceeding. "
 "Are you sure you wish to run the updater now?"
 msgstr ""
+"Nous vous recommandons fortement de sauvegarder votre base de données avant "
+"de procéder à la mise à jour. Êtes-vous sûr de vouloir effectuer la mise à "
+"jour maintenant?"
 
 #: includes/admin/views/html-wpml-notice.php:11
 msgctxt "trusted-shops"
 msgid "WPML Support"
-msgstr ""
+msgstr "Prise en charge WPML"
 
 #: includes/admin/views/html-wpml-notice.php:14
 msgctxt "trusted-shops"
@@ -120,6 +134,10 @@ msgid ""
 "the settings for a certain language, please switch your admin language "
 "through the WPML language switcher and adjust the corresponding settings."
 msgstr ""
+"Ces paramètres sont les paramètres par défaut pour toutes vos langues. Afin "
+"d’ajuster ces paramètres à une certaine langue, il vous faut changer votre "
+"langue système à l’aide du plug-in multilingue WPML et adapter les "
+"paramètres correspondants."
 
 #: includes/admin/views/html-wpml-notice.php:16
 #, php-format
@@ -129,12 +147,15 @@ msgid ""
 "language, please switch your admin language through the WPML language "
 "switcher."
 msgstr ""
+"Ces paramètres s’appliquent pour votre boutique %s. Pour adapter les "
+"paramètres à une autre langue, veuillez changer votre langue système à "
+"l’aide du plug-in multilingue WPML."
 
 #: includes/class-wc-trusted-shops-admin.php:90
 #: includes/class-wc-trusted-shops-admin.php:127
 msgctxt "trusted-shops"
 msgid "GTIN"
-msgstr ""
+msgstr "GTIN"
 
 #: includes/class-wc-trusted-shops-admin.php:90
 #: includes/class-wc-trusted-shops-admin.php:127
@@ -153,7 +174,7 @@ msgstr ""
 #: includes/class-wc-trusted-shops-admin.php:128
 msgctxt "trusted-shops"
 msgid "MPN"
-msgstr ""
+msgstr "MPN"
 
 #: includes/class-wc-trusted-shops-admin.php:94
 #: includes/class-wc-trusted-shops-admin.php:128
@@ -168,57 +189,57 @@ msgstr ""
 #: includes/class-wc-trusted-shops-admin.php:152
 msgctxt "trusted-shops"
 msgid "Brand"
-msgstr ""
+msgstr "Marque"
 
 #: includes/class-wc-trusted-shops-admin.php:192
 msgctxt "trusted-shops"
 msgid "This field is mandatory"
-msgstr ""
+msgstr "Ce champ est obligatoire"
 
 #: includes/class-wc-trusted-shops-admin.php:199
 msgctxt "trusted-shops"
 msgid "Trusted Shops Options"
-msgstr ""
+msgstr "Options Trusted Shops"
 
 #: includes/class-wc-trusted-shops-admin.php:206
 msgctxt "trusted-shops"
 msgid "Arial"
-msgstr ""
+msgstr "Arial"
 
 #: includes/class-wc-trusted-shops-admin.php:207
 msgctxt "trusted-shops"
 msgid "Geneva"
-msgstr ""
+msgstr "Geneva"
 
 #: includes/class-wc-trusted-shops-admin.php:208
 msgctxt "trusted-shops"
 msgid "Georgia"
-msgstr ""
+msgstr "Georgia"
 
 #: includes/class-wc-trusted-shops-admin.php:209
 msgctxt "trusted-shops"
 msgid "Helvetica"
-msgstr ""
+msgstr "Helvetica"
 
 #: includes/class-wc-trusted-shops-admin.php:210
 msgctxt "trusted-shops"
 msgid "Sans-serif"
-msgstr ""
+msgstr "Sans-serif"
 
 #: includes/class-wc-trusted-shops-admin.php:211
 msgctxt "trusted-shops"
 msgid "Serif"
-msgstr ""
+msgstr "Serif"
 
 #: includes/class-wc-trusted-shops-admin.php:212
 msgctxt "trusted-shops"
 msgid "Trebuchet MS"
-msgstr ""
+msgstr "Trebuchet MS"
 
 #: includes/class-wc-trusted-shops-admin.php:213
 msgctxt "trusted-shops"
 msgid "Verdana"
-msgstr ""
+msgstr "Verdana"
 
 #: includes/class-wc-trusted-shops-admin.php:236
 msgctxt "trusted-shops"
@@ -344,12 +365,12 @@ msgstr "px"
 #, php-format
 msgctxt "trusted-shops"
 msgid "Please choose a non-negative number (at least %d)"
-msgstr ""
+msgstr "Veuillez choisir un nombre positif (> %d)"
 
 #: includes/class-wc-trusted-shops-admin.php:312
 msgctxt "trusted-shops"
 msgid "Trustbadge code"
-msgstr ""
+msgstr "Trustbadge code"
 
 #: includes/class-wc-trusted-shops-admin.php:324
 msgctxt "trusted-shops"
@@ -428,7 +449,7 @@ msgstr "Afficher x avis en alternance"
 #, php-format
 msgctxt "trusted-shops"
 msgid "Please choose a non-negative number between %d and %d"
-msgstr ""
+msgstr "Veuillez choisir un nombre positif entre %d et %d"
 
 #: includes/class-wc-trusted-shops-admin.php:374
 msgctxt "trusted-shops"
@@ -443,12 +464,12 @@ msgstr "N’afficher que les avis site avec x étoiles ou plus. "
 #: includes/class-wc-trusted-shops-admin.php:378
 msgctxt "trusted-shops"
 msgid "Star(s)"
-msgstr ""
+msgstr "étoile(s)"
 
 #: includes/class-wc-trusted-shops-admin.php:391
 msgctxt "trusted-shops"
 msgid "Sticker code"
-msgstr ""
+msgstr "Code des vignettes avis clients"
 
 #: includes/class-wc-trusted-shops-admin.php:395
 #: includes/class-wc-trusted-shops-admin.php:523
@@ -514,7 +535,7 @@ msgstr "la page d’accueil (non conseillé)"
 #: includes/class-wc-trusted-shops-admin.php:435
 msgctxt "trusted-shops"
 msgid "Rich snippets code"
-msgstr ""
+msgstr "Code pour les Rich Snippets"
 
 #: includes/class-wc-trusted-shops-admin.php:447
 msgctxt "trusted-shops"
@@ -532,7 +553,7 @@ msgstr ""
 #: includes/class-wc-trusted-shops-admin.php:448
 msgctxt "trusted-shops"
 msgid "Trusted Shops package"
-msgstr ""
+msgstr "Services Trusted Shops"
 
 #: includes/class-wc-trusted-shops-admin.php:454
 msgctxt "trusted-shops"
@@ -623,13 +644,13 @@ msgstr ""
 #: includes/class-wc-trusted-shops-admin.php:521
 msgctxt "trusted-shops"
 msgid "Product Sticker Code"
-msgstr ""
+msgstr "Code des vignettes avis produits"
 
 #: includes/class-wc-trusted-shops-admin.php:530
 #: includes/class-wc-trusted-shops-admin.php:596
 msgctxt "trusted-shops"
 msgid "jQuerySelector"
-msgstr ""
+msgstr "jQuerySelector"
 
 #: includes/class-wc-trusted-shops-admin.php:531
 msgctxt "trusted-shops"
@@ -637,6 +658,8 @@ msgid ""
 "Please choose where your Product Reviews shall be displayed on the Product "
 "detail page."
 msgstr ""
+"Veuillez choisir l’endroit où les Avis Produits seront affichés sur la page "
+"produit"
 
 #: includes/class-wc-trusted-shops-admin.php:538
 msgctxt "trusted-shops"
@@ -692,7 +715,7 @@ msgstr ""
 #: includes/class-wc-trusted-shops-admin.php:587
 msgctxt "trusted-shops"
 msgid "Product Review Code"
-msgstr ""
+msgstr "Code pour les étoiles d’évaluation"
 
 #: includes/class-wc-trusted-shops-admin.php:597
 msgctxt "trusted-shops"
@@ -700,6 +723,8 @@ msgid ""
 "Please choose where your Product Review Stars shall be displayed on the "
 "Product Detail page."
 msgstr ""
+"Veuillez choisir l’endroit où les étoiles des Avis Produit seront affichées "
+"sur la page produit"
 
 #: includes/class-wc-trusted-shops-admin.php:604
 msgctxt "trusted-shops"
@@ -729,7 +754,7 @@ msgstr ""
 #: includes/class-wc-trusted-shops-admin.php:612
 msgctxt "trusted-shops"
 msgid "None"
-msgstr ""
+msgstr "Aucun"
 
 #: includes/class-wc-trusted-shops-admin.php:623
 msgctxt "trusted-shops"
@@ -757,7 +782,7 @@ msgstr ""
 #: includes/class-wc-trusted-shops-admin.php:630
 msgctxt "trusted-shops"
 msgid "Enable Review Requests"
-msgstr ""
+msgstr "Activer les demandes d’avis"
 
 #: includes/class-wc-trusted-shops-admin.php:639
 msgctxt "trusted-shops"
@@ -954,32 +979,32 @@ msgstr "Débuter l’exportation"
 #: includes/class-wc-trusted-shops-review-exporter.php:64
 msgctxt "trusted-shops"
 msgid "Order ID"
-msgstr ""
+msgstr "Réf. commande"
 
 #: includes/class-wc-trusted-shops-review-exporter.php:65
 msgctxt "trusted-shops"
 msgid "Order date"
-msgstr ""
+msgstr "Date de la commande"
 
 #: includes/class-wc-trusted-shops-review-exporter.php:66
 msgctxt "trusted-shops"
 msgid "# Days"
-msgstr ""
+msgstr "# Jours"
 
 #: includes/class-wc-trusted-shops-review-exporter.php:67
 msgctxt "trusted-shops"
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 #: includes/class-wc-trusted-shops-review-exporter.php:68
 msgctxt "trusted-shops"
 msgid "First name"
-msgstr ""
+msgstr "Prénom"
 
 #: includes/class-wc-trusted-shops-review-exporter.php:69
 msgctxt "trusted-shops"
 msgid "Last name"
-msgstr ""
+msgstr "Nom"
 
 #: includes/class-wc-trusted-shops-template-hooks.php:121
 #, php-format
@@ -987,11 +1012,12 @@ msgctxt "trusted-shops"
 msgid ""
 "Your review reminder e-mail has been cancelled successfully. Return to %s."
 msgstr ""
+"Votre e-mail de demande d’avis a été annulé avec succès. Retourner à %s."
 
 #: includes/class-wc-trusted-shops-template-hooks.php:121
 msgctxt "trusted-shops"
 msgid "Home"
-msgstr ""
+msgstr "Accueil"
 
 #: includes/class-wc-trusted-shops-template-hooks.php:193
 msgctxt "trusted-shops"
@@ -1000,27 +1026,32 @@ msgid ""
 "order. I am able to cancel the reminder at any time by clicking on the "
 "\"cancel review reminder\" link within the order confirmation."
 msgstr ""
+"Oui, je souhaite recevoir un demande d’avis par e-mail au bout de {days} "
+"jour(s) pour évaluer ma commande. Je peux annuler le rappel à tout moment en "
+"cliquant sur le lien Annuler le rappel d’évaluation dans l’email de "
+"confirmation de commande."
 
 #: includes/class-wc-trusted-shops-template-hooks.php:198
 msgctxt "trusted-shops"
 msgid "Please allow us to send a review reminder by e-mail."
 msgstr ""
+"Veuillez nous autoriser à vous envoyer un rappel d’évaluation par e-mail."
 
 #: includes/class-wc-trusted-shops-template-hooks.php:201
 msgctxt "trusted-shops"
 msgid "Review reminder"
-msgstr ""
+msgstr "Demande d’avis"
 
 #: includes/class-wc-trusted-shops-template-hooks.php:202
 msgctxt "trusted-shops"
 msgid "Asks the customer to receive a Trusted Shops review reminder."
-msgstr ""
+msgstr "Demande au client s’il veut recevoir une demande d’avis Trusted Shops."
 
 #: includes/class-wc-ts-dependencies.php:36
 #: includes/class-wc-ts-dependencies.php:45 woocommerce-trusted-shops.php:67
 #: woocommerce-trusted-shops.php:76
 msgid "Cheatin&#8217; huh?"
-msgstr ""
+msgstr "Cheatin&#8217; huh?"
 
 #: includes/class-wc-ts-install.php:72
 #, php-format
@@ -1028,16 +1059,18 @@ msgid ""
 "Please install <a href=\"%s\" target=\"_blank\">WooCommerce</a> before "
 "installing WooCommerce Germanized. Thank you!"
 msgstr ""
+"Please install <a href=\"%s\" target=\"_blank\">WooCommerce</a> before "
+"installing WooCommerce Germanized. Thank you!"
 
 #: includes/class-wc-ts-settings-handler.php:23
 msgctxt "trusted-shops"
 msgid "Trusted Shops"
-msgstr ""
+msgstr "Trusted Shops"
 
 #: includes/emails/class-wc-ts-email-customer-trusted-shops.php:25
 msgctxt "trusted-shops"
 msgid "Trusted Shops Review Reminder"
-msgstr ""
+msgstr " demande d’avis Trusted Shops"
 
 #: includes/emails/class-wc-ts-email-customer-trusted-shops.php:26
 msgctxt "trusted-shops"
@@ -1045,44 +1078,48 @@ msgid ""
 "This E-Mail is being sent to a customer to remind him about the possibility "
 "to leave a review at Trusted Shops."
 msgstr ""
+"Cet e-mail est envoyé à un client pour lui rappeler qu’il peut laisser un "
+"avis via Trusted Shops."
 
 #: includes/emails/class-wc-ts-email-customer-trusted-shops.php:53
 msgctxt "trusted-shops"
 msgid "Please rate your {site_title} order from {order_date}"
 msgstr ""
+"Veuillez évaluer votre commande sur la boutique {site_title} datant du "
+"{order_date}"
 
 #: includes/emails/class-wc-ts-email-customer-trusted-shops.php:63
 msgctxt "trusted-shops"
 msgid "Please rate your Order"
-msgstr ""
+msgstr "Veuillez évaluer votre commande"
 
 #: includes/widgets/class-wc-trusted-shops-widget-review-sticker.php:19
 msgctxt "trusted-shops"
 msgid "Show your TS shop review sticker."
-msgstr ""
+msgstr "Afficher la vignette avis site"
 
 #: includes/widgets/class-wc-trusted-shops-widget-review-sticker.php:21
 msgctxt "trusted-shops"
 msgid "Trusted Shops Shop Review Sticker"
-msgstr ""
+msgstr "Vignette avis site"
 
 #: includes/widgets/class-wc-trusted-shops-widget-review-sticker.php:25
 #: includes/widgets/class-wc-trusted-shops-widget-review-sticker.php:46
 msgctxt "trusted-shops"
 msgid "Trusted Shops Reviews"
-msgstr ""
+msgstr "avis clients Trusted Shops"
 
 #: includes/widgets/class-wc-trusted-shops-widget-review-sticker.php:26
 msgctxt "trusted-shops"
 msgid "Title"
-msgstr ""
+msgstr "Titre"
 
 #: templates/emails/customer-trusted-shops.php:18
 #: templates/emails/plain/customer-trusted-shops.php:12
 #, php-format
 msgctxt "trusted-shops"
 msgid "Dear %s %s,"
-msgstr ""
+msgstr "Bonjour %s %s,"
 
 #: templates/emails/customer-trusted-shops.php:19
 #: templates/emails/plain/customer-trusted-shops.php:14
@@ -1093,21 +1130,24 @@ msgid ""
 "some time to write a review about your order. To do so please follow follow "
 "the link."
 msgstr ""
+"Vous avez récemment passé commande sur %s. Merci beaucoup! Nous serions "
+"ravis si vous preniez quelques minutes afin de donner votre avis sur votre "
+"commande. Veuillez pour cela cliquer sur le lien suivant."
 
 #: templates/emails/customer-trusted-shops.php:22
 msgctxt "trusted-shops"
 msgid "Rate Order now"
-msgstr ""
+msgstr "Évaluer ma commande maintenant"
 
 #: woocommerce-trusted-shops.php:220
 msgctxt "trusted-shops"
 msgid "Yes"
-msgstr ""
+msgstr "Oui"
 
 #: woocommerce-trusted-shops.php:220
 msgctxt "trusted-shops"
 msgid "No"
-msgstr ""
+msgstr "Non"
 
 #: woocommerce-trusted-shops.php:265
 #, php-format
@@ -1116,8 +1156,10 @@ msgid ""
 "If the <strong>App</strong> helped you, please leave a %s&#9733;&#9733;"
 "&#9733;&#9733;&#9733;%s in the Wordpress plugin repository."
 msgstr ""
+"If the <strong>App</strong> helped you, please leave a %s&#9733;&#9733;"
+"&#9733;&#9733;&#9733;%s in the Wordpress plugin repository."
 
 #: woocommerce-trusted-shops.php:419
 msgctxt "trusted-shops"
 msgid "Settings"
-msgstr ""
+msgstr "Paramètres"

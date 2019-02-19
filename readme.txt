@@ -3,9 +3,9 @@ Contributors: vendidero, trustbadge
 Tags: advanced reviews, badge, best reviews, business ratings, business reviews, confirm email reviews, google rating, google shopping, product ratings, product reviews, rate products, rating summary, Rating Widget, ratings, reputation, review widget, review, reviews easy, reviews, rich snippets, seal,  seo, star rating, stars, trust, trustbadge, trusted reviews, trusted shops, ts, user rating, user reviews, woocommerce trusted shops, woocommerce
 Donate link: http://www.trustbadge.com
 Requires at least: 3.8
-Tested up to: 4.8
+Tested up to: 5.1
 WC requires at least: 2.4
-WC tested up to: 3.2
+WC tested up to: 3.5
 Stable tag: 2.2.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -30,9 +30,7 @@ Trust, security and transparency are vital for success in the world of e-commerc
 
 And this is precisely where eTrusted can help you. We support Woocommerce users with services that have been successfully applied for by 20,000+ of online retailers: Our customer review system allows you to collect, show and manage your customers’ feedback effortlessly!
 
-
-<strong>Get your <a href="http://trustbadge.com/woocommerce?utm_source=woocommerce&utm_medium=software-app&utm_content=marketing-page&utm_campaign=woocommerce-app" target=“_blank“>free account</a> now!</strong>
-
+<strong>Get your <a href="https://business.trustedshops.co.uk/" target="_blank">account</a> now!</strong>
 
 = Seller reviews + product reviews = Increase your conversion rate and get more sales =
 
@@ -42,12 +40,11 @@ Great product reviews convince them to buy a specific product. If you provide bo
 
 Some customers experienced an uplift of up to 12.5 % in conversions, simply by using the Trustbadge. No matter to which country or on which device you sell - the Trustbadge is well prepared. It comes with 7 possible languages and is mobile-optimized - this means all common devices are supported.
 
-
 = Getting Started =
 
 With your WooCommerce store you can start in less than 66 seconds 
 
-1. Sign up for a free <a href="http://trustbadge.com/woocommerce?utm_source=woocommerce&utm_medium=software-app&utm_content=marketing-page&utm_campaign=woocommerce-app" target=“_blank“>Trustbadge Reviews account</a>.
+1. Sign up for a <a href="https://business.trustedshops.co.uk/" target="_blank">Trustbadge Reviews account</a>.
 2. Install the Trustbadge Reviews Toolkit in your WooCommerce store 
 3. Customize your Trustbadge in the backend of WooCommerce 
 
@@ -76,13 +73,18 @@ Embed your Trusted Shops Badge within your content.
 == Frequently Asked Questions ==
 
 = How can I become a Trusted Shops Member? =
-More information regarding your Trusted Shops Membership can be found [here](http://www.trustedshops.co.uk).
+More information regarding your Trusted Shops Membership can be found [here](https://business.trustedshops.co.uk/).
 
 == Screenshots ==
 
 1. WooCommerce Trusted Shops Settings
 
 == Changelog ==
+
+= 3.0.0 =
+* Feature - Better WPML support
+* Feature - Better setting control
+* Improvement - Code refactoring
 
 = 2.2.0 =
 * Feature - WC 3.2 Compatibility
