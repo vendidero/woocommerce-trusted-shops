@@ -307,6 +307,10 @@ class WC_Trusted_Shops {
         return ( $this->review_reminder_checkbox === 'yes' && $this->is_review_reminder_enabled() ? true : false );
     }
 
+    public function product_reviews_visible() {
+        return ( $this->is_enabled() && $this->is_product_sticker_enabled() ? true : false );
+    }
+
     public function is_product_reviews_enabled() {
         return ( $this->reviews_enable === 'yes' && $this->is_enabled() ? true : false );
     }
