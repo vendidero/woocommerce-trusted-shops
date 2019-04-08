@@ -5,8 +5,8 @@ Donate link: http://www.trustbadge.com
 Requires at least: 3.8
 Tested up to: 5.1
 WC requires at least: 2.4
-WC tested up to: 3.5
-Stable tag: 3.0.1
+WC tested up to: 3.6
+Stable tag: 3.0.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -80,6 +80,9 @@ More information regarding your Trusted Shops Membership can be found [here](htt
 1. WooCommerce Trusted Shops Settings
 
 == Changelog ==
+
+= 3.0.2 =
+* Improvement: Do only replace Woo reviews when product sticker is enabled
 
 = 3.0.1 =
 * Fix: Autoloading class
