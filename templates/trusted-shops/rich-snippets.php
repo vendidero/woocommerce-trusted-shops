@@ -10,7 +10,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 ?>
-<!-- Module: WooCommerce Germanized -->
+<!-- Module: WooCommerce Trusted Shops -->
 <script type="application/ld+json">
     <?php echo $plugin->get_rich_snippets_code( true ); ?>
 </script>

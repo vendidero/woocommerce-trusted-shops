@@ -9,7 +9,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 ?>
-<!-- Module: WooCommerce Germanized -->
+<!-- Module: WooCommerce Trusted Shops -->
 <div <?php echo $plugin->get_selector( 'review_sticker', $element ); ?>></div>
 
 <script type="text/javascript">
