@@ -7,13 +7,38 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 ?>
+<div class="wc-gzd-admin-settings wc-ts-admin-settings <?php echo ( ! empty( $sidebar ) ? 'wc-gzd-admin-settings-has-sidebar' : '' ); ?> wc-gzd-admin-settings-trusted_shops <?php echo ( ! empty( $current_section ) ? 'wc-gzd-admin-settings-trusted-shops-' . $current_section : '' ); ?>">
+    <div class="wc-gzd-admin-settings-fields">
+	    <?php
+	    /**
+	     * Before admin settings output.
+	     *
+	     * Executes right before setting output.
+	     *
+	     * @since 3.0.0
+	     *
+	     * @param array[] $settings The settings array.
+	     */
+	    do_action( 'woocommerce_ts_admin_settings_before', $settings );
+	    ?>
+        <?php WC_Admin_Settings::output_fields( $settings ); ?>
+        <?php
+        /**
+         * After admin settings output.
+         *
+         * Executes right after setting output.
+         *
+         * @since 3.0.0
+         *
+         * @param array[] $settings The settings array.
+         */
+        do_action( 'woocommerce_ts_admin_settings_after', $settings );
+        ?>
+    </div>
 
-<div class="wc-gzd-admin-settings wc-gzd-admin-settings-<?php echo sanitize_title( $current_section ); ?> <?php echo apply_filters( 'woocommerce_gzd_settings_wrapper_' . $current_section, '' ); ?>">
-	<?php do_action( 'wc_germanized_settings_section_before_' . sanitize_title( $current_section ) ); ?>
-	<?php if ( apply_filters( 'wc_germanized_show_settings_' . sanitize_title( $current_section ), true ) ) : ?>
-		<?php WC_Admin_Settings::output_fields( $settings ); ?>
-	<?php endif; ?>
-	<?php do_action( 'wc_germanized_settings_section_after_' . sanitize_title( $current_section ) ); ?>
+    <?php if ( ! empty( $sidebar ) ) : ?>
+        <div class="wc-gzd-admin-settings-sidebar">
+            <?php echo $sidebar; ?>
+        </div>
+    <?php endif; ?>
 </div>
-
-<?php echo $sidebar; ?>

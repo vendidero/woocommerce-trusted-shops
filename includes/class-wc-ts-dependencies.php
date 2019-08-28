@@ -33,7 +33,7 @@ class WC_TS_Dependencies {
 	 * @since 1.0
 	 */
 	public function __clone() {
-		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'woocommerce-germanized-pro' ), '1.0' );
+		_doing_it_wrong( __FUNCTION__, _x( 'Cheatin&#8217; huh?', 'trusted-shops', 'woocommerce-trusted-shops' ), '1.0' );
 	}
 
 	/**
@@ -42,7 +42,7 @@ class WC_TS_Dependencies {
 	 * @since 1.0
 	 */
 	public function __wakeup() {
-		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'woocommerce-germanized-pro' ), '1.0' );
+		_doing_it_wrong( __FUNCTION__, _x( 'Cheatin&#8217; huh?', 'trusted-shops', 'woocommerce-trusted-shops' ), '1.0' );
 	}
 	
 	public function __construct() {

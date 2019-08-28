@@ -30,12 +30,6 @@ class WC_Trusted_Shops {
     public $signup_params = array();
 
     /**
-     * Class Prefix for auto dependency loading
-     * @var string
-     */
-    public $prefix = '';
-
-    /**
      * Option prefix for DB strings
      * @var string
      */
@@ -95,15 +89,13 @@ class WC_Trusted_Shops {
         }
 
         $this->option_prefix = strtolower( $this->prefix );
-
-        // Setup after compatibilities e.g. multi-language-support was loaded
-        add_action( 'plugins_loaded', array( $this, 'load' ), 10 );
+        $this->load();
     }
 
     public function load() {
+
         // Refresh TS ID + API URL
         $this->refresh();
-        $this->duplicate_plugin_check();
         $this->includes();
 
         add_action( 'init', array( $this, 'refresh' ), 50 );
@@ -125,16 +117,6 @@ class WC_Trusted_Shops {
                 add_filter( 'woocommerce_gzd_wpml_remove_translation_empty_equal', array( $this, 'stop_wpml_options_string_deletions' ), 20, 4 );
             }
         }
-    }
-
-    public function duplicate_plugin_check() {
-        if ( function_exists( 'wc_ts_get_crud_data' ) ) {
-            add_action( 'admin_notices', array( $this, 'show_duplicate_plugin_notice' ), 10 );
-        }
-    }
-
-    public function show_duplicate_plugin_notice() {
-        include_once( $this->path . 'admin/views/html-duplicate-plugin-notice.php' );
     }
 
     public function register_wpml_options( $settings ) {
@@ -169,19 +151,19 @@ class WC_Trusted_Shops {
     public function load_frontend_assets() {
         $suffix        = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
         $assets_path   = $this->plugin->plugin_url() . '/assets/css';
-        $script_prefix = str_replace( '_', '-', $this->option_prefix );
 
-        wp_register_style( 'woocommerce-' . $script_prefix . 'trusted-shops', $assets_path . '/woocommerce-' . $script_prefix . 'trusted-shops' . $suffix . '.css', false, $this->plugin->version );
-        wp_enqueue_style( 'woocommerce-' . $script_prefix . 'trusted-shops' );
+        wp_register_style( 'woocommerce-trusted-shops', $assets_path . '/woocommerce-trusted-shops' . $suffix . '.css', false, $this->plugin->version );
+        wp_enqueue_style( 'woocommerce-trusted-shops' );
     }
 
     public function get_dependency_name( $name ) {
-        $classname = 'WC_' . $this->prefix . 'Trusted_Shops_' . ucwords( str_replace( '-', '_', strtolower( $name ) ) );
+        $classname = 'WC_Trusted_Shops_' . ucwords( str_replace( '-', '_', strtolower( $name ) ) );
         return $classname;
     }
 
     public function get_dependency( $name ) {
         $classname = $this->get_dependency_name( $name );
+
         return call_user_func_array( array( $classname, 'instance' ), array( $this ) );
     }
 
