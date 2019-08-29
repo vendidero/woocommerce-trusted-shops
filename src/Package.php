@@ -22,10 +22,14 @@ class Package {
 	 */
 	public static function init() {
 
-		if ( ! self::is_integration() && ! self::has_dependencies() ) {
-			add_action( 'admin_notices', array( __CLASS__, 'dependency_notice' ), 20 );
-			return;
-		}
+	    if ( ! self::has_dependencies() ) {
+
+	        if ( ! self::is_integration() ) {
+		        add_action( 'admin_notices', array( __CLASS__, 'dependency_notice' ), 20 );
+	        }
+
+		    return;
+        }
 
 		self::init_hooks();
 		self::includes();

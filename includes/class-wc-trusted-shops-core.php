@@ -14,7 +14,7 @@ final class WooCommerce_Trusted_Shops {
 	 *
 	 * @var string
 	 */
-	public $version = '3.0.3';
+	public $version = '4.0.1';
 
 	/**
 	 * Single instance of WooCommerce Trusted Shops Main Class

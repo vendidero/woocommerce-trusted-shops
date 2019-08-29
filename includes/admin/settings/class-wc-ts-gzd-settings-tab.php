@@ -33,7 +33,9 @@ class WC_TS_GZD_Settings_Tab extends WC_GZD_Settings_Tab {
 	}
 
 	public function register_scripts() {
-		do_action( 'woocommerce_trusted_shops_load_admin_scripts' );
+		if ( isset( $_GET['tab'] ) && 'germanized-trusted_shops' === $_GET['tab'] ) {
+			do_action( 'woocommerce_trusted_shops_load_admin_scripts' );
+		}
 	}
 
 	public function get_description() {

@@ -3,7 +3,7 @@
  * Plugin Name: Trustbadge Reviews for WooCommerce
  * Plugin URI: http://www.trustedshops.co.uk/
  * Description: Adds Seller and Product Reviews or Trusted Shops Integration to your WooCommerce Shop.
- * Version: 4.0.0
+ * Version: 4.0.1
  * Author: Vendidero
  * Author URI: http://vendidero.de
  * Requires at least: 3.8

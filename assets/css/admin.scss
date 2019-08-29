@@ -16,9 +16,17 @@
       margin-top: 1em;
       width: 30%;
       box-sizing: border-box;
-      padding: 1em;
-      background: #FFF;
-      box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+
+      .wc-gzd-admin-settings-sidebar-inner {
+        padding: 1em;
+        background: #FFF;
+        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+
+        &.sticky {
+          position: sticky;
+          top: 50px;
+        }
+      }
 
       h1:first-of-type, h2:first-of-type, h3:first-of-type {
         margin-top: 0;

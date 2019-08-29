@@ -11,10 +11,15 @@
     .wc-ts-admin-settings.wc-gzd-admin-settings-has-sidebar .wc-gzd-admin-settings-sidebar {
       margin-top: 1em;
       width: 30%;
-      box-sizing: border-box;
-      padding: 1em;
-      background: #FFF;
-      box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1); }
+      box-sizing: border-box; }
+      .wc-ts-admin-settings.wc-gzd-admin-settings-has-sidebar .wc-gzd-admin-settings-sidebar .wc-gzd-admin-settings-sidebar-inner {
+        padding: 1em;
+        background: #FFF;
+        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1); }
+        .wc-ts-admin-settings.wc-gzd-admin-settings-has-sidebar .wc-gzd-admin-settings-sidebar .wc-gzd-admin-settings-sidebar-inner.sticky {
+          position: -webkit-sticky;
+          position: sticky;
+          top: 50px; }
       .wc-ts-admin-settings.wc-gzd-admin-settings-has-sidebar .wc-gzd-admin-settings-sidebar h1:first-of-type, .wc-ts-admin-settings.wc-gzd-admin-settings-has-sidebar .wc-gzd-admin-settings-sidebar h2:first-of-type, .wc-ts-admin-settings.wc-gzd-admin-settings-has-sidebar .wc-gzd-admin-settings-sidebar h3:first-of-type {
         margin-top: 0; }
 

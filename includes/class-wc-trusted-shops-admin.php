@@ -743,44 +743,46 @@ class WC_Trusted_Shops_Admin {
     public function get_sidebar() {
         ob_start();
         ?>
-        <div class="wc-gzd-admin-settings-sidebar-trusted-shops">
-            <div class="wc-ts-sidebar wc-ts-sidebar-active" id="wc-ts-sidebar-default">
-                <h3><?php echo _x( 'How does Trusted Shops make your shop better?', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></h3>
-                <a href="<?php echo $this->get_signup_url(); ?>" target="_blank"><img style="width: 100%; height: auto" src="<?php echo $this->get_image( 'ts.png' ); ?>" /></a>
-                <a class="button button-primary" href="<?php echo $this->get_signup_url(); ?>" target="_blank"><?php echo _x( 'Get your account', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></a>
-            </div>
-
-            <div class="wc-ts-sidebar wc-ts-sidebar-flex" id="wc-ts-sidebar-trustbadge">
-                <div class="wc-ts-sidebar-left wc-ts-sidebar-container">
-                    <img src="<?php echo $this->get_image( 'ts_trustbadge_trustmark_reviews.png' ); ?>" />
-                    <span class="wc-ts-sidebar-desc"><?php echo _x( 'Display Trustbadge with review stars', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></span>
+        <div class="wc-gzd-admin-settings-sidebar-inner sticky">
+            <div class="wc-gzd-admin-settings-sidebar-trusted-shops">
+                <div class="wc-ts-sidebar wc-ts-sidebar-active" id="wc-ts-sidebar-default">
+                    <h3><?php echo _x( 'How does Trusted Shops make your shop better?', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></h3>
+                    <a href="<?php echo $this->get_signup_url(); ?>" target="_blank"><img style="width: 100%; height: auto" src="<?php echo $this->get_image( 'ts.png' ); ?>" /></a>
+                    <a class="button button-primary" href="<?php echo $this->get_signup_url(); ?>" target="_blank"><?php echo _x( 'Get your account', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></a>
                 </div>
-                <div class="wc-ts-sidebar-right wc-ts-sidebar-container">
-                    <img src="<?php echo $this->get_image( 'ts_trustbadge_trustmark-only.png' ); ?>" />
-                    <span class="wc-ts-sidebar-desc"><?php echo _x( 'Display Trustbadge without review stars', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></span>
+
+                <div class="wc-ts-sidebar wc-ts-sidebar-flex" id="wc-ts-sidebar-trustbadge">
+                    <div class="wc-ts-sidebar-left wc-ts-sidebar-container">
+                        <img src="<?php echo $this->get_image( 'ts_trustbadge_trustmark_reviews.png' ); ?>" />
+                        <span class="wc-ts-sidebar-desc"><?php echo _x( 'Display Trustbadge with review stars', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></span>
+                    </div>
+                    <div class="wc-ts-sidebar-right wc-ts-sidebar-container">
+                        <img src="<?php echo $this->get_image( 'ts_trustbadge_trustmark-only.png' ); ?>" />
+                        <span class="wc-ts-sidebar-desc"><?php echo _x( 'Display Trustbadge without review stars', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></span>
+                    </div>
                 </div>
-            </div>
 
-            <div class="wc-ts-sidebar" id="wc-ts-sidebar-shop-reviews">
-                <img style="width: 100%; height: auto" src="<?php echo $this->get_image( 'ts_shop_review_sticker.jpg' ); ?>" />
-            </div>
+                <div class="wc-ts-sidebar" id="wc-ts-sidebar-shop-reviews">
+                    <img style="width: 100%; height: auto" src="<?php echo $this->get_image( 'ts_shop_review_sticker.jpg' ); ?>" />
+                </div>
 
-            <div class="wc-ts-sidebar" id="wc-ts-sidebar-product-reviews">
-                <img style="width: 100%; height: auto" src="<?php echo $this->get_image( 'ts_product_reviews.jpg' ); ?>" />
-                <span class="wc-ts-sidebar-desc"><?php echo _x( 'Product Reviews on the product detail page in an additional tab', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></span>
+                <div class="wc-ts-sidebar" id="wc-ts-sidebar-product-reviews">
+                    <img style="width: 100%; height: auto" src="<?php echo $this->get_image( 'ts_product_reviews.jpg' ); ?>" />
+                    <span class="wc-ts-sidebar-desc"><?php echo _x( 'Product Reviews on the product detail page in an additional tab', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></span>
 
-                <img style="width: 100%; height: auto" src="<?php echo $this->get_image( 'ts_woo.jpg' ); ?>" />
-                <span class="wc-ts-sidebar-desc"><?php echo _x( 'Show Star-Ratings on the product detail page below your product name', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></span>
-            </div>
+                    <img style="width: 100%; height: auto" src="<?php echo $this->get_image( 'ts_woo.jpg' ); ?>" />
+                    <span class="wc-ts-sidebar-desc"><?php echo _x( 'Show Star-Ratings on the product detail page below your product name', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></span>
+                </div>
 
-            <div class="wc-ts-sidebar" id="wc-ts-sidebar-review-reminder">
-                <p><?php echo _x( 'Please note: If you want to send review requests through WooCommerce, you should deactivate automated review requests through Trusted Shops. To do so, please go to your My Trusted Shops account. Log in and go to Reviews >  Settings and deactivate "Collect reviews automatically"', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></p>
-                <a class="button button-secondary" href="<?php echo $this->get_trusted_url( 'https://www.trustedshops.com/tsb2b/sa/ratings/shopRatingWidgetSettings.seam' ); ?>" target="_blank"><?php echo _x( 'To your My Trusted Shops account', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></a>
-            </div>
+                <div class="wc-ts-sidebar" id="wc-ts-sidebar-review-reminder">
+                    <p><?php echo _x( 'Please note: If you want to send review requests through WooCommerce, you should deactivate automated review requests through Trusted Shops. To do so, please go to your My Trusted Shops account. Log in and go to Reviews >  Settings and deactivate "Collect reviews automatically"', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></p>
+                    <a class="button button-secondary" href="<?php echo $this->get_trusted_url( 'https://www.trustedshops.com/tsb2b/sa/ratings/shopRatingWidgetSettings.seam' ); ?>" target="_blank"><?php echo _x( 'To your My Trusted Shops account', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></a>
+                </div>
 
-            <div class="wc-ts-sidebar" id="wc-ts-sidebar-review-collector">
-                <p><?php echo _x( 'Export your customer information here and upload it in the Trusted Shops Review Collector. To do so go to your My Trusted Shops account. Log in and go to Reviews > Shop Reviews > Review Collector', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></p>
-                <a class="button button-secondary" href="<?php echo $this->get_trusted_url( 'https://www.trustedshops.com/tsb2b/sa/ratings/reviewCollector/reviewCollector.seam' ); ?>" target="_blank"><?php echo _x( 'To the Trusted Shops Review Collector', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></a>
+                <div class="wc-ts-sidebar" id="wc-ts-sidebar-review-collector">
+                    <p><?php echo _x( 'Export your customer information here and upload it in the Trusted Shops Review Collector. To do so go to your My Trusted Shops account. Log in and go to Reviews > Shop Reviews > Review Collector', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></p>
+                    <a class="button button-secondary" href="<?php echo $this->get_trusted_url( 'https://www.trustedshops.com/tsb2b/sa/ratings/reviewCollector/reviewCollector.seam' ); ?>" target="_blank"><?php echo _x( 'To the Trusted Shops Review Collector', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></a>
+                </div>
             </div>
         </div>
         <?php
