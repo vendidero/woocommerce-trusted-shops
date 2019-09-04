@@ -95,7 +95,6 @@ final class WooCommerce_Trusted_Shops {
 
 		// Install
 		register_activation_hook( WC_TRUSTED_SHOPS_PLUGIN_FILE, array( 'WC_TS_Install', 'install' ) );
-		add_action( 'woocommerce_gzd_installed', array( 'WC_TS_Install', 'gzd_install' ) );
 
 		// Hooks
 		add_filter( 'plugin_action_links_' . plugin_basename( WC_TRUSTED_SHOPS_PLUGIN_FILE ), array( $this, 'action_links' ) );

@@ -152,7 +152,7 @@ class WC_Trusted_Shops {
         $suffix        = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
         $assets_path   = $this->plugin->plugin_url() . '/assets/css';
 
-        wp_register_style( 'woocommerce-trusted-shops', $assets_path . '/woocommerce-trusted-shops' . $suffix . '.css', false, $this->plugin->version );
+        wp_register_style( 'woocommerce-trusted-shops', $assets_path . '/layout' . $suffix . '.css', false, $this->plugin->version );
         wp_enqueue_style( 'woocommerce-trusted-shops' );
     }
 

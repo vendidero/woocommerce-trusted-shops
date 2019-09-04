@@ -56,13 +56,12 @@ class WC_TS_Install {
 		}
 	}
 
-	public static function gzd_install() {
+	public static function install_integration() {
 		self::create_cron_jobs();
 		self::update_versions();
 	}
 
 	protected static function update_versions() {
-
 		// Queue upgrades
 		$current_version    = get_option( 'woocommerce_trusted_shops_version', null );
 		$current_db_version = get_option( 'woocommerce_trusted_shops_db_version', null );
@@ -95,7 +94,6 @@ class WC_TS_Install {
 
 		self::create_options();
 		self::create_cron_jobs();
-
 		self::update_versions();
 
 		// Flush rules after install

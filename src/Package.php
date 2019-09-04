@@ -2,6 +2,7 @@
 
 namespace Vendidero\TrustedShops;
 use Exception;
+use WC_TS_Install;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -21,7 +22,6 @@ class Package {
 	 * Init the package - load the REST API Server class.
 	 */
 	public static function init() {
-
 	    if ( ! self::has_dependencies() ) {
 
 	        if ( ! self::is_integration() ) {
@@ -34,6 +34,10 @@ class Package {
 		self::init_hooks();
 		self::includes();
 	}
+
+	public static function install_integration() {
+        WC_TS_Install::install_integration();
+    }
 
 	public static function dependency_notice() {
 		?>
