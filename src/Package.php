@@ -36,8 +36,16 @@ class Package {
 	}
 
 	public static function install_integration() {
+		include_once self::get_path() . '/includes/class-wc-ts-install.php';
+
         WC_TS_Install::install_integration();
     }
+
+	public static function install() {
+		include_once self::get_path() . '/includes/class-wc-ts-install.php';
+
+		WC_TS_Install::install();
+	}
 
 	public static function dependency_notice() {
 		?>

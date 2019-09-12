@@ -14,7 +14,7 @@ final class WooCommerce_Trusted_Shops {
 	 *
 	 * @var string
 	 */
-	public $version = '4.0.1';
+	public $version = '4.0.2';
 
 	/**
 	 * Single instance of WooCommerce Trusted Shops Main Class
@@ -92,9 +92,6 @@ final class WooCommerce_Trusted_Shops {
 		// Include required files
 		$this->includes();
 		$this->setup_compatibility();
-
-		// Install
-		register_activation_hook( WC_TRUSTED_SHOPS_PLUGIN_FILE, array( 'WC_TS_Install', 'install' ) );
 
 		// Hooks
 		add_filter( 'plugin_action_links_' . plugin_basename( WC_TRUSTED_SHOPS_PLUGIN_FILE ), array( $this, 'action_links' ) );
