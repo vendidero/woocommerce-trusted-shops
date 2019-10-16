@@ -16,7 +16,7 @@ window.trusted_shops = window.trusted_shops || {};
             this.optionPrefix = this.params.option_prefix;
             var self          = this;
 
-            $( document ).on( 'click', 'a.woocommerce-gzd-input-toggle-trigger', this.onInputToogleClick );
+            $( document ).on( 'click', 'a.woocommerce-ts-input-toggle-trigger', this.onInputToogleClick );
 
             // Show hide elements
             $( document ).on( 'change', '#woocommerce_' + this.optionPrefix + 'trusted_shops_integration_mode', this.onChangeIntegrationMode );
@@ -44,7 +44,7 @@ window.trusted_shops = window.trusted_shops || {};
         },
 
         onInputToogleClick: function() {
-            var $toggle   = $( this ).find( 'span.woocommerce-gzd-input-toggle' ),
+            var $toggle   = $( this ).find( 'span.woocommerce-ts-input-toggle' ),
                 $row      = $toggle.parents( 'tr' ),
                 $checkbox = $row.find( 'input[type=checkbox]' ),
                 $enabled  = $toggle.hasClass( 'woocommerce-input-toggle--enabled' );
@@ -151,9 +151,6 @@ window.trusted_shops = window.trusted_shops || {};
         onSidebarTitelChange: function() {
             var $next = $( this ).nextAll( 'table.form-table:first' );
             $next.find( 'tr:first' ).trigger( 'click' );
-
-            $sidebar = $( '.wc-ts-sidebar-active' );
-            $sidebar.offset( { top: $( this ).offset().top } );
         },
 
         onSidebarChange: function() {
@@ -176,7 +173,6 @@ window.trusted_shops = window.trusted_shops || {};
 
             $current_sidebar.removeClass( 'wc-ts-sidebar-active' );
             $sidebar.addClass( 'wc-ts-sidebar-active' );
-            $sidebar.offset( { top: $( this ).offset().top } );
         },
 
         getSettingsWrapper: function() {

@@ -5,7 +5,7 @@ msgstr ""
 "PO-Revision-Date: 2019-10-15 12:41+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: de_DE\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,7 +22,7 @@ msgstr ""
 #: includes/admin/settings/class-wc-ts-gzd-settings-tab.php:48
 msgctxt "trusted-shops"
 msgid "Setup your Trusted Shops Integration."
-msgstr "Setze deine Trusted Shops Integration auf."
+msgstr "Setzen Sie Ihre Trusted Shops Integration auf."
 
 #: includes/admin/settings/class-wc-ts-gzd-settings-tab.php:52
 #: includes/class-wc-ts-settings-handler.php:23
@@ -41,14 +41,14 @@ msgid ""
 "To use WooCommerce Trusted Shops you may at first install the following "
 "plugins:"
 msgstr ""
-"Um WooCommerce Trusted Shops zuverlässig nutzen zu können, musst du erst "
+"Um WooCommerce Trusted Shops zuverlässig nutzen zu können, müssen Sie zuerst "
 "folgende Plugins installieren:"
 
 #: includes/admin/views/html-notice-dependencies.php:28
 #, php-format
 msgctxt "trusted-shops"
 msgid "Install %s"
-msgstr "Install %s"
+msgstr "Installiere %s"
 
 #: includes/admin/views/html-notice-dependencies.php:36
 msgctxt "trusted-shops"
@@ -56,7 +56,7 @@ msgid ""
 "To use WooCommerce Trusted Shops you may at first update the following "
 "plugins to a newer version:"
 msgstr ""
-"Um WooCommerce Trusted Shops zuverlässig nutzen zu können, update bitte "
+"Um WooCommerce Trusted Shops zuverlässig nutzen zu können, updaten Sie bitte "
 "folgende Plugins:"
 
 #: includes/admin/views/html-notice-dependencies.php:40
@@ -100,8 +100,8 @@ msgid ""
 "It is strongly recommended that you backup your database before proceeding. "
 "Are you sure you wish to run the updater now?"
 msgstr ""
-"Du solltest vor einem Update immer ein Backup deiner Datenbank anlegen. Bist "
-"du sicher das Update jetzt zu installieren?"
+"Sie sollten vor einem Update immer ein Backup der Datenbank anlegen. Sind "
+"Sie sicher das Update jetzt zu installieren?"
 
 #: includes/admin/views/html-wpml-notice.php:11
 msgctxt "trusted-shops"
@@ -115,9 +115,9 @@ msgid ""
 "the settings for a certain language, please switch your admin language "
 "through the WPML language switcher and adjust the corresponding settings."
 msgstr ""
-"Diese Einstellungen werden als Standard für alle deine Sprachen verwendet. "
-"Um die Einstellungen für eine spezielle Sprache zu ändern, wechsle bitte zur "
-"entsprechenden Sprache über den WPML Sprachumschalter."
+"Diese Einstellungen werden als Standard für alle Ihre Sprachen verwendet. Um "
+"die Einstellungen für eine spezielle Sprache zu ändern, wechseln Sie bitte "
+"zur entsprechenden Sprache über den WPML Sprachumschalter."
 
 #: includes/admin/views/html-wpml-notice.php:16
 #, php-format
@@ -127,9 +127,9 @@ msgid ""
 "language, please switch your admin language through the WPML language "
 "switcher."
 msgstr ""
-"Diese Einstellungen werden für deinen %s Shop verwendet. Um die "
-"Einstellungen für eine andere Sprache anzupassen, wechsle bitte die Sprache "
-"über den WPML Sprachumschalter."
+"Diese Einstellungen werden für Ihren %s Shop verwendet. Um die Einstellungen "
+"für eine andere Sprache anzupassen, wechseln Sie bitte die Sprache über den "
+"WPML Sprachumschalter."
 
 #: includes/class-wc-trusted-shops-admin.php:84
 #: includes/class-wc-trusted-shops-admin.php:121
@@ -146,8 +146,8 @@ msgid ""
 "Google adverts, Google needs the GTIN."
 msgstr ""
 "Identifikationsnummer, mit der Produkte weltweit eindeutig identifiziert "
-"werden können. Wenn du deine Trusted Shops Produktbewertungen in Google "
-"Shopping und bezahlten Google Produktanzeigen ausspielen möchtest, benötigt "
+"werden können. Wenn Sie Ihre Trusted Shops Produktbewertungen in Google "
+"Shopping und bezahlten Google Produktanzeigen ausspielen möchten, benötigt "
 "Google die GTIN."
 
 #: includes/class-wc-trusted-shops-admin.php:88
@@ -163,7 +163,7 @@ msgid ""
 "If you don't have a GTIN for your products, you can pass the brand name and "
 "the MPN on to Google to use the Trusted Shops Google Integration."
 msgstr ""
-"Wenn deine Produkte keine GTIN haben, kannst du den Markennamen zusammen mit "
+"Wenn Ihre Produkte keine GTIN haben, können SIe den Markennamen zusammen mit "
 "der MPN übergeben, um die Trusted Shops Google Integration zu nutzen."
 
 #: includes/class-wc-trusted-shops-admin.php:142
@@ -230,7 +230,7 @@ msgstr "Trusted Shops Integration"
 #, php-format
 msgctxt "trusted-shops"
 msgid "Do you need help with integrating your Trustbadge? %s"
-msgstr "Brauchst du Hilfe bei der Einbindung deines Trustbadges? %s"
+msgstr "Brauchen Sie Hilfe bei der Einbindung Ihres Trustbadges? %s"
 
 #: includes/class-wc-trusted-shops-admin.php:221
 msgctxt "trusted-shops"
@@ -248,8 +248,8 @@ msgid ""
 "The Trusted Shops ID is a unique identifier for your shop. You can find your "
 "Trusted Shops ID in your My Trusted Shops account."
 msgstr ""
-"Die Trusted Shops ID identifiziert deinen Shop eindeutig bei Trusted Shops. "
-"Du findest deine Trusted Shops ID in deinem My Trusted Shops Account."
+"Die Trusted Shops ID identifiziert Ihren Shop eindeutig bei Trusted Shops. "
+"Sie finden die Trusted Shops ID in Ihrem My Trusted Shops Account."
 
 #: includes/class-wc-trusted-shops-admin.php:237
 msgctxt "trusted-shops"
@@ -265,7 +265,7 @@ msgid ""
 "can create even more individual settings."
 msgstr ""
 "Der Expertenmodus ist für fortgeschrittene Nutzer mit Programmierkenntnissen "
-"gedacht. Hier kannst du noch mehr individuelle Einstellungen vornehmen."
+"gedacht. Hier können Sie noch mehr individuelle Einstellungen vornehmen."
 
 #: includes/class-wc-trusted-shops-admin.php:243
 msgctxt "trusted-shops"
@@ -280,7 +280,7 @@ msgstr "Expertenmodus"
 #: includes/class-wc-trusted-shops-admin.php:252
 msgctxt "trusted-shops"
 msgid "Configure your Trustbadge"
-msgstr "Konfiguriere dein Trustbadge"
+msgstr "Konfigurieren Sie Ihr Trustbadge"
 
 #: includes/class-wc-trusted-shops-admin.php:258
 msgctxt "trusted-shops"
@@ -290,7 +290,7 @@ msgstr "Trustbadge anzeigen"
 #: includes/class-wc-trusted-shops-admin.php:260
 msgctxt "trusted-shops"
 msgid "Display the Trustbadge on all the pages of your shop."
-msgstr "Zeige das Trustbadge auf allen Seiten deines Shops an."
+msgstr "Zeige das Trustbadge auf allen Seiten des Shops an."
 
 #: includes/class-wc-trusted-shops-admin.php:267
 msgctxt "trusted-shops"
@@ -300,7 +300,7 @@ msgstr "Variante"
 #: includes/class-wc-trusted-shops-admin.php:269
 msgctxt "trusted-shops"
 msgid "You can display your Trustbadge with or without Review Stars."
-msgstr "Du kannst dein Trustbadge mit oder ohne Bewertungssterne anzeigen."
+msgstr "Sie können Ihr Trustbadge mit oder ohne Bewertungssterne anzeigen."
 
 #: includes/class-wc-trusted-shops-admin.php:273
 #: includes/class-wc-trusted-shops-admin.php:763
@@ -325,7 +325,8 @@ msgid ""
 "Choose the distance that the Trustbadge will appear from the bottom-right "
 "corner of the screen."
 msgstr ""
-"Wähle einen Abstand für dein Trustbadge vom unteren rechten Bildschirmrand."
+"Wählen Sie einen Abstand für Ihr Trustbadge vom unteren rechten "
+"Bildschirmrand."
 
 #: includes/class-wc-trusted-shops-admin.php:284
 #: includes/class-wc-trusted-shops-admin.php:492
@@ -342,7 +343,7 @@ msgstr "px"
 #, php-format
 msgctxt "trusted-shops"
 msgid "Please choose a non-negative number (at least %d)"
-msgstr "Bitte verwende eine nicht-negative Nummer (mindestens %d)"
+msgstr "Bitte verwenden Sie eine nicht-negative Nummer (mindestens %d)"
 
 #: includes/class-wc-trusted-shops-admin.php:296
 msgctxt "trusted-shops"
@@ -352,7 +353,7 @@ msgstr "Trustbadge Code"
 #: includes/class-wc-trusted-shops-admin.php:308
 msgctxt "trusted-shops"
 msgid "Configure your Shop Reviews"
-msgstr "Konfiguriere deine Shopbewertungen"
+msgstr "Konfigurieren Sie Ihre Shopbewertungen"
 
 #: includes/class-wc-trusted-shops-admin.php:314
 msgctxt "trusted-shops"
@@ -365,8 +366,8 @@ msgid ""
 "To display the Shop Review Sticker, you have to assign the widget \"Trusted "
 "Shops Review Sticker\"."
 msgstr ""
-"Um den Shopbewertungssticker anzuzeigen, musst du das Widget „Trusted Shops "
-"Shopbewertungssticker“ zuweisen."
+"Um den Shopbewertungssticker anzuzeigen, müssen Sie das Widget „Trusted "
+"Shops Shopbewertungssticker“ zuweisen."
 
 #: includes/class-wc-trusted-shops-admin.php:316
 #, php-format
@@ -390,7 +391,7 @@ msgstr "Hintergrundfarbe"
 #: includes/class-wc-trusted-shops-admin.php:325
 msgctxt "trusted-shops"
 msgid "Choose the background color for your Review Sticker."
-msgstr "Wähle die Hintergrundfarbe für deinen Review Sticker."
+msgstr "Wählen Sie die Hintergrundfarbe für den Review Sticker."
 
 #: includes/class-wc-trusted-shops-admin.php:332
 msgctxt "trusted-shops"
@@ -400,7 +401,7 @@ msgstr "Schriftart"
 #: includes/class-wc-trusted-shops-admin.php:334
 msgctxt "trusted-shops"
 msgid "Choose the font for your Review Sticker."
-msgstr "Wähle die Schriftart für deinen Review Sticker."
+msgstr "Wählen Sie die Schriftart für den Review Sticker."
 
 #: includes/class-wc-trusted-shops-admin.php:341
 msgctxt "trusted-shops"
@@ -413,7 +414,7 @@ msgid ""
 "Display x alternating Shop Reviews in your Shop Review Sticker. You can "
 "display between 1 and 5 alternating Shop Reviews."
 msgstr ""
-"Zeige x Shopbewertungen im Wechsel in deinem Shopbewertungssticker an. Es "
+"Zeige x Shopbewertungen im Wechsel in Ihrem Shopbewertungssticker an. Es "
 "können mindestens 1 und maximal 5 Bewertungen im Wechsel angezeigt werden."
 
 #: includes/class-wc-trusted-shops-admin.php:345
@@ -426,7 +427,7 @@ msgstr "x Bewertungen im Wechsel zeigen"
 #, php-format
 msgctxt "trusted-shops"
 msgid "Please choose a non-negative number between %d and %d"
-msgstr "Bitte verwende eine nicht-negative Nummer zwischen %d und %d"
+msgstr "Bitte verwenden Sie eine nicht-negative Nummer zwischen %d und %d"
 
 #: includes/class-wc-trusted-shops-admin.php:358
 msgctxt "trusted-shops"
@@ -457,7 +458,7 @@ msgid ""
 "can perform even more individual settings."
 msgstr ""
 "Der Expertenmodus ist für fortgeschrittene Nutzer mit Programmierkenntnissen "
-"gedacht. Hier kannst du noch mehr individuelle Einstellungen vornehmen."
+"gedacht. Hier können Sie noch mehr individuelle Einstellungen vornehmen."
 
 #: includes/class-wc-trusted-shops-admin.php:385
 msgctxt "trusted-shops"
@@ -470,7 +471,7 @@ msgid ""
 "Activate this option to give Google the opportunity to show your Shop "
 "Reviews in Google organic search results."
 msgstr ""
-"Aktiviere diese Funktion, um Google die Möglichkeit zu geben, deine "
+"Aktivieren Sie diese Funktion, um Google die Möglichkeit zu geben, Ihre "
 "Shopbewertungen in den organischen Google Suchergebnissen anzuzeigen."
 
 #: includes/class-wc-trusted-shops-admin.php:387
@@ -482,11 +483,11 @@ msgid ""
 "expert mode, we recommend integrating rich snippets for Shop Reviews on "
 "category pages only."
 msgstr ""
-"Wenn du diese Option aktivierst, werden Rich Snippets in die ausgewählten "
-"Seiten eingebunden, sodass deine Shopbewertungssterne in den organischen "
-"Google Suchergebnissen angezeigt werden können. Wenn du Produktbewertungen "
-"aktiviert hast und dort im Expertenmodus bereits Rich Snippets aktiviert "
-"hast, empfehlen wir die Ausgabe der Rich Snippets für Shopbewertungen nur "
+"Wenn Sie diese Option aktivieren, werden Rich Snippets in die ausgewählten "
+"Seiten eingebunden, sodass Ihre Shopbewertungssterne in den organischen "
+"Google Suchergebnissen angezeigt werden können. Wenn Sie Produktbewertungen "
+"aktiviert haben und dort im Expertenmodus bereits Rich Snippets aktiviert "
+"haben, empfehlen wir die Ausgabe der Rich Snippets für Shopbewertungen nur "
 "auf der Kategorieseite."
 
 #: includes/class-wc-trusted-shops-admin.php:394
@@ -517,15 +518,15 @@ msgstr "Rich Snippets Code"
 #: includes/class-wc-trusted-shops-admin.php:431
 msgctxt "trusted-shops"
 msgid "Configure your Product Reviews "
-msgstr "Konfiguriere deine Produktbewertungen"
+msgstr "Konfigurieren Sie die Produktbewertungen"
 
 #: includes/class-wc-trusted-shops-admin.php:432
 #, php-format
 msgctxt "trusted-shops"
 msgid "To use Product Reviews, activate them in your %s first."
 msgstr ""
-"Um Produktbewertungen nutzen zu können, schalte diese zuerst in deinem %s "
-"frei."
+"Um Produktbewertungen nutzen zu können, schalten Sie diese zuerst in Ihrem "
+"%s frei."
 
 #: includes/class-wc-trusted-shops-admin.php:432
 msgctxt "trusted-shops"
@@ -556,7 +557,7 @@ msgstr "Bewertungen"
 msgctxt "trusted-shops"
 msgid "You can choose a name for the tab with your Product Reviews."
 msgstr ""
-"Du kannst selbst bestimmen, wie der Reiter in dem deine Produktbewertungen "
+"Sie können selbst bestimmen, wie der Reiter in dem Ihre Produktbewertungen "
 "angezeigt werden, heißen soll."
 
 #: includes/class-wc-trusted-shops-admin.php:449
@@ -582,12 +583,12 @@ msgstr "Umrandung"
 #: includes/class-wc-trusted-shops-admin.php:465
 msgctxt "trusted-shops"
 msgid "Set the color for the frame around your Product Reviews."
-msgstr "Lege die Farbe für den Rahmen um deine Produktbewertungen fest."
+msgstr "Legen Sie die Farbe für den Rahmen um die Produktbewertungen fest."
 
 #: includes/class-wc-trusted-shops-admin.php:473
 msgctxt "trusted-shops"
 msgid "Set the background color for your Product Reviews."
-msgstr "Lege die Hintergrundfarbe für deine Produktbewertungen fest."
+msgstr "Legen Sie die Hintergrundfarbe für die Produktbewertungen fest."
 
 #: includes/class-wc-trusted-shops-admin.php:480
 #: includes/class-wc-trusted-shops-admin.php:530
@@ -599,8 +600,8 @@ msgstr "Farbe der Sterne"
 msgctxt "trusted-shops"
 msgid "Set the color for the Product Review stars in your Product Reviews tab."
 msgstr ""
-"Lege die Farbe der Sterne fest, die in deinem Produktbewertungs-Reiter "
-"angezeigt werden. "
+"Legen Sie die Farbe der Sterne fest, die in Ihrem Produktbewertungs-Reiter "
+"angezeigt werden."
 
 #: includes/class-wc-trusted-shops-admin.php:488
 #: includes/class-wc-trusted-shops-admin.php:538
@@ -612,7 +613,7 @@ msgstr "Größe der Sterne"
 msgctxt "trusted-shops"
 msgid "Set the size for the Product Review stars in your Product Reviews tab."
 msgstr ""
-"Lege die Größe der Sterne fest, die in deinem Produktbewertungs-Reiter "
+"Legen Sie die Größe der Sterne fest, die in Ihrem Produktbewertungs-Reiter "
 "angezeigt werden."
 
 #: includes/class-wc-trusted-shops-admin.php:504
@@ -632,8 +633,8 @@ msgid ""
 "Please choose where your Product Reviews shall be displayed on the Product "
 "detail page."
 msgstr ""
-"Wähle, wo die Produktbewertungen auf der Produktdetailseite angezeigt werden "
-"sollen."
+"Wählen Sie, wo die Produktbewertungen auf der Produktdetailseite angezeigt "
+"werden sollen."
 
 #: includes/class-wc-trusted-shops-admin.php:521
 msgctxt "trusted-shops"
@@ -660,8 +661,8 @@ msgid ""
 "Set the color for the review stars, that are displayed on the product page, "
 "below your product name."
 msgstr ""
-"Lege die Farbe der Sterne fest, die auf der Produktseite unter deinem "
-"Produktnamen angezeigt werden. "
+"Legen Sie die Farbe der Sterne fest, die auf der Produktseite unter dem "
+"Produktnamen angezeigt werden."
 
 #: includes/class-wc-trusted-shops-admin.php:540
 msgctxt "trusted-shops"
@@ -669,7 +670,7 @@ msgid ""
 "Set the size for the review stars that are displayed on the product page, "
 "below your product name."
 msgstr ""
-"Lege die Größe der Sterne fest, die auf der Produktseite unter deinem "
+"Legen Sie die Größe der Sterne fest, die auf der Produktseite unter dem "
 "Produktnamen angezeigt werden."
 
 #: includes/class-wc-trusted-shops-admin.php:554
@@ -680,7 +681,7 @@ msgstr "Schriftgröße"
 #: includes/class-wc-trusted-shops-admin.php:556
 msgctxt "trusted-shops"
 msgid "Set the font size for the text that goes with your review stars."
-msgstr "Lege die Schriftgröße für den Text zu deinen Bewertungssternen fest."
+msgstr "Legen Sie die Schriftgröße für den Text zu den Bewertungssternen fest."
 
 #: includes/class-wc-trusted-shops-admin.php:570
 msgctxt "trusted-shops"
@@ -693,8 +694,8 @@ msgid ""
 "Please choose where your Product Review Stars shall be displayed on the "
 "Product Detail page."
 msgstr ""
-"Wähle, wo die Produktbewertungssterne auf der Produktdetailseite angezeigt "
-"werden sollen."
+"Wählen Sie, wo die Produktbewertungssterne auf der Produktdetailseite "
+"angezeigt werden sollen."
 
 #: includes/class-wc-trusted-shops-admin.php:587
 msgctxt "trusted-shops"
@@ -715,11 +716,11 @@ msgid ""
 "brand attribute. If your products don't have a GTIN, you can pass on the "
 "brand name and the MPN to use Google Integration."
 msgstr ""
-"Markenname des Produkts. Durch Übergeben dieser Variable verbesserst du die "
-"Möglichkeit deine Produkte von Google eindeutig identifizieren zu lassen. "
-"Weise dein Marken-Produktattribut zu. Wenn deine Produkte keine GTIN haben, "
-"kannst du den Markennamen zusammen mit der MPN übergeben, um die Google "
-"Integration zu nutzen."
+"Markenname des Produkts. Durch Übergeben dieser Variable verbessern Sie die "
+"Möglichkeit Ihre Produkte von Google eindeutig identifizieren zu lassen. "
+"Weisen Sie ein Marken-Produktattribut zu. Wenn Ihre Produkte keine GTIN "
+"haben, können Sie den Markennamen zusammen mit der MPN übergeben, um die "
+"Google Integration zu nutzen."
 
 #: includes/class-wc-trusted-shops-admin.php:595
 msgctxt "trusted-shops"
@@ -729,7 +730,7 @@ msgstr "Keine"
 #: includes/class-wc-trusted-shops-admin.php:606
 msgctxt "trusted-shops"
 msgid "Configure your Review Requests"
-msgstr "Konfiguriere deine Bewertungserinnerungen"
+msgstr "Konfigurieren Sie die Bewertungserinnerungen"
 
 #: includes/class-wc-trusted-shops-admin.php:607
 msgctxt "trusted-shops"
@@ -742,11 +743,11 @@ msgid ""
 "unsubscribe."
 msgstr ""
 "Trusted Shops versendet 7 Tage nach Bestellung automatisch eine "
-"Bewertungserinnerung an deinen Kunden. Wenn du lieber selbst entscheiden "
-"möchtest, wann Bewertungsanfragen versendet werden, aktiviere die "
-"untenstehende Option. Möchtest du rechtssicher Bewertungs-Erinnerungen "
-"verschicken, so benötigst du die ausdrückliche Einwilligung deiner Kunden "
-"zum Empfang von Bewertungsemails. Du musst deinen Kunden zudem eine "
+"Bewertungserinnerung an Ihre Kunden. Wenn Sie lieber selbst entscheiden "
+"möchten, wann Bewertungsanfragen versendet werden, aktivieren Sie die "
+"untenstehende Option. Möchten Sie rechtssicher Bewertungs-Erinnerungen "
+"verschicken, so benötigen Sie die ausdrückliche Einwilligung Ihrer Kunden "
+"zum Empfang von Bewertungsemails. Sie müssen Ihren Kunden zudem eine "
 "Möglichkeit geben, Bewertungserinnerungen wieder abzubestellen."
 
 #: includes/class-wc-trusted-shops-admin.php:613
@@ -765,8 +766,8 @@ msgid ""
 "We recommend choosing the order status that you set when your products have "
 "been shipped."
 msgstr ""
-"Wähle hier am besten den Bestellstatus aus WooCommerce aus, den du "
-"einstellst, wenn deine Ware versendet wurde."
+"Wählen Sie hier am besten den Bestellstatus aus WooCommerce aus, den Sie "
+"einstellen, wenn Ihre Ware versendet wurde."
 
 #: includes/class-wc-trusted-shops-admin.php:631
 msgctxt "trusted-shops"
@@ -779,8 +780,9 @@ msgid ""
 "Set the number of days to wait after an order has reached the order status "
 "you selected above before having a review request sent to your customers."
 msgstr ""
-"Stelle hier ein nach wie vielen Tagen nach Erreichen des oben ausgewählten "
-"Bestellstatus die Bewertungserinnerung an den Käufer versendet werden soll."
+"Stellen Sie hier ein nach wie vielen Tagen nach Erreichen des oben "
+"ausgewählten Bestellstatus die Bewertungserinnerung an den Käufer versendet "
+"werden soll."
 
 #: includes/class-wc-trusted-shops-admin.php:644
 msgctxt "trusted-shops"
@@ -815,12 +817,12 @@ msgstr ""
 #: includes/class-wc-trusted-shops-admin.php:755
 msgctxt "trusted-shops"
 msgid "How does Trusted Shops make your shop better?"
-msgstr "Wie macht Trusted Shops deinen Shop besser?"
+msgstr "Wie macht Trusted Shops Ihren Shop besser?"
 
 #: includes/class-wc-trusted-shops-admin.php:757
 msgctxt "trusted-shops"
 msgid "Get your account"
-msgstr "Erstelle deinen Account"
+msgstr "Erstellen Sie Ihren Account"
 
 #: includes/class-wc-trusted-shops-admin.php:777
 msgctxt "trusted-shops"
@@ -840,16 +842,17 @@ msgid ""
 "please go to your My Trusted Shops account. Log in and go to Reviews >  "
 "Settings and deactivate \"Collect reviews automatically\""
 msgstr ""
-"Bitte beachte: Wenn du Bewertungserinnerungen über WooCommerce versenden "
-"möchtest, solltest du den Versand von automatischen Bewertungserinnerungen "
-"über Trusted Shops deaktivieren. Gehe dazu in deinen My Trusted Shops "
-"Account. Logge dich ein und gehe zu Bewertungen > Konfiguration und "
-"deaktiviere dort „Bewertungen automatisch sammeln“."
+"Bitte beachten Sie: Wenn Sie Bewertungserinnerungen über WooCommerce "
+"versenden möchtest, sollten Sie den Versand von automatischen "
+"Bewertungserinnerungen über Trusted Shops deaktivieren. Gehen Sie dazu in "
+"Ihren My Trusted Shops Account. Loggen Sie sich ein und gehen Sie zu "
+"Bewertungen > Konfiguration und deaktivieren Sie dort „Bewertungen "
+"automatisch sammeln“."
 
 #: includes/class-wc-trusted-shops-admin.php:785
 msgctxt "trusted-shops"
 msgid "To your My Trusted Shops account"
-msgstr "Zu deinem My Trusted Shops Account"
+msgstr "Zu Ihrem My Trusted Shops Account"
 
 #: includes/class-wc-trusted-shops-admin.php:789
 msgctxt "trusted-shops"
@@ -858,9 +861,10 @@ msgid ""
 "Review Collector. To do so go to your My Trusted Shops account. Log in and "
 "go to Reviews > Shop Reviews > Review Collector"
 msgstr ""
-"Exportiere hier die Kundendaten und lade diese im Trusted Shops Review "
-"Collector hoch. Gehe dazu in deinen My Trusted Shops Account. Logge dich ein "
-"und gehe zu Bewertungen > Shopbewertungen > Review Collector"
+"Exportieren Sie hier die Kundendaten und laden Sie diese im Trusted Shops "
+"Review Collector hoch. Gehen Sie dazu in Ihren My Trusted Shops Account. "
+"Loggen Sie sich ein und gehen Sie zu Bewertungen > Shopbewertungen > Review "
+"Collector"
 
 #: includes/class-wc-trusted-shops-admin.php:790
 msgctxt "trusted-shops"
@@ -880,9 +884,9 @@ msgid ""
 "Shops Integration? No problem. Export old orders here and upload them in "
 "your %s."
 msgstr ""
-"Du möchtest nachträglich Bewertungen zu Bestellungen sammeln, die vor der "
-"Trusted Shops Integration getätigt wurden? Kein Problem. Exportiere alte "
-"Bestellungen hier und lade diese in deinem %s hoch."
+"Sie möchten nachträglich Bewertungen zu Bestellungen sammeln, die vor der "
+"Trusted Shops Integration getätigt wurden? Kein Problem. Exportieren Sie "
+"alte Bestellungen hier und laden Sie diese in Ihrem %s hoch."
 
 #: includes/class-wc-trusted-shops-admin.php:882
 msgctxt "trusted-shops"
@@ -900,8 +904,8 @@ msgid ""
 "Export your customer and order information of the last x days and upload "
 "them in your My Trusted Shops Account."
 msgstr ""
-"Exportiere deine Kunden- und Bestelldaten der letzten x Tage und lade diese "
-"in deinem My Trusted Shops Account hoch."
+"Exportieren Sie Ihre Kunden- und Bestelldaten der letzten x Tage und laden "
+"Sie diese in Ihrem My Trusted Shops Account hoch."
 
 #: includes/class-wc-trusted-shops-admin.php:892
 msgctxt "trusted-shops"
@@ -935,8 +939,8 @@ msgid ""
 "Set the number of days to wait after the order date before having a Review "
 "Request sent to your customers."
 msgstr ""
-"Stelle hier ein, wie viele Tage zwischen der Bestellung und dem Versand der "
-"Bewertungserinnerung liegen soll."
+"Stellen Sie hier ein, wie viele Tage zwischen der Bestellung und dem Versand "
+"der Bewertungserinnerung liegen soll."
 
 #: includes/class-wc-trusted-shops-admin.php:903
 msgctxt "trusted-shops"
@@ -968,8 +972,9 @@ msgid ""
 "If the <strong>App</strong> helped you, please leave a %s&#9733;&#9733;"
 "&#9733;&#9733;&#9733;%s in the Wordpress plugin repository."
 msgstr ""
-"Wenn dir die <strong>App</strong> hilft, hinterlasse bitte eine %s&#9733;"
-"&#9733;&#9733;&#9733;&#9733;%s Bewertung in der WordPress Plugin Bibliothek."
+"Wenn Ihnen die <strong>App</strong> hilft, hinterlassen Sie bitte eine "
+"%s&#9733;&#9733;&#9733;&#9733;&#9733;%s Bewertung in der WordPress Plugin "
+"Bibliothek."
 
 #: includes/class-wc-trusted-shops-core.php:407
 msgctxt "trusted-shops"
@@ -1012,8 +1017,8 @@ msgctxt "trusted-shops"
 msgid ""
 "Your review reminder e-mail has been cancelled successfully. Return to %s."
 msgstr ""
-"Deine Bewertungserinnerung wurde erfolgreich deaktiviert. Kehre zurück zur "
-"%s."
+"Ihre Bewertungserinnerung wurde erfolgreich deaktiviert. Kehren Sie zurück "
+"zur %s."
 
 #: includes/class-wc-trusted-shops-template-hooks.php:121
 msgctxt "trusted-shops"
@@ -1035,7 +1040,8 @@ msgstr ""
 #: includes/class-wc-trusted-shops-template-hooks.php:198
 msgctxt "trusted-shops"
 msgid "Please allow us to send a review reminder by e-mail."
-msgstr "Bitte akzeptiere den Erhalt einer Bewertungserinnerung per E-Mail."
+msgstr ""
+"Bitte akzeptieren Sie den Erhalt einer Bewertungserinnerung per E-Mail."
 
 #: includes/class-wc-trusted-shops-template-hooks.php:201
 msgctxt "trusted-shops"
@@ -1066,17 +1072,17 @@ msgstr ""
 #: includes/emails/class-wc-ts-email-customer-trusted-shops.php:54
 msgctxt "trusted-shops"
 msgid "Please rate your {site_title} order from {order_date}"
-msgstr "Bitte bewerte deinen Einkauf vom {order_date} bei {site_title}"
+msgstr "Bitte bewerten Sie Ihren Einkauf vom {order_date} bei {site_title}"
 
 #: includes/emails/class-wc-ts-email-customer-trusted-shops.php:64
 msgctxt "trusted-shops"
 msgid "Please rate your Order"
-msgstr "Bitte bewerte deinen Einkauf"
+msgstr "Bitte bewerten Sie Ihren Einkauf"
 
 #: includes/widgets/class-wc-trusted-shops-widget-review-sticker.php:19
 msgctxt "trusted-shops"
 msgid "Show your TS shop review sticker."
-msgstr "Zeige deinen Trusted Shops Review Sticker an."
+msgstr "Zeige den Trusted Shops Review Sticker an."
 
 #: includes/widgets/class-wc-trusted-shops-widget-review-sticker.php:21
 msgctxt "trusted-shops"
@@ -1108,7 +1114,7 @@ msgstr ""
 #, php-format
 msgctxt "trusted-shops"
 msgid "Dear %s %s,"
-msgstr "Hallo %s %s,"
+msgstr "Sehr geehrte(r) %s %s,"
 
 #: templates/emails/customer-trusted-shops.php:19
 #: templates/emails/plain/customer-trusted-shops.php:14
@@ -1119,9 +1125,9 @@ msgid ""
 "some time to write a review about your order. To do so please follow follow "
 "the link."
 msgstr ""
-"Du hast vor einiger Zeit bei %s eingekauft. Vielen Dank! Wir wären froh "
-"darüber, wenn du dir die Zeit nimmst und deinen Einkauf bewerten würdest. Um "
-"dies nun zu tun, klicke bitte auf den nachfolgenden Link."
+"Sie haben vor einiger Zeit bei %s eingekauft. Vielen Dank! Wir wären froh "
+"darüber, wenn Sie sich die Zeit nehmen und Ihren Einkauf bewerten würden. Um "
+"dies nun zu tun, klicken Sie bitte auf den nachfolgenden Link."
 
 #: templates/emails/customer-trusted-shops.php:22
 msgctxt "trusted-shops"

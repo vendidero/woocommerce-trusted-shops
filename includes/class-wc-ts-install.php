@@ -2,12 +2,14 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+use Vendidero\TrustedShops\Package;
+
 if ( ! class_exists( 'WC_TS_Install' ) ) :
 
 /**
  * Installation related functions and hooks
  *
- * @class 		WC_GZD_Install
+ * @class 		WC_TS_Install
  * @version		1.0.0
  * @author 		Vendidero
  */
@@ -22,10 +24,11 @@ class WC_TS_Install {
 	 * Hook in tabs.
 	 */
 	public function __construct() {
-		register_activation_hook( WC_TRUSTED_SHOPS_PLUGIN_FILE, array( $this, 'install' ) );
+		if ( ! Package::is_integration() ) {
+			add_action( 'admin_init', array( __CLASS__, 'check_version' ), 10 );
+		}
 
-		add_action( 'admin_init', array( $this, 'check_version' ), 10 );
-        add_action( 'admin_init', array( __CLASS__, 'install_actions' ), 5 );
+		add_action( 'admin_init', array( __CLASS__, 'install_actions' ), 5 );
 	}
 
     /**
@@ -46,49 +49,52 @@ class WC_TS_Install {
 	 * @access public
 	 * @return void
 	 */
-	public function check_version() {
+	public static function check_version() {
 		if ( ! defined( 'IFRAME_REQUEST' ) && ( get_option( 'woocommerce_trusted_shops_version' ) != WC_trusted_shops()->version || get_option( 'woocommerce_trusted_shops_db_version' ) != WC_trusted_shops()->version ) ) {
-			$this->install();
+			self::install();
 			do_action( 'woocommerce_trusted_shops_updated' );
 		}
 	}
 
-	/**
-	 * Install WC_Germanized
-	 */
-	public function install() {
+	public static function install_integration() {
+		self::create_cron_jobs();
+		self::update_versions();
+	}
 
+	protected static function update_versions() {
+		// Queue upgrades
+		$current_version    = get_option( 'woocommerce_trusted_shops_version', null );
+		$current_db_version = get_option( 'woocommerce_trusted_shops_db_version', null );
+
+		if ( ! is_null( $current_db_version ) && version_compare( $current_db_version, max( array_keys( self::$db_updates ) ), '<' ) ) {
+			// Update
+			update_option( '_wc_ts_needs_update', 1 );
+		} else {
+			self::update_db_version();
+		}
+
+		self::update_ts_version();
+
+		do_action( 'woocommerce_trusted_shops_installed' );
+	}
+
+	/**
+	 * Install TS
+	 */
+	public static function install() {
         // Load Translation for default options
         $locale = apply_filters( 'plugin_locale', get_locale(), 'woocommerce-trusted-shops' );
 		$mofile = WC_trusted_shops()->plugin_path() . '/i18n/languages/woocommerce-trusted-shops.mo';
 		
-		if ( file_exists( WC_trusted_shops()->plugin_path() . '/i18n/languages/woocommerce-trusted-shops-' . $locale . '.mo' ) )
+		if ( file_exists( WC_trusted_shops()->plugin_path() . '/i18n/languages/woocommerce-trusted-shops-' . $locale . '.mo' ) ) {
 			$mofile = WC_trusted_shops()->plugin_path() . '/i18n/languages/woocommerce-trusted-shops-' . $locale . '.mo';
-		
-		load_textdomain( 'woocommerce-trusted-shops', $mofile );
-		
-		if ( ! WC_TS_Dependencies::instance()->is_woocommerce_activated() ) {
-			deactivate_plugins( WC_TRUSTED_SHOPS_PLUGIN_FILE );
-			wp_die( sprintf( __( 'Please install <a href="%s" target="_blank">WooCommerce</a> before installing WooCommerce Germanized. Thank you!', 'woocommerce-germanized' ), 'http://wordpress.org/plugins/woocommerce/' ) );
 		}
 		
-		$this->create_options();
-		$this->create_cron_jobs();
+		load_textdomain( 'woocommerce-trusted-shops', $mofile );
 
-        // Queue upgrades
-        $current_version    = get_option( 'woocommerce_trusted_shops_version', null );
-        $current_db_version = get_option( 'woocommerce_trusted_shops_db_version', null );
-
-        if ( ! is_null( $current_db_version ) && version_compare( $current_db_version, max( array_keys( self::$db_updates ) ), '<' ) ) {
-            // Update
-            update_option( '_wc_ts_needs_update', 1 );
-        } else {
-            self::update_db_version();
-        }
-
-        self::update_wc_gzd_version();
-
-		do_action( 'woocommerce_trusted_shops_installed' );
+		self::create_options();
+		self::create_cron_jobs();
+		self::update_versions();
 
 		// Flush rules after install
 		flush_rewrite_rules();
@@ -97,7 +103,7 @@ class WC_TS_Install {
     /**
      * Update WC version to current
      */
-    private static function update_wc_gzd_version() {
+    private static function update_ts_version() {
         delete_option( 'woocommerce_trusted_shops_version' );
         add_option( 'woocommerce_trusted_shops_version', WC_trusted_shops()->version );
     }
@@ -113,7 +119,7 @@ class WC_TS_Install {
 	/**
 	 * Handle updates
 	 */
-	public function update() {
+	public static function update() {
         $current_db_version = get_option( 'woocommerce_trusted_shops_db_version' );
 
         foreach ( self::$db_updates as $version => $updater ) {
@@ -129,7 +135,7 @@ class WC_TS_Install {
 	/**
 	 * Create cron jobs (clear them first)
 	 */
-	private function create_cron_jobs() {
+	private static function create_cron_jobs() {
 		// Cron jobs
 		wp_clear_scheduled_hook( 'woocommerce_gzd_trusted_shops_reviews' );
 		wp_schedule_event( time(), 'twicedaily', 'woocommerce_gzd_trusted_shops_reviews' );
@@ -142,18 +148,18 @@ class WC_TS_Install {
 	 *
 	 * @access public
 	 */
-	function create_options() {
+	private static function create_options() {
 		// Include settings so that we can run through defaults
 		$options = apply_filters( 'woocommerce_gzd_installation_default_settings', array() );
 
 		foreach ( $options as $value ) {
+
 			if ( isset( $value['default'] ) && isset( $value['id'] ) ) {
 				$autoload = isset( $value['autoload'] ) ? (bool) $value['autoload'] : true;
 				add_option( $value['id'], $value['default'], '', ( $autoload ? 'yes' : 'no' ) );
 			}
 		}
 	}
-
 }
 
 endif;

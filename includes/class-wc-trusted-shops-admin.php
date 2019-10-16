@@ -6,8 +6,6 @@ class WC_Trusted_Shops_Admin {
 
     public $base = null;
 
-    public $script_prefix = '';
-
     public static function instance( $base ) {
         if ( is_null( self::$_instance ) )
             self::$_instance = new self( $base );
@@ -16,30 +14,22 @@ class WC_Trusted_Shops_Admin {
     }
 
     private function __construct( $base ) {
+        $this->base = $base;
 
-        $this->base          = $base;
-        $this->script_prefix = str_replace( '_', '-', $this->base->option_prefix );
+        add_action( 'woocommerce_ts_before_save', array( $this, 'before_save' ), 0, 1 );
+        add_action( 'woocommerce_ts_after_save', array( $this, 'after_save' ), 0, 1 );
 
-        // Register Section
-        add_filter( 'woocommerce_gzd_settings_sections', array( $this, 'register_section' ), 1 );
-        add_filter( 'woocommerce_gzd_get_settings_trusted_shops', array( $this, 'get_settings' ) );
-        add_filter( 'woocommerce_gzd_get_sidebar_trusted_shops', array( $this, 'get_sidebar' ) );
-        add_action( 'woocommerce_gzd_before_save_section_trusted_shops', array( $this, 'before_save' ), 0, 1 );
-        add_action( 'woocommerce_gzd_after_save_section_trusted_shops', array( $this, 'after_save' ), 0, 1 );
+	    add_action( 'woocommerce_ts_admin_settings_before', array( $this, 'wpml_notice' ) );
 
-        add_action( 'wc_germanized_settings_section_before_trusted_shops', array( $this, 'wpml_notice' ) );
-
-        // Default settings
-        add_filter( 'woocommerce_gzd_installation_default_settings', array( $this, 'set_installation_settings' ), 10, 1 );
+	    // Default settings
+	    add_filter( 'woocommerce_gzd_installation_default_settings', array( $this, 'set_installation_settings' ), 10, 1 );
 
         // After Install
         add_action( 'woocommerce_trusted_shops_installed', array( $this, 'create_attribute' ) );
 
         // Review Collector
-        add_action( 'wc_germanized_settings_section_after_trusted_shops', array( $this, 'review_collector_export' ), 0 );
         add_action( 'admin_init', array( $this, 'review_collector_export_csv' ) );
-
-        add_action( 'woocommerce_gzd_load_trusted_shops_script', array( $this, 'load_scripts' ) );
+        add_action( 'woocommerce_trusted_shops_load_admin_scripts', array( $this, 'load_scripts' ) );
 
         add_action( 'woocommerce_product_options_general_product_data', array( $this, 'output_fields' ) );
         add_action( 'woocommerce_product_after_variable_attributes', array( $this, 'output_variation_fields' ), 20, 3 );
@@ -51,6 +41,10 @@ class WC_Trusted_Shops_Admin {
             add_action( 'woocommerce_admin_process_product_object', array( $this, 'save_fields' ), 10, 1 );
         }
     }
+
+	public function set_installation_settings( $settings ) {
+		return array_merge( $settings, $this->get_settings() );
+	}
 
     public function wpml_notice() {
         if ( $this->base->is_multi_language_setup() ) {
@@ -141,10 +135,6 @@ class WC_Trusted_Shops_Admin {
         if ( isset( $_POST['_ts_mpn'] ) ) {
             $product = wc_ts_set_crud_data( $product, '_ts_mpn', wc_clean( $_POST['_ts_mpn'] ) );
         }
-
-        if ( wc_ts_woocommerce_supports_crud() ) {
-            $product->save();
-        }
     }
 
     public function create_attribute() {
@@ -172,27 +162,21 @@ class WC_Trusted_Shops_Admin {
         }
     }
 
-    public function set_installation_settings( $settings ) {
-        return array_merge( $settings, $this->get_settings() );
-    }
-
     public function load_scripts() {
         $screen            = get_current_screen();
         $suffix            = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
         $assets_path       = $this->base->plugin->plugin_url() . '/assets/';
-        $admin_script_path = $assets_path . 'js/admin/';
 
-        wp_register_style( 'woocommerce-' . $this->script_prefix . 'trusted-shops-admin', $assets_path . 'css/woocommerce-' . $this->script_prefix . 'trusted-shops-admin' . $suffix . '.css', false, $this->base->plugin->version );
-        wp_enqueue_style( 'woocommerce-' . $this->script_prefix . 'trusted-shops-admin' );
+        wp_register_style( 'woocommerce-trusted-shops-admin', $assets_path . 'css/admin' . $suffix . '.css', false, $this->base->plugin->version );
+        wp_enqueue_style( 'woocommerce-trusted-shops-admin' );
 
-        wp_register_script( 'wc-' . $this->script_prefix . 'admin-trusted-shops', $admin_script_path . 'trusted-shops' . $suffix . '.js', array( 'jquery', 'woocommerce_settings' ), $this->base->plugin->version, true );
-        wp_localize_script( 'wc-' . $this->script_prefix . 'admin-trusted-shops', 'trusted_shops_params', array(
+        wp_register_script( 'wc-admin-trusted-shops', $assets_path . 'js/admin' . $suffix . '.js', array( 'jquery', 'woocommerce_settings' ), $this->base->plugin->version, true );
+        wp_localize_script( 'wc-admin-trusted-shops', 'trusted_shops_params', array(
             'option_prefix'           => $this->base->option_prefix,
-            'script_prefix'           => $this->script_prefix,
             'i18n_error_mandatory'    => _x( 'This field is mandatory', 'trusted-shops', 'woocommerce-trusted-shops' ),
         ) );
 
-        wp_enqueue_script( 'wc-' . $this->script_prefix . 'admin-trusted-shops' );
+        wp_enqueue_script( 'wc-admin-trusted-shops' );
     }
 
     public function register_section( $sections ) {
@@ -274,7 +258,7 @@ class WC_Trusted_Shops_Admin {
                 'title'             => _x( 'Display Trustbadge', 'trusted-shops', 'woocommerce-trusted-shops' ),
                 'id'                => 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_trustbadge_enable',
                 'desc_tip'          => _x( 'Display the Trustbadge on all the pages of your shop.', 'trusted-shops', 'woocommerce-trusted-shops' ),
-                'type'              => 'gzd_toggle',
+                'type'              => 'ts_toggle',
                 'custom_attributes' => array( 'data-sidebar' => 'wc-ts-sidebar-trustbadge' ),
                 'default'           => 'no'
             ),
@@ -297,7 +281,7 @@ class WC_Trusted_Shops_Admin {
                 'desc_tip'          => _x( 'Choose the distance that the Trustbadge will appear from the bottom-right corner of the screen.', 'trusted-shops', 'woocommerce-trusted-shops' ),
                 'id'                => 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_trustbadge_y',
                 'type'              => 'number',
-                'desc'              => __( 'px', 'trusted-shops', 'woocommerce-trusted-shops' ),
+                'desc'              => _x( 'px', 'trusted-shops', 'woocommerce-trusted-shops' ),
                 'default'           => '0',
                 'custom_attributes' => array(
                     'step'              => '1',
@@ -331,7 +315,7 @@ class WC_Trusted_Shops_Admin {
                 'desc_tip'          => _x( 'To display the Shop Review Sticker, you have to assign the widget "Trusted Shops Review Sticker".', 'trusted-shops', 'woocommerce-trusted-shops' ),
                 'desc'              => sprintf( _x( 'Assign widget %s', 'trusted-shops', 'woocommerce-trusted-shops' ), '<a href="' . admin_url( 'widgets.php' ) . '" target="_blank">' . _x( 'here', 'trusted-shops', 'woocommerce-trusted-shops' ) . '</a>' ),
                 'id'                => 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_review_sticker_enable',
-                'type'              => 'gzd_toggle',
+                'type'              => 'ts_toggle',
                 'custom_attributes' => array( 'data-sidebar' => 'wc-ts-sidebar-shop-reviews' ),
                 'default'           => 'no'
             ),
@@ -402,7 +386,7 @@ class WC_Trusted_Shops_Admin {
                 'desc_tip'          => _x( 'Activate this option to give Google the opportunity to show your Shop Reviews in Google organic search results.', 'trusted-shops', 'woocommerce-trusted-shops' ),
                 'desc'              => _x( 'By activating this option, rich snippets will be integrated in the selected pages so your shop review stars may be displayed in Google organic search results. If you use Product Reviews and already activated rich snippets  in expert mode, we recommend integrating rich snippets for Shop Reviews on category pages only.', 'trusted-shops', 'woocommerce-trusted-shops' ),
                 'id'                => 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_rich_snippets_enable',
-                'type'              => 'gzd_toggle',
+                'type'              => 'ts_toggle',
                 'default'           => 'no'
             ),
 
@@ -454,7 +438,7 @@ class WC_Trusted_Shops_Admin {
                 'title'             => _x( 'Collect Product Reviews', 'trusted-shops', 'woocommerce-trusted-shops' ),
                 'desc_tip'          => _x( 'Show Product Reviews on the product page in a separate tab, just as shown on the picture on the right.', 'trusted-shops', 'woocommerce-trusted-shops' ),
                 'id'                => 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_reviews_enable',
-                'type'              => 'gzd_toggle',
+                'type'              => 'ts_toggle',
                 'custom_attributes' => array( 'data-sidebar' => 'wc-ts-sidebar-product-reviews' ),
                 'default'           => 'no'
             ),
@@ -505,7 +489,7 @@ class WC_Trusted_Shops_Admin {
                 'id'                => 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_product_sticker_star_size',
                 'type'              => 'number',
                 'default'           => '15',
-                'desc'              => __( 'px', 'trusted-shops', 'woocommerce-trusted-shops' ),
+                'desc'              => _x( 'px', 'trusted-shops', 'woocommerce-trusted-shops' ),
                 'desc_tip'          => _x( 'Set the size for the Product Review stars in your Product Reviews tab.', 'trusted-shops', 'woocommerce-trusted-shops' ),
                 'css'               => 'max-width:60px;',
                 'custom_attributes' => array(
@@ -556,7 +540,7 @@ class WC_Trusted_Shops_Admin {
                 'desc_tip'          => _x( 'Set the size for the review stars that are displayed on the product page, below your product name.', 'trusted-shops', 'woocommerce-trusted-shops' ),
                 'type'              => 'number',
                 'default'           => '14',
-                'desc'              => __( 'px', 'trusted-shops', 'woocommerce-trusted-shops' ),
+                'desc'              => _x( 'px', 'trusted-shops', 'woocommerce-trusted-shops' ),
                 'css'               => 'max-width:60px;',
                 'custom_attributes' => array(
                     'step'              => '1',
@@ -571,7 +555,7 @@ class WC_Trusted_Shops_Admin {
                 'id'                => 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_product_widget_font_size',
                 'desc_tip'          => _x( 'Set the font size for the text that goes with your review stars.', 'trusted-shops', 'woocommerce-trusted-shops' ),
                 'type'              => 'number',
-                'desc'              => __( 'px', 'trusted-shops', 'woocommerce-trusted-shops' ),
+                'desc'              => _x( 'px', 'trusted-shops', 'woocommerce-trusted-shops' ),
                 'default'           => '12',
                 'css'               => 'max-width:60px;',
                 'custom_attributes' => array(
@@ -628,7 +612,7 @@ class WC_Trusted_Shops_Admin {
                 array(
                     'title'             => _x( 'Enable Review Requests', 'trusted-shops', 'woocommerce-trusted-shops' ),
                     'id'                => 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_review_reminder_enable',
-                    'type'              => 'gzd_toggle',
+                    'type'              => 'ts_toggle',
                     'default'           => 'no',
                     'custom_attributes' => array( 'data-sidebar' => 'wc-ts-sidebar-review-reminder' ),
                     'autoload'          => false
@@ -765,45 +749,46 @@ class WC_Trusted_Shops_Admin {
     public function get_sidebar() {
         ob_start();
         ?>
-        <div class="wc-gzd-admin-settings-sidebar wc-gzd-admin-settings-sidebar-trusted-shops">
-
-            <div class="wc-ts-sidebar wc-ts-sidebar-active" id="wc-ts-sidebar-default">
-                <h3><?php echo _x( 'How does Trusted Shops make your shop better?', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></h3>
-                <a href="<?php echo $this->get_signup_url(); ?>" target="_blank"><img style="width: 100%; height: auto" src="<?php echo $this->get_image( 'ts.png' ); ?>" /></a>
-                <a class="button button-primary" href="<?php echo $this->get_signup_url(); ?>" target="_blank"><?php echo _x( 'Get your account', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></a>
-            </div>
-
-            <div class="wc-ts-sidebar wc-ts-sidebar-flex" id="wc-ts-sidebar-trustbadge">
-                <div class="wc-ts-sidebar-left wc-ts-sidebar-container">
-                    <img src="<?php echo $this->get_image( 'ts_trustbadge_trustmark_reviews.png' ); ?>" />
-                    <span class="wc-ts-sidebar-desc"><?php echo _x( 'Display Trustbadge with review stars', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></span>
+        <div class="wc-gzd-admin-settings-sidebar-inner sticky">
+            <div class="wc-gzd-admin-settings-sidebar-trusted-shops">
+                <div class="wc-ts-sidebar wc-ts-sidebar-active" id="wc-ts-sidebar-default">
+                    <h3><?php echo _x( 'How does Trusted Shops make your shop better?', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></h3>
+                    <a href="<?php echo $this->get_signup_url(); ?>" target="_blank"><img style="width: 100%; height: auto" src="<?php echo $this->get_image( 'ts.png' ); ?>" /></a>
+                    <a class="button button-primary" href="<?php echo $this->get_signup_url(); ?>" target="_blank"><?php echo _x( 'Get your account', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></a>
                 </div>
-                <div class="wc-ts-sidebar-right wc-ts-sidebar-container">
-                    <img src="<?php echo $this->get_image( 'ts_trustbadge_trustmark-only.png' ); ?>" />
-                    <span class="wc-ts-sidebar-desc"><?php echo _x( 'Display Trustbadge without review stars', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></span>
+
+                <div class="wc-ts-sidebar wc-ts-sidebar-flex" id="wc-ts-sidebar-trustbadge">
+                    <div class="wc-ts-sidebar-left wc-ts-sidebar-container">
+                        <img src="<?php echo $this->get_image( 'ts_trustbadge_trustmark_reviews.png' ); ?>" />
+                        <span class="wc-ts-sidebar-desc"><?php echo _x( 'Display Trustbadge with review stars', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></span>
+                    </div>
+                    <div class="wc-ts-sidebar-right wc-ts-sidebar-container">
+                        <img src="<?php echo $this->get_image( 'ts_trustbadge_trustmark-only.png' ); ?>" />
+                        <span class="wc-ts-sidebar-desc"><?php echo _x( 'Display Trustbadge without review stars', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></span>
+                    </div>
                 </div>
-            </div>
 
-            <div class="wc-ts-sidebar" id="wc-ts-sidebar-shop-reviews">
-                <img style="width: 100%; height: auto" src="<?php echo $this->get_image( 'ts_shop_review_sticker.jpg' ); ?>" />
-            </div>
+                <div class="wc-ts-sidebar" id="wc-ts-sidebar-shop-reviews">
+                    <img style="width: 100%; height: auto" src="<?php echo $this->get_image( 'ts_shop_review_sticker.jpg' ); ?>" />
+                </div>
 
-            <div class="wc-ts-sidebar" id="wc-ts-sidebar-product-reviews">
-                <img style="width: 100%; height: auto" src="<?php echo $this->get_image( 'ts_product_reviews.jpg' ); ?>" />
-                <span class="wc-ts-sidebar-desc"><?php echo _x( 'Product Reviews on the product detail page in an additional tab', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></span>
+                <div class="wc-ts-sidebar" id="wc-ts-sidebar-product-reviews">
+                    <img style="width: 100%; height: auto" src="<?php echo $this->get_image( 'ts_product_reviews.jpg' ); ?>" />
+                    <span class="wc-ts-sidebar-desc"><?php echo _x( 'Product Reviews on the product detail page in an additional tab', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></span>
 
-                <img style="width: 100%; height: auto" src="<?php echo $this->get_image( 'ts_woo.jpg' ); ?>" />
-                <span class="wc-ts-sidebar-desc"><?php echo _x( 'Show Star-Ratings on the product detail page below your product name', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></span>
-            </div>
+                    <img style="width: 100%; height: auto" src="<?php echo $this->get_image( 'ts_woo.jpg' ); ?>" />
+                    <span class="wc-ts-sidebar-desc"><?php echo _x( 'Show Star-Ratings on the product detail page below your product name', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></span>
+                </div>
 
-            <div class="wc-ts-sidebar" id="wc-ts-sidebar-review-reminder">
-                <p><?php echo _x( 'Please note: If you want to send review requests through WooCommerce, you should deactivate automated review requests through Trusted Shops. To do so, please go to your My Trusted Shops account. Log in and go to Reviews >  Settings and deactivate "Collect reviews automatically"', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></p>
-                <a class="button button-secondary" href="<?php echo $this->get_trusted_url( 'https://www.trustedshops.com/tsb2b/sa/ratings/shopRatingWidgetSettings.seam' ); ?>" target="_blank"><?php echo _x( 'To your My Trusted Shops account', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></a>
-            </div>
+                <div class="wc-ts-sidebar" id="wc-ts-sidebar-review-reminder">
+                    <p><?php echo _x( 'Please note: If you want to send review requests through WooCommerce, you should deactivate automated review requests through Trusted Shops. To do so, please go to your My Trusted Shops account. Log in and go to Reviews >  Settings and deactivate "Collect reviews automatically"', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></p>
+                    <a class="button button-secondary" href="<?php echo $this->get_trusted_url( 'https://www.trustedshops.com/tsb2b/sa/ratings/shopRatingWidgetSettings.seam' ); ?>" target="_blank"><?php echo _x( 'To your My Trusted Shops account', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></a>
+                </div>
 
-            <div class="wc-ts-sidebar" id="wc-ts-sidebar-review-collector">
-                <p><?php echo _x( 'Export your customer information here and upload it in the Trusted Shops Review Collector. To do so go to your My Trusted Shops account. Log in and go to Reviews > Shop Reviews > Review Collector', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></p>
-                <a class="button button-secondary" href="<?php echo $this->get_trusted_url( 'https://www.trustedshops.com/tsb2b/sa/ratings/reviewCollector/reviewCollector.seam' ); ?>" target="_blank"><?php echo _x( 'To the Trusted Shops Review Collector', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></a>
+                <div class="wc-ts-sidebar" id="wc-ts-sidebar-review-collector">
+                    <p><?php echo _x( 'Export your customer information here and upload it in the Trusted Shops Review Collector. To do so go to your My Trusted Shops account. Log in and go to Reviews > Shop Reviews > Review Collector', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></p>
+                    <a class="button button-secondary" href="<?php echo $this->get_trusted_url( 'https://www.trustedshops.com/tsb2b/sa/ratings/reviewCollector/reviewCollector.seam' ); ?>" target="_blank"><?php echo _x( 'To the Trusted Shops Review Collector', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></a>
+                </div>
             </div>
         </div>
         <?php
@@ -823,6 +808,7 @@ class WC_Trusted_Shops_Admin {
         $this->base->refresh();
 
         if ( get_option( 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_integration_mode' ) === 'standard' ) {
+
             // Delete code snippets
             delete_option( 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_trustbadge_code' );
             delete_option( 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_product_sticker_code' );
@@ -903,9 +889,9 @@ class WC_Trusted_Shops_Admin {
                 </th>
                 <td class="forminp forminp-select forminp-review-collector">
                     <select data-sidebar="wc-ts-sidebar-review-collector" name="woocommerce_<?php echo $this->base->option_prefix; ?>trusted_shops_review_collector" id="woocommerce_<?php echo $this->base->option_prefix; ?>trusted_shops_review_collector" class="chosen_select">
-                        <option value="30" <?php selected( 30, $days_interval ); ?>><?php echo _x( '30 days', 'trusted-shops', 'woocommerce-germanized' ); ?></option>
-                        <option value="60" <?php selected( 60, $days_interval ); ?>><?php echo _x( '60 days', 'trusted-shops', 'woocommerce-germanized' ); ?></option>
-                        <option value="90" <?php selected( 90, $days_interval ); ?>><?php echo _x( '90 days', 'trusted-shops', 'woocommerce-germanized' ); ?></option>
+                        <option value="30" <?php selected( 30, $days_interval ); ?>><?php echo _x( '30 days', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></option>
+                        <option value="60" <?php selected( 60, $days_interval ); ?>><?php echo _x( '60 days', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></option>
+                        <option value="90" <?php selected( 90, $days_interval ); ?>><?php echo _x( '90 days', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></option>
                     </select>
                     <span class="description"><?php printf( _x( 'Upload customer and order information %s.', 'trusted-shops', 'woocommerce-trusted-shops' ), '<a href="' . $this->get_trusted_url( 'https://www.trustedshops.com/tsb2b/sa/ratings/reviewCollector/reviewCollector.seam' ) . '" target="_blank">' . _x( 'here', 'trusted-shops', 'woocommerce-trusted-shops' ) . '</a>' ); ?></span>
                     <div class="trusted-shops-review-collector-wrap">
@@ -934,9 +920,9 @@ class WC_Trusted_Shops_Admin {
         return $this->get_trusted_url( $url, $args );
     }
 
-    private function get_trusted_url( $url, $args = array() ) {
-        $param_args = $this->base->et_params;
-        $args       = wp_parse_args( $args, array(
+    public function get_trusted_url( $url, $args = array() ) {
+        $param_args  = $this->base->et_params;
+        $args        = wp_parse_args( $args, array(
             'utm_term'     => substr( get_locale(), 0, 2 ),
             'shop_id'      => $this->base->ID,
             'params'       => false,
