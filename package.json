@@ -11,7 +11,9 @@
   "main": "Gruntfile.js",
   "scripts": {
     "build": "grunt",
-    "build-watch": "grunt watch"
+    "build-watch": "grunt watch",
+    "deploy": "composer install --no-dev && sh ./bin/github-deploy.sh",
+    "package-plugin": "./bin/build-plugin-zip.sh"
   },
   "devDependencies": {
     "autoprefixer": "9.6.1",
