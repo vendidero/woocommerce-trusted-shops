@@ -23,6 +23,12 @@ class WC_TS_GZD_Settings_Tab extends WC_GZD_Settings_Tab {
 		add_action( 'woocommerce_gzd_admin_settings_before_trusted_shops', array( $this, 'before_output' ) );
 	}
 
+	public function get_help_link() {
+		$admin = WC_trusted_shops()->trusted_shops->get_dependency( 'admin' );
+
+		return $admin->get_trusted_url( 'https://support.trustedshops.com/en/apps/woocommerce' );
+	}
+
 	public function before_output() {
 		do_action( 'woocommerce_ts_admin_settings_before', $this->get_settings() );
 	}
@@ -39,11 +45,11 @@ class WC_TS_GZD_Settings_Tab extends WC_GZD_Settings_Tab {
 	}
 
 	public function get_description() {
-		return _x( 'Adjust your Trusted Shops settings here.', 'trusted-shops', 'woocommerce-trusted-shops' );
+		return _x( 'Setup your Trusted Shops Integration.', 'trusted-shops', 'woocommerce-trusted-shops' );
 	}
 
 	public function get_label() {
-		return _x( 'Trusted Shops', 'trusted-shops', 'woocommerce-germanized' );
+		return _x( 'Trusted Shops', 'trusted-shops', 'woocommerce-trusted-shops' );
 	}
 
 	public function get_name() {

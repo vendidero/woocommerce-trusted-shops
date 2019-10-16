@@ -21,12 +21,14 @@ class WC_Trusted_Shops_Admin {
 
 	    add_action( 'woocommerce_ts_admin_settings_before', array( $this, 'wpml_notice' ) );
 
+	    // Default settings
+	    add_filter( 'woocommerce_gzd_installation_default_settings', array( $this, 'set_installation_settings' ), 10, 1 );
+
         // After Install
         add_action( 'woocommerce_trusted_shops_installed', array( $this, 'create_attribute' ) );
 
         // Review Collector
         add_action( 'admin_init', array( $this, 'review_collector_export_csv' ) );
-
         add_action( 'woocommerce_trusted_shops_load_admin_scripts', array( $this, 'load_scripts' ) );
 
         add_action( 'woocommerce_product_options_general_product_data', array( $this, 'output_fields' ) );
@@ -39,6 +41,10 @@ class WC_Trusted_Shops_Admin {
             add_action( 'woocommerce_admin_process_product_object', array( $this, 'save_fields' ), 10, 1 );
         }
     }
+
+	public function set_installation_settings( $settings ) {
+		return array_merge( $settings, $this->get_settings() );
+	}
 
     public function wpml_notice() {
         if ( $this->base->is_multi_language_setup() ) {
@@ -914,9 +920,9 @@ class WC_Trusted_Shops_Admin {
         return $this->get_trusted_url( $url, $args );
     }
 
-    private function get_trusted_url( $url, $args = array() ) {
-        $param_args = $this->base->et_params;
-        $args       = wp_parse_args( $args, array(
+    public function get_trusted_url( $url, $args = array() ) {
+        $param_args  = $this->base->et_params;
+        $args        = wp_parse_args( $args, array(
             'utm_term'     => substr( get_locale(), 0, 2 ),
             'shop_id'      => $this->base->ID,
             'params'       => false,

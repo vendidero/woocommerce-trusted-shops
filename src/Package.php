@@ -50,7 +50,7 @@ class Package {
 	public static function dependency_notice() {
 		?>
 		<div class="notice notice-error">
-			<p><?php _e( 'Trustbadge Reviews for WooCommerce needs at least WooCommerce version 3.1 to run.', 'woocommerce-trusted-shops' ); ?></p>
+			<p><?php _ex( 'Trustbadge Reviews for WooCommerce needs at least WooCommerce version 3.1 to run.', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></p>
 		</div>
 		<?php
 	}

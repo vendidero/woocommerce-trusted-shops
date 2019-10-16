@@ -2,11 +2,12 @@
 Contributors: vendidero, trustbadge
 Tags: advanced reviews, badge, best reviews, business ratings, business reviews, confirm email reviews, google rating, google shopping, product ratings, product reviews, rate products, rating summary, Rating Widget, ratings, reputation, review widget, review, reviews easy, reviews, rich snippets, seal,  seo, star rating, stars, trust, trustbadge, trusted reviews, trusted shops, ts, user rating, user reviews, woocommerce trusted shops, woocommerce
 Donate link: http://www.trustbadge.com
-Requires at least: 3.8
-Tested up to: 5.1
-WC requires at least: 2.4
-WC tested up to: 3.6
+Requires at least: 4.9
+Tested up to: 5.2
+WC requires at least: 3.4
+WC tested up to: 3.7
 Stable tag: 3.0.3
+Requires PHP: 5.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
