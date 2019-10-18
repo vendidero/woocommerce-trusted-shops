@@ -106,17 +106,33 @@ class WC_TS_Email_Customer_Trusted_Shops extends WC_Email {
 	 * @return string
 	 */
 	public function get_content_html() {
-		ob_start();
-		wc_get_template( $this->template_html, array(
-			'order' 		=> $this->object,
-			'email_heading' => $this->get_heading(),
-			'sent_to_admin' => false,
-			'plain_text'    => false,
-			'email'			=> $this
+		return wc_get_template_html( $this->template_html, array(
+			'order' 		     => $this->object,
+			'email_heading'      => $this->get_heading(),
+			'additional_content' => $this->get_additional_content(),
+			'sent_to_admin'      => false,
+			'plain_text'         => false,
+			'email'			     => $this
 		) );
-		return ob_get_clean();
 	}
 
+	/**
+	 * Get content plain.
+	 *
+	 * @return string
+	 */
+	public function get_content_plain() {
+		return wc_get_template_html(
+			$this->template_plain, array(
+				'order' 		     => $this->object,
+				'email_heading'      => $this->get_heading(),
+				'additional_content' => $this->get_additional_content(),
+				'sent_to_admin'      => false,
+				'plain_text'         => false,
+				'email'			     => $this
+			)
+		);
+	}
 }
 
 endif;
