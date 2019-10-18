@@ -14,7 +14,7 @@ final class WooCommerce_Trusted_Shops {
 	 *
 	 * @var string
 	 */
-	public $version = '4.0.0-beta';
+	public $version;
 
 	/**
 	 * Single instance of WooCommerce Trusted Shops Main Class
@@ -85,6 +85,9 @@ final class WooCommerce_Trusted_Shops {
 		}
 
 		spl_autoload_register( array( $this, 'autoload' ) );
+
+		// Update version based on Package.
+		$this->version = Package::get_version();
 
 		// Define constants
 		$this->define_constants();
