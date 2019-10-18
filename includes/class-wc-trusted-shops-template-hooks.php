@@ -206,8 +206,7 @@ class WC_Trusted_Shops_Template_Hooks {
 
     public function set_product_widget_template( $template ) {
         if ( in_array( $template, array( 'single-product/rating.php' ) ) ) {
-            $GLOBALS['plugin'] = $this->base;
-            $template          = 'trusted-shops/product-widget.php';
+            $template = 'trusted-shops/product-widget.php';
         }
 
         return $template;

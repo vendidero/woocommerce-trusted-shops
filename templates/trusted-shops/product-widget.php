@@ -6,14 +6,12 @@
  * @package 	WooCommerceGermanized/Templates
  * @version     1.0
  */
-
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	
-	global $post;
-	$product = wc_get_product( $post->ID );
-	$plugin  = isset( $plugin ) ? $plugin : $GLOBALS['plugin'];
-
-    $skus    = $plugin->get_product_skus( $post->ID );
+global $post;
+$product = wc_get_product( $post->ID );
+$plugin  = isset( $plugin ) ? $plugin : WC_trusted_shops()->trusted_shops;
+$skus    = $plugin->get_product_skus( $post->ID );
 ?>
 <!-- Module: WooCommerce Trusted Shops -->
 <div <?php echo $plugin->get_selector( 'product_widget' ); ?>></div>

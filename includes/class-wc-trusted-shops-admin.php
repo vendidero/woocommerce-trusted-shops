@@ -436,7 +436,7 @@ class WC_Trusted_Shops_Admin {
 
             array(
                 'title'             => _x( 'Collect Product Reviews', 'trusted-shops', 'woocommerce-trusted-shops' ),
-                'desc_tip'          => _x( 'Show Product Reviews on the product page in a separate tab, just as shown on the picture on the right.', 'trusted-shops', 'woocommerce-trusted-shops' ),
+                'desc'              => _x( 'Show Product Reviews on the product page in a separate tab, just as shown on the picture on the right.', 'trusted-shops', 'woocommerce-trusted-shops' ),
                 'id'                => 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_reviews_enable',
                 'type'              => 'ts_toggle',
                 'custom_attributes' => array( 'data-sidebar' => 'wc-ts-sidebar-product-reviews' ),
@@ -448,7 +448,7 @@ class WC_Trusted_Shops_Admin {
                 'desc_tip'          => _x( 'You can choose a name for the tab with your Product Reviews.', 'trusted-shops', 'woocommerce-trusted-shops' ),
                 'desc'              => _x( 'Show Product Reviews on the product detail page in an additional tab.', 'trusted-shops', 'woocommerce-trusted-shops' ),
                 'id'                => 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_product_sticker_enable',
-                'type'              => 'checkbox',
+                'type'              => 'ts_toggle',
                 'default'           => 'no'
             ),
 
@@ -522,7 +522,7 @@ class WC_Trusted_Shops_Admin {
                 'desc'              => _x( 'Show star ratings on the product detail page below your product name.', 'trusted-shops', 'woocommerce-trusted-shops' ),
                 'desc_tip'          => _x( 'Display Product Review stars on product pages below the product name, just as shown in the picture on the right.', 'trusted-shops', 'woocommerce-trusted-shops' ),
                 'id'                => 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_product_widget_enable',
-                'type'              => 'checkbox',
+                'type'              => 'ts_toggle',
                 'default'           => 'no'
             ),
 
@@ -654,7 +654,7 @@ class WC_Trusted_Shops_Admin {
                     'desc'              => _x( 'Allows the customer to unsubscribe from Review Requests.', 'trusted-shops', 'woocommerce-trusted-shops' ),
                     'default'           => 'yes',
                     'id'                => 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_review_reminder_opt_out',
-                    'type'              => 'checkbox',
+                    'type'              => 'ts_toggle',
                 ),
 
                 array( 'type' => 'sectionend', 'id' => 'trusted_shops_review_reminder_options' ),
