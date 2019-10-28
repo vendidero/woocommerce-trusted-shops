@@ -12,7 +12,7 @@
   "scripts": {
     "build": "grunt",
     "build-watch": "grunt watch",
-    "deploy": "composer install --no-dev && sh ./bin/github-deploy.sh",
+    "deploy": "sh ./bin/deploy.sh",
     "package-plugin": "./bin/build-plugin-zip.sh"
   },
   "devDependencies": {

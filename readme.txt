@@ -3,7 +3,7 @@ Contributors: vendidero, trustbadge
 Tags: advanced reviews, badge, best reviews, business ratings, business reviews, confirm email reviews, google rating, google shopping, product ratings, product reviews, rate products, rating summary, Rating Widget, ratings, reputation, review widget, review, reviews easy, reviews, rich snippets, seal,  seo, star rating, stars, trust, trustbadge, trusted reviews, trusted shops, ts, user rating, user reviews, woocommerce trusted shops, woocommerce
 Donate link: http://www.trustbadge.com
 Requires at least: 4.9
-Tested up to: 5.2
+Tested up to: 5.3
 WC requires at least: 3.4
 WC tested up to: 3.8
 Stable tag: 4.0.0
@@ -55,10 +55,9 @@ As promised, it´s easy like that. Welcome on board!
 
 = Minimal Requirements =
 
-* WordPress 3.8 or newer
-* WooCommerce 2.4
-* PHP Version 5.2.4 or newer
-* MySQL Version 5.0 or newer
+* WordPress 4.9 or newer
+* WooCommerce 3.0
+* PHP Version 5.6 or newer
 
 = Shortcodes =
 
@@ -81,6 +80,11 @@ More information regarding your Trusted Shops Membership can be found [here](htt
 1. WooCommerce Trusted Shops Settings
 
 == Changelog ==
+
+= 4.0.0 =
+* Improvement: Legacy code removals
+* Improvement: PHP 5.6
+* Improvement: WC 3.8 support
 
 = 3.0.3 =
 * Improvement: Indicate correct module name in templates for suppport purposes
