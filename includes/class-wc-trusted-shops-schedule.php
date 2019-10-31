@@ -200,12 +200,19 @@ class WC_Trusted_Shops_Schedule {
         while ( $order_query->have_posts() ) {
 
             $order_query->next_post();
+
             $order          = wc_get_order( $order_query->post->ID );
-            $completed_date = apply_filters( 'woocommerce_trusted_shops_review_reminder_order_completed_date', wc_ts_get_crud_data( $order, 'completed_date' ), $order );
-            $diff           = $this->base->plugin->get_date_diff( $completed_date, date( 'Y-m-d H:i:s' ) );
+            $completed_date = apply_filters( 'woocommerce_trusted_shops_review_reminder_order_completed_date', $order->get_date_completed(), $order );
+
+            if ( ! $completed_date ) {
+            	continue;
+            }
+
+            $now            = new DateTime();
+	        $diff           = $now->diff( $completed_date );
             $min_days       = (int) $this->base->review_reminder_days;
 
-            if ( $diff['d'] >= $min_days ) {
+            if ( $diff->days >= $min_days ) {
 
                 if ( apply_filters( 'woocommerce_trusted_shops_send_review_reminder_email', true, $order ) ) {
                     if ( $mail = $this->base->plugin->emails->get_email_instance_by_id( 'customer_trusted_shops' ) ) {

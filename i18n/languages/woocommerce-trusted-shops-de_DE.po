@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WooCommerce Trusted Shops\n"
-"POT-Creation-Date: 2019-10-15 12:40+0200\n"
-"PO-Revision-Date: 2019-10-15 12:41+0200\n"
+"POT-Creation-Date: 2019-10-30 17:53+0100\n"
+"PO-Revision-Date: 2019-10-30 19:17+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -951,17 +951,17 @@ msgctxt "trusted-shops"
 msgid "Cheatin&#8217; huh?"
 msgstr "So geht das leider nicht.."
 
-#: includes/class-wc-trusted-shops-core.php:210
+#: includes/class-wc-trusted-shops-core.php:213
 msgctxt "trusted-shops"
 msgid "Yes"
 msgstr "Ja"
 
-#: includes/class-wc-trusted-shops-core.php:210
+#: includes/class-wc-trusted-shops-core.php:213
 msgctxt "trusted-shops"
 msgid "No"
 msgstr "Nein"
 
-#: includes/class-wc-trusted-shops-core.php:258
+#: includes/class-wc-trusted-shops-core.php:261
 #, php-format
 msgctxt "trusted-shops"
 msgid ""
@@ -971,7 +971,7 @@ msgstr ""
 "Wenn dir die <strong>App</strong> hilft, hinterlasse bitte eine %s&#9733;"
 "&#9733;&#9733;&#9733;&#9733;%s Bewertung in der WordPress Plugin Bibliothek."
 
-#: includes/class-wc-trusted-shops-core.php:407
+#: includes/class-wc-trusted-shops-core.php:410
 msgctxt "trusted-shops"
 msgid "Settings"
 msgstr "Einstellungen"
@@ -1094,7 +1094,7 @@ msgctxt "trusted-shops"
 msgid "Title"
 msgstr "Bezeichnung"
 
-#: src/Package.php:53
+#: src/Package.php:55
 msgctxt "trusted-shops"
 msgid ""
 "Trustbadge Reviews for WooCommerce needs at least WooCommerce version 3.1 to "
@@ -1103,15 +1103,15 @@ msgstr ""
 "Trustbadge Reviews for WooCommerce benötigt mind. WooCommerce Version 3.1 um "
 "zu starten."
 
-#: templates/emails/customer-trusted-shops.php:18
-#: templates/emails/plain/customer-trusted-shops.php:12
+#: templates/emails/customer-trusted-shops.php:17
+#: templates/emails/plain/customer-trusted-shops.php:14
 #, php-format
 msgctxt "trusted-shops"
 msgid "Dear %s %s,"
 msgstr "Hallo %s %s,"
 
-#: templates/emails/customer-trusted-shops.php:19
-#: templates/emails/plain/customer-trusted-shops.php:14
+#: templates/emails/customer-trusted-shops.php:18
+#: templates/emails/plain/customer-trusted-shops.php:16
 #, php-format
 msgctxt "trusted-shops"
 msgid ""
