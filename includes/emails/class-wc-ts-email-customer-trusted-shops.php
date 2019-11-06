@@ -100,6 +100,22 @@ class WC_TS_Email_Customer_Trusted_Shops extends WC_Email {
 	}
 
 	/**
+	 * Return content from the additional_content field.
+	 *
+	 * Displayed above the footer.
+	 *
+	 * @since 2.0.4
+	 * @return string
+	 */
+	public function get_additional_content() {
+		if ( is_callable( 'parent::get_additional_content' ) ) {
+			return parent::get_additional_content();
+		}
+
+		return '';
+	}
+
+	/**
 	 * get_content_html function.
 	 *
 	 * @access public

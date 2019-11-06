@@ -215,12 +215,18 @@ class WC_Trusted_Shops_Schedule {
             if ( $diff->days >= $min_days ) {
 
                 if ( apply_filters( 'woocommerce_trusted_shops_send_review_reminder_email', true, $order ) ) {
-                    if ( $mail = $this->base->plugin->emails->get_email_instance_by_id( 'customer_trusted_shops' ) ) {
-                        $mail->trigger( wc_ts_get_crud_data( $order, 'id' ) );
-                    }
-                }
 
-                update_post_meta( wc_ts_get_crud_data( $order, 'id' ), '_trusted_shops_review_mail_sent', 1 );
+	                $mails = WC()->mailer()->get_emails();
+
+	                foreach ( $mails as $mail ) {
+
+	                	if ( 'customer_trusted_shops' === $mail->id ) {
+			                $mail->trigger( wc_ts_get_crud_data( $order, 'id' ) );
+
+			                update_post_meta( wc_ts_get_crud_data( $order, 'id' ), '_trusted_shops_review_mail_sent', 1 );
+		                }
+	                }
+                }
             }
         }
 

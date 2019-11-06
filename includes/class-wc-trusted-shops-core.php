@@ -23,8 +23,6 @@ final class WooCommerce_Trusted_Shops {
 	 */
 	protected static $_instance = null;
 
-	public $emails = null;
-
 	public $trusted_shops = null;
 
     public $compatibilities = array();
