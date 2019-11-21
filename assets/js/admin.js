@@ -108,7 +108,8 @@ window.trusted_shops = window.trusted_shops || {};
             var exclude_hide_experts = [
                 'woocommerce_' + self.optionPrefix + 'trusted_shops_rich_snippets_category',
                 'woocommerce_' + self.optionPrefix + 'trusted_shops_rich_snippets_product',
-                'woocommerce_' + self.optionPrefix + 'trusted_shops_rich_snippets_home'
+                'woocommerce_' + self.optionPrefix + 'trusted_shops_rich_snippets_home',
+                'woocommerce_' + self.optionPrefix + 'trusted_shops_product_sticker_tab_text'
             ];
 
             if ( $parent.is( ':checked' ) ) {
@@ -124,7 +125,7 @@ window.trusted_shops = window.trusted_shops || {};
                 }
 
                 // Code blocks
-                if ( 'woocommerce_' + self.optionPrefix + 'trusted_shops_' + group + '_code' === elementId ||  'woocommerce_' + self.optionPrefix + 'trusted_shops_' + group + '_selector' === elementId ) {
+                if ( 'woocommerce_' + self.optionPrefix + 'trusted_shops_' + group + '_code' === elementId || 'woocommerce_' + self.optionPrefix + 'trusted_shops_' + group + '_selector' === elementId ) {
                     if ( ! self.isExpertMode() && showElement ) {
                         showElement = false;
                     }
