@@ -30,13 +30,11 @@ class WC_TS_Email_Customer_Trusted_Shops extends WC_Email {
 		// Triggers for this email
 		add_action( 'woocommerce_germanized_trusted_shops_review_notification', array( $this, 'trigger' ) );
 
-		if ( property_exists( $this, 'placeholders' ) ) {
-			$this->placeholders   = array(
-				'{site_title}'   => $this->get_blogname(),
-				'{order_number}' => '',
-				'{order_date}'   => '',
-			);
-		}
+		$this->placeholders   = array(
+			'{site_title}'   => $this->get_blogname(),
+			'{order_number}' => '',
+			'{order_date}'   => '',
+		);
 
 		// Call parent constuctor
 		parent::__construct();
@@ -79,15 +77,8 @@ class WC_TS_Email_Customer_Trusted_Shops extends WC_Email {
 			$this->object 		= wc_get_order( $order_id );
 			$this->recipient	= wc_ts_get_crud_data( $this->object, 'billing_email' );
 
-			if ( property_exists( $this, 'placeholders' ) ) {
-				$this->placeholders['{order_date}']   = wc_gzd_get_order_date( $this->object, wc_date_format() );
-				$this->placeholders['{order_number}'] = $this->object->get_order_number();
-			} else {
-				$this->find['order-date']      = '{order_date}';
-				$this->find['order-number']    = '{order_number}';
-				$this->replace['order-date']   = wc_gzd_get_order_date( $this->object, wc_date_format() );
-				$this->replace['order-number'] = $this->object->get_order_number();
-			}
+			$this->placeholders['{order_date}']   = wc_gzd_get_order_date( $this->object, wc_date_format() );
+			$this->placeholders['{order_number}'] = $this->object->get_order_number();
 		}
 
 		if ( $this->is_enabled() && $this->get_recipient() ) {
