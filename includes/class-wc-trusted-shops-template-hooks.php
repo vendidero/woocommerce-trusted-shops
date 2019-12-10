@@ -169,7 +169,7 @@ class WC_Trusted_Shops_Template_Hooks {
         $opted_in = wc_ts_get_crud_data( $order, 'ts_review_reminder_opted_in' );
 
         if ( $type && 'yes' === $opted_in && 'customer_processing_order' === $type->id ) {
-            wc_get_template( 'trusted-shops/email-cancel-review-reminder.php', array( 'link' => $this->get_cancel_review_reminder_link( $order ) ) );
+            wc_get_template( 'emails/cancel-review-reminder.php', array( 'link' => $this->get_cancel_review_reminder_link( $order ) ) );
         }
     }
 
