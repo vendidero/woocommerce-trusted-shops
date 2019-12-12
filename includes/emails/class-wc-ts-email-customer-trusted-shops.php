@@ -15,6 +15,8 @@ if ( ! class_exists( 'WC_TS_Email_Customer_Trusted_Shops' ) ) :
  */
 class WC_TS_Email_Customer_Trusted_Shops extends WC_Email {
 
+	public $helper = false;
+
 	/**
 	 * Constructor
 	 */
@@ -26,6 +28,7 @@ class WC_TS_Email_Customer_Trusted_Shops extends WC_Email {
 
 		$this->template_html 	= 'emails/customer-trusted-shops.php';
 		$this->template_plain  	= 'emails/plain/customer-trusted-shops.php';
+		$this->helper           = function_exists( 'wc_gzd_get_email_helper' ) ? wc_gzd_get_email_helper( $this ) : false;
 
 		// Triggers for this email
 		add_action( 'woocommerce_germanized_trusted_shops_review_notification', array( $this, 'trigger' ) );
@@ -69,7 +72,9 @@ class WC_TS_Email_Customer_Trusted_Shops extends WC_Email {
 	 * @return void
 	 */
 	public function trigger( $order_id ) {
-		if ( is_callable( array( $this, 'setup_locale' ) ) ) {
+		if ( $this->helper ) {
+			$this->helper->setup_locale();
+		} else {
 			$this->setup_locale();
 		}
 
@@ -81,11 +86,18 @@ class WC_TS_Email_Customer_Trusted_Shops extends WC_Email {
 			$this->placeholders['{order_number}'] = $this->object->get_order_number();
 		}
 
+		if ( $this->helper ) {
+			$this->helper->setup_email_locale();
+		}
+
 		if ( $this->is_enabled() && $this->get_recipient() ) {
 			$this->send( $this->get_recipient(), $this->get_subject(), $this->get_content(), $this->get_headers(), $this->get_attachments() );
 		}
 
-		if ( is_callable( array( $this, 'restore_locale' ) ) ) {
+		if ( $this->helper ) {
+			$this->helper->restore_email_locale();
+			$this->helper->restore_locale();
+		} else {
 			$this->restore_locale();
 		}
 	}
