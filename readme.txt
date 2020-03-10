@@ -82,9 +82,10 @@ More information regarding your Trusted Shops Membership can be found [here](htt
 == Changelog ==
 
 = 4.0.4 =
-- Improvement: Indicate Woo 4.0 + WP 5.4 support
-- Improvement: Removed legacy support
-- Fix: Email schedule
+* Improvement: Indicate Woo 4.0 + WP 5.4 support
+* Improvement: Removed legacy support
+* Fix: Email schedule
+* Fix: Force review widget template override
 
 = 4.0.0 =
 * Improvement: Legacy code removals
