@@ -104,14 +104,14 @@ class WC_Trusted_Shops_Admin {
             $data[ $k ] = ( isset( $_POST[ $data_k ][$i] ) ? $_POST[ $data_k ][$i] : null );
         }
 
-        $product        = wc_get_product( $variation_id );
+        if ( $product = wc_get_product( $variation_id ) ) {
+	        foreach( $data as $key => $value ) {
+		        $product = wc_ts_set_crud_data( $product, $key, $value );
+	        }
 
-        foreach( $data as $key => $value ) {
-            $product = wc_ts_set_crud_data( $product, $key, $value );
-        }
-
-        if ( wc_ts_woocommerce_supports_crud() ) {
-            $product->save();
+	        if ( wc_ts_woocommerce_supports_crud() ) {
+		        $product->save();
+	        }
         }
     }
 
