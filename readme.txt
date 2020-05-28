@@ -5,7 +5,7 @@ Donate link: http://www.trustbadge.com
 Requires at least: 4.9
 Tested up to: 5.4
 WC requires at least: 3.4
-WC tested up to: 4.0
+WC tested up to: 4.2
 Stable tag: 4.0.4
 Requires PHP: 5.6
 License: GPLv3
