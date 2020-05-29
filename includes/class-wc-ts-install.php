@@ -17,7 +17,8 @@ class WC_TS_Install {
 
     /** @var array DB updates that need to be run */
     private static $db_updates = array(
-        '3.0.0' => 'updates/woocommerce-ts-update-3.0.0.php'
+        '3.0.0' => 'updates/woocommerce-ts-update-3.0.0.php',
+        '4.0.6' => 'updates/woocommerce-ts-update-4.0.6.php'
     );
 
 	/**

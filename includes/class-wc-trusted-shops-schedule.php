@@ -169,9 +169,15 @@ class WC_Trusted_Shops_Schedule {
             return;
         }
 
+	    $order_statuses = $this->base->review_reminder_status;
+
+	    if ( ! is_array( $order_statuses ) ) {
+		    $order_statuses = array( $order_statuses );
+	    }
+
         $args = array(
             'post_type'   => 'shop_order',
-            'post_status' => apply_filters( 'woocommerce_trusted_shops_review_reminder_valid_order_statuses', array( $this->base->review_reminder_status ) ),
+            'post_status' => apply_filters( 'woocommerce_trusted_shops_review_reminder_valid_order_statuses', $order_statuses ),
             'showposts'   => -1,
             'meta_query'  => array(
                 'relation'        => 'AND',

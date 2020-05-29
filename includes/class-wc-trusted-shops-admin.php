@@ -621,9 +621,9 @@ class WC_Trusted_Shops_Admin {
                 array(
                     'title'             => _x( 'WooCommerce status', 'trusted-shops', 'woocommerce-trusted-shops' ),
                     'desc_tip'          => _x( 'We recommend choosing the order status that you set when your products have been shipped.', 'trusted-shops', 'woocommerce-trusted-shops' ),
-                    'default'           => 'wc-completed',
+                    'default'           => array( 'wc-completed' ),
                     'id'                => 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_review_reminder_status',
-                    'type'              => 'select',
+                    'type'              => 'multiselect',
                     'class'             => 'chosen_select',
                 ),
 
