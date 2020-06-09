@@ -207,7 +207,10 @@ class WC_Trusted_Shops_Schedule {
 
             $order_query->next_post();
 
-            $order          = wc_get_order( $order_query->post->ID );
+            if ( ! $order = wc_get_order( $order_query->post->ID ) ) {
+            	continue;
+            }
+
             $completed_date = apply_filters( 'woocommerce_trusted_shops_review_reminder_order_completed_date', $order->get_date_completed(), $order );
 
             if ( ! $completed_date ) {
