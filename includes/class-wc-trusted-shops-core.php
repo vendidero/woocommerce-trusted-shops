@@ -152,7 +152,7 @@ final class WooCommerce_Trusted_Shops {
      * Add notices + styles if needed.
      */
     public function add_notices() {
-        $screen          = get_current_screen();
+        $screen          = function_exists( 'get_current_screen' ) ? get_current_screen() : false;
         $screen_id       = $screen ? $screen->id : '';
         $show_on_screens = array(
             'dashboard',
