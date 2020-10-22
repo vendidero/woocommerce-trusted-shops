@@ -320,7 +320,13 @@ class WC_Trusted_Shops {
      * @return string
      */
     public function get_payment_gateway( $payment_method_id ) {
-        return 'wcOther';
+        $gateways = WC()->payment_gateways()->payment_gateways();
+
+        if ( array_key_exists( $payment_method_id, $gateways ) ) {
+            return $gateways[ $payment_method_id ]->get_method_title();
+        } else {
+            return 'wcOther';
+        }
     }
 
     /**
