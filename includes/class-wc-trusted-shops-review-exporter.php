@@ -61,12 +61,12 @@ class WC_Trusted_Shops_Review_Exporter extends WC_CSV_Exporter {
 	 */
 	public function get_default_column_names() {
 		return apply_filters( "woocommerce_gzd_{$this->export_type}_default_columns", array(
-			'id'                 => _x( 'Order ID', 'trusted-shops', 'woocommerce-trusted-shops' ),
-			'date'               => _x( 'Order date', 'trusted-shops', 'woocommerce-trusted-shops' ),
-			'days'               => _x( '# Days', 'trusted-shops', 'woocommerce-trusted-shops' ),
-			'billing_email'      => _x( 'Email', 'trusted-shops', 'woocommerce-trusted-shops' ),
-			'billing_first_name' => _x( 'First name', 'trusted-shops', 'woocommerce-trusted-shops' ),
-			'billing_last_name'  => _x( 'Last name', 'trusted-shops', 'woocommerce-trusted-shops' ),
+			'id'                 => 'reference',
+			'date'               => 'date',
+			'days'               => 'days',
+			'billing_email'      => 'email',
+			'billing_first_name' => 'firstName',
+			'billing_last_name'  => 'lastName',
 		) );
 	}
 
