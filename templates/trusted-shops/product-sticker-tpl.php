@@ -4,16 +4,16 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+  exit; // Exit if accessed directly
 }
 ?>
 
 <script type="text/javascript">
-_tsProductReviewsConfig = {
-	tsid: '{id}', 
-	sku: ['{sku}'],
-	variant: 'productreviews',
-	borderColor: '{border_color}',
+  _tsProductReviewsConfig = {
+    tsid: '{id}', 
+    sku: ['{sku}'],
+    variant: 'productreviews',
+    borderColor: '{border_color}',
     locale: '{locale}',
     starColor: '{star_color}',
     starSize: '{star_size}px',
@@ -24,11 +24,11 @@ _tsProductReviewsConfig = {
     richSnippets: 'off',
     introtext: ''  /* optional */
 };
-var scripts = document.getElementsByTagName('SCRIPT'), me = scripts[scripts.length - 1];
-var _ts = document.createElement('SCRIPT');
-_ts.type = 'text/javascript';
-_ts.async = true;
-_ts.charset = 'utf-8';
-_ts.src ='//widgets.trustedshops.com/reviews/tsSticker/tsProductSticker.js';
-me.parentNode.insertBefore(_ts, me);
-_tsProductReviewsConfig.script = _ts;</script>
+</script>
+<?php
+/*
+ * Load Script through WordPress Core function
+ * load in footer for increase Core Web Vitals
+ */
+wp_enqueue_script( 'script', '//widgets.trustedshops.com/reviews/tsSticker/tsProductSticker.js', [], 1.0, true);
+?>
