@@ -30,7 +30,7 @@ class WC_TS_GZD_Settings_Tab extends WC_GZD_Settings_Tab {
 	}
 
 	public function before_output() {
-		do_action( 'woocommerce_ts_admin_settings_before', $this->get_settings() );
+		do_action( 'woocommerce_ts_admin_settings_before', $this->get_settings_for_section( '' ) );
 	}
 
 	public function review_exporter() {

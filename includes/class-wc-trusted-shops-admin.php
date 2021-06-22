@@ -808,13 +808,13 @@ class WC_Trusted_Shops_Admin {
         $this->base->refresh();
 
         if ( get_option( 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_integration_mode' ) === 'standard' ) {
-
             // Delete code snippets
             delete_option( 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_trustbadge_code' );
             delete_option( 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_product_sticker_code' );
             delete_option( 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_product_widget_code' );
             delete_option( 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_rich_snippets_code' );
             delete_option( 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_review_sticker_code' );
+	        delete_option( 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_product_widget_selector' );
         }
 
         // Disable Reviews if Trusted Shops review collection has been enabled

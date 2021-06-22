@@ -37,10 +37,17 @@ class WC_TS_Settings_Handler extends WC_Settings_Page {
 		return $settings;
 	}
 
+	public function get_settings_for_section_core( $section_id ) {
+		$admin    = WC_trusted_shops()->trusted_shops->get_dependency( 'admin' );
+		$settings = $admin->get_settings();
+
+		return $settings;
+	}
+
 	public function output() {
 		global $current_section;
 
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_section( '' );
 		$sidebar  = $this->get_sidebar();
 
 		include_once( WC_trusted_shops()->plugin_path() . '/includes/admin/views/html-settings-section.php' );
@@ -57,7 +64,7 @@ class WC_TS_Settings_Handler extends WC_Settings_Page {
 	 * Save settings
 	 */
 	public function save() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_section( '' );
 
 		do_action( 'woocommerce_ts_before_save', $settings );
 		WC_Admin_Settings::save_fields( $settings );
