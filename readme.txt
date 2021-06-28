@@ -3,10 +3,10 @@ Contributors: vendidero, trustbadge
 Tags: advanced reviews, badge, best reviews, business ratings, business reviews, confirm email reviews, google rating, google shopping, product ratings, product reviews, rate products, rating summary, Rating Widget, ratings, reputation, review widget, review, reviews easy, reviews, rich snippets, seal,  seo, star rating, stars, trust, trustbadge, trusted reviews, trusted shops, ts, user rating, user reviews, woocommerce trusted shops, woocommerce
 Donate link: http://www.trustbadge.com
 Requires at least: 4.9
-Tested up to: 5.5
+Tested up to: 5.8
 WC requires at least: 3.4
 WC tested up to: 5.5
-Stable tag: 4.0.8
+Stable tag: 4.0.11
 Requires PHP: 5.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -80,6 +80,9 @@ More information regarding your Trusted Shops Membership can be found [here](htt
 1. WooCommerce Trusted Shops Settings
 
 == Changelog ==
+= 4.0.11 =
+* Improvement: CSV export format
+* Improvement: WP 5.8, Woo 5.5 support
 
 = 4.0.8 =
 * Improvement: Use Woo payment method title
