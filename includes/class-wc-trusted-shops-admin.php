@@ -814,7 +814,8 @@ class WC_Trusted_Shops_Admin {
             delete_option( 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_product_widget_code' );
             delete_option( 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_rich_snippets_code' );
             delete_option( 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_review_sticker_code' );
-	        delete_option( 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_product_widget_selector' );
+	        update_option( 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_product_widget_selector', '#ts_product_widget' );
+	        update_option( 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_product_sticker_selector', '#ts_product_sticker' );
         }
 
         // Disable Reviews if Trusted Shops review collection has been enabled

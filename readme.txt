@@ -5,8 +5,8 @@ Donate link: http://www.trustbadge.com
 Requires at least: 4.9
 Tested up to: 5.8
 WC requires at least: 3.4
-WC tested up to: 5.5
-Stable tag: 4.0.11
+WC tested up to: 5.6
+Stable tag: 4.0.12
 Requires PHP: 5.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -80,6 +80,10 @@ More information regarding your Trusted Shops Membership can be found [here](htt
 1. WooCommerce Trusted Shops Settings
 
 == Changelog ==
+= 4.0.12 =
+* Fix: Custom selectors defaults
+* Improvement: Updating default settings when switching to standard mode
+
 = 4.0.11 =
 * Improvement: CSV export format
 * Improvement: WP 5.8, Woo 5.5 support

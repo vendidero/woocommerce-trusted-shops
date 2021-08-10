@@ -197,7 +197,6 @@ class WC_Trusted_Shops {
          * This snippet manually checks for translations and allows to override default WPML translations.
          */
         if ( ! is_admin() && $this->is_multi_language_setup() ) {
-
             $compatibility = $this->get_multi_language_compatibility();
 
             $default_language = $compatibility->get_default_language();
@@ -555,8 +554,10 @@ class WC_Trusted_Shops {
 
     public function get_product_sticker_code( $replace = true, $args = array() ) {
         if ( $replace ) {
+            $selector = $this->product_sticker_selector;
+
             $args = wp_parse_args( $args, array(
-                'element'      => $this->product_sticker_selector,
+                'element'      => empty( $selector ) ? '#ts_product_sticker' : $selector,
                 'border_color' => $this->product_sticker_border_color,
                 'star_color'   => $this->product_sticker_star_color,
                 'star_size'    => $this->product_sticker_star_size,
@@ -582,14 +583,14 @@ class WC_Trusted_Shops {
 
     public function get_product_widget_code( $replace = true, $args = array() ) {
         if ( $replace ) {
+            $selector = $this->product_widget_selector;
 
             $args = wp_parse_args( $args, array(
-                'element'    => $this->product_widget_selector,
+                'element'      => empty( $selector ) ? '#ts_product_widget' : $selector,
                 'star_color' => $this->product_widget_star_color,
                 'star_size'  => $this->product_widget_star_size,
                 'font_size'  => $this->product_widget_font_size,
             ) );
-
         }
 
         return $this->get_script( 'product_widget', $replace, $args );

@@ -16,7 +16,7 @@ class Package {
 	 *
 	 * @var string
 	 */
-	const VERSION = '4.0.11';
+	const VERSION = '4.0.12';
 
 	/**
 	 * Init the package - load the REST API Server class.
@@ -43,10 +43,12 @@ class Package {
     }
 
 	public static function install() {
-	    self::includes();
-		include_once self::get_path() . '/includes/class-wc-ts-install.php';
+	    if ( self::has_dependencies() ) {
+		    self::includes();
+		    include_once self::get_path() . '/includes/class-wc-ts-install.php';
 
-		WC_TS_Install::install();
+		    WC_TS_Install::install();
+        }
 	}
 
 	public static function dependency_notice() {
