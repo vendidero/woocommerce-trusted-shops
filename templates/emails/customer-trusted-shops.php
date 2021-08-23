@@ -3,7 +3,7 @@
  * Customer Trusted Shops Review Notification
  *
  * @author Vendidero
- * @version 1.0.0
+ * @version 1.0.1
  */
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -19,7 +19,7 @@ $text 		= get_option( 'woocommerce_email_text_color' );
 
 <table cellspacing="0" cellpadding="0" style="width: 100%; border: none;" border="0">
     <tr align="center">
-        <td align="center"><a class="email_btn" href="<?php echo esc_url( WC_trusted_shops()->trusted_shops->get_new_review_link( wc_ts_get_crud_data( $order, 'billing_email' ), wc_ts_get_crud_data( $order, 'id' ) ) ); ?>" target="_blank" style="text-decoration: none; background-color: <?php echo esc_attr( $base ); ?>; color: <?php echo $base_text;?>; border-radius: 3px !important; padding: font-family:Arial; font-weight:bold; line-height:100%; padding: 0.5rem;"><?php echo _x( 'Rate Order now', 'trusted-shops', 'woocommerce-trusted-shops' );?></a></td>
+        <td align="center"><a class="email_btn" href="<?php echo esc_url( WC_trusted_shops()->trusted_shops->get_new_review_link( wc_ts_get_crud_data( $order, 'billing_email' ), $order->get_order_number() ) ); ?>" target="_blank" style="text-decoration: none; background-color: <?php echo esc_attr( $base ); ?>; color: <?php echo $base_text;?>; border-radius: 3px !important; padding: font-family:Arial; font-weight:bold; line-height:100%; padding: 0.5rem;"><?php echo _x( 'Rate Order now', 'trusted-shops', 'woocommerce-trusted-shops' );?></a></td>
     </tr>
 </table>
 

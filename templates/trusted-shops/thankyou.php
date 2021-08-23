@@ -4,17 +4,15 @@
  *
  * @author 		WooThemes
  * @package 	WooCommerce/Templates
- * @version     2.2.0
+ * @version     2.2.1
  */
-
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 $order = wc_get_order( $order_id );
-
 ?>
 <!-- Module: WooCommerce Trusted Shops -->
 <div id="trustedShopsCheckout" style="display: none;">
-	<span id="tsCheckoutOrderNr"><?php echo wc_ts_get_crud_data( $order, 'id' );?></span> 
+	<span id="tsCheckoutOrderNr"><?php echo $order->get_order_number(); ?></span>
 	<span id="tsCheckoutBuyerEmail"><?php echo wc_ts_get_crud_data( $order, 'billing_email' ); ?></span>
 	<span id="tsCheckoutBuyerId"><?php echo wc_ts_get_crud_data( $order, 'user_id' ); ?></span>
 	<span id="tsCheckoutOrderAmount"><?php echo $order->get_total(); ?></span>

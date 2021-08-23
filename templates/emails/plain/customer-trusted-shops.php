@@ -3,7 +3,7 @@
  * Customer Trusted Shops Review Notification
  *
  * @author Vendidero
- * @version 1.0.0
+ * @version 1.0.1
  */
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -17,7 +17,7 @@ echo sprintf( _x( 'You have recently shopped at %s. Thank you! We would be glad 
 
 echo "\n----------------------------------------\n\n";
 
-echo WC_trusted_shops()->trusted_shops->get_new_review_link( wc_ts_get_crud_data( $order, 'billing_email' ), wc_ts_get_crud_data( $order, 'id' ) ) . "\n\n";
+echo WC_trusted_shops()->trusted_shops->get_new_review_link( wc_ts_get_crud_data( $order, 'billing_email' ), $order->get_order_number() ) . "\n\n";
 
 echo "\n\n----------------------------------------\n\n";
 
