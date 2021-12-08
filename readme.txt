@@ -14,42 +14,22 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Show that your customers love you with reviews in your online store and boost your business with the free Trustbadge Reviews Plugin for WooCommerce.
 == Description ==
 
-The eTrusted Reviews Plugin for WooCommerce enables you to automatically collect seller reviews and product reviews from your happy customers. You can integrate the Trustbadge® within your store with one click and it will be displayed on every site of your store showing your overall score, your star ratings and three reviews when expanded. It also links to your profile on eTrusted where all reviews from your happy customers are displayed to improve your SEO. The Trustbadge® works with any web browser and on all devices. Your customers do not require any additional software. 
-* Collect seller and product reviews automatically
-* Show your trustworthiness on your website by authentic reviews
-* Increase your conversion rates
+= Building trust - in just 5 minutes! =
 
-= Why customer reviews are highly important =
+The well-known Trustmark, the Buyer Protection and the authentic reviews from Trusted Shops have stood for trust for over 20 years. More than 30,000 online shops throughout Europe use our Trust solutions for more traffic, higher sales and better conversion rates.
 
-„Reviews are the joint single biggest conversion factor along with price.“ — Jeff Bezos, CEO and founder of Amazon 
-„In a networked world trust is the most important currency.“  — Eric Schmidt, Chairman of Google 
-„According to Google, 70% of Americans now say they look at product reviews before making a purchase.“ 
+Trustbadge Reviews for WooCommerce is the easiest and fastest way to convince visitors of the trustworthiness of your online shop. The simple installation guarantees product use in just 5 minutes and usually requires little to no prior technical knowledge. With our extension you are always technically up to date and have no additional maintenance effort.
 
-= eTrusted: Get Better Reviews =
+Your benefit: With just a few clicks, visitors to your online shop can see trust elements such as the Trustbadge or other on-site widgets, can benefit from buyer protection and are automatically asked for feedback after placing an order.
 
-Trust, security and transparency are vital for success in the world of e-commerce. 90 % of decisions to buy online are based on these factors. People only buy from those they trust and if consumers can't trust an online store, they will go elsewhere. To succeed in internet sales and to boost their conversion rate, online traders need to show their potential customers how trustworthy they are.
+= All features at a glance: =
 
-And this is precisely where eTrusted can help you. We support Woocommerce users with services that have been successfully applied for by 20,000+ of online retailers: Our customer review system allows you to collect, show and manage your customers’ feedback effortlessly!
+* Show Trustbadge, integrate Buyer Protection & collect shop reviews
+* Show Shop Review Sticker with rating comments
+* Collect and display Product Reviews
+* Configure multi-shops with multiple Trusted Shops IDs
 
-<strong>Get your <a href="https://business.trustedshops.co.uk/" target="_blank">account</a> now!</strong>
-
-= Seller reviews + product reviews = Increase your conversion rate and get more sales =
-
-Seller reviews and product reviews complement each other in order to give your potential customers a positive attitude towards a purchase in your store. The Trustbadge offers both. Seller reviews show that your customers trust you and reinforce their feeling that they are at the right place to buy. 
-
-Great product reviews convince them to buy a specific product. If you provide both kinds of reviews to your customers, a purchase is more likely to happen which means more sales for your store. 
-
-Some customers experienced an uplift of up to 12.5 % in conversions, simply by using the Trustbadge. No matter to which country or on which device you sell - the Trustbadge is well prepared. It comes with 7 possible languages and is mobile-optimized - this means all common devices are supported.
-
-= Getting Started =
-
-With your WooCommerce store you can start in less than 66 seconds 
-
-1. Sign up for a <a href="https://business.trustedshops.co.uk/" target="_blank">Trustbadge Reviews account</a>.
-2. Install the Trustbadge Reviews Toolkit in your WooCommerce store 
-3. Customize your Trustbadge in the backend of WooCommerce 
-
-As promised, it´s easy like that. Welcome on board!
+Please note: To use the extension Trustbadge Reviews for WooCommerce, you need an existing Trusted Shops membership. You can find out more about the products and benefits of Trusted Shops on our [website](https://business.trustedshops.com/) or by calling: +44 23364 5906
 
 == Installation ==
 
@@ -72,12 +52,19 @@ Embed your Trusted Shops Badge within your content.
 
 == Frequently Asked Questions ==
 
+= Do you need help with Trustbadge Reviews for WooCommerce? =
+A detailed integration manual can be found in our [Help Centre](https://help.etrusted.com/hc/en-gb/articles/360046269991-Using-Trusted-Shops-with-WooCommerce).
+
 = How can I become a Trusted Shops Member? =
-More information regarding your Trusted Shops Membership can be found [here](https://business.trustedshops.co.uk/).
+You can find out more about the products and benefits of Trusted Shops on our [website](https://business.trustedshops.com/) or by calling: +44 23364 5906
 
 == Screenshots ==
 
-1. WooCommerce Trusted Shops Settings
+1. Screenshot 1
+2. Screenshot 2
+3. Screenshot 3
+4. Screenshot 4
+5. Screenshot 5
 
 == Changelog ==
 = 4.0.12 =
