@@ -391,12 +391,11 @@ class WC_Trusted_Shops {
             return false;
         }
 
-        $data    = wc_ts_get_crud_data( $product, $attribute );
+        $data = wc_ts_get_crud_data( $product, $attribute );
 
-        if ( 'variation' === $product->get_type() ) {
-            if ( empty( $data ) ) {
-                $parent = wc_get_product( wc_ts_get_crud_data( $product, 'parent' ) );
-                $data   = wc_ts_get_crud_data( $parent, $attribute );
+        if ( empty( $data ) && 'variation' === $product->get_type() ) {
+            if ( $parent = wc_get_product( wc_ts_get_crud_data( $product, 'parent' ) ) ) {
+                $data = wc_ts_get_crud_data( $parent, $attribute );
             }
         }
 
