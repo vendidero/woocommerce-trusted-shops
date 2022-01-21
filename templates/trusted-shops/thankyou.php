@@ -4,7 +4,7 @@
  *
  * @author 		WooThemes
  * @package 	WooCommerce/Templates
- * @version     2.2.1
+ * @version     4.0.13
  */
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -38,9 +38,9 @@ $order = wc_get_order( $order_id );
 				<span class="tsCheckoutProductImageUrl"><?php echo $plugin->get_product_image( $org_product ); ?></span>
 				<span class="tsCheckoutProductName"><?php echo get_the_title( wc_ts_get_crud_data( $parent_product, 'id' ) ); ?></span>
                 <span class="tsCheckoutProductSKU"><?php echo ( $parent_product->get_sku() ? $parent_product->get_sku() : wc_ts_get_crud_data( $parent_product, 'id' ) ); ?></span>
-                <span class="tsCheckoutProductGTIN"><?php echo apply_filters( 'woocommerce_gzd_trusted_shops_product_gtin', $plugin->get_product_gtin( $org_product ), $org_product ); ?></span>
+                <span class="tsCheckoutProductGTIN"><?php echo apply_filters( 'woocommerce_gzd_trusted_shops_product_gtin', $plugin->get_product_gtin( $parent_product ), $parent_product ); ?></span>
                 <span class="tsCheckoutProductBrand"><?php echo apply_filters( 'woocommerce_gzd_trusted_shops_product_brand', $plugin->get_product_brand( $parent_product ), $parent_product ); ?></span>
-                <span class="tsCheckoutProductMPN"><?php echo apply_filters( 'woocommerce_gzd_trusted_shops_product_mpn', $plugin->get_product_mpn( $org_product ), $org_product ); ?></span>
+                <span class="tsCheckoutProductMPN"><?php echo apply_filters( 'woocommerce_gzd_trusted_shops_product_mpn', $plugin->get_product_mpn( $parent_product ), $parent_product ); ?></span>
             </span>
 		<?php endforeach; ?>
 	<?php endif; ?>
