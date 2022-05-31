@@ -25,16 +25,6 @@ module.exports = function( grunt ) {
             ]
         },
 
-        // Sass linting with Stylelint.
-        stylelint: {
-            options: {
-                configFile: '.stylelintrc'
-            },
-            all: [
-                '<%= dirs.css %>/*.scss'
-            ]
-        },
-
         // Minify .js files.
         uglify: {
             options: {
@@ -110,31 +100,6 @@ module.exports = function( grunt ) {
             }
         },
 
-        // Exec shell commands.
-        shell: {
-            options: {
-                stdout: true,
-                stderr: true
-            }
-        },
-
-        // PHP Code Sniffer.
-        phpcs: {
-            options: {
-                bin: 'vendor/bin/phpcs'
-            },
-            dist: {
-                src:  [
-                    '**/*.php', // Include all php files.
-                    '!includes/libraries/**',
-                    '!node_modules/**',
-                    '!tests/cli/**',
-                    '!tmp/**',
-                    '!vendor/**'
-                ]
-            }
-        },
-
         // Check textdomain errors.
         checktextdomain: {
             options:{
@@ -187,10 +152,8 @@ module.exports = function( grunt ) {
     // Load NPM tasks to be used here.
     grunt.loadNpmTasks( 'grunt-sass' );
     grunt.loadNpmTasks( 'grunt-shell' );
-    grunt.loadNpmTasks( 'grunt-phpcs' );
     grunt.loadNpmTasks( 'grunt-rtlcss' );
     grunt.loadNpmTasks( 'grunt-postcss' );
-    grunt.loadNpmTasks( 'grunt-stylelint' );
     grunt.loadNpmTasks( 'grunt-wp-i18n' );
     grunt.loadNpmTasks( 'grunt-checktextdomain' );
     grunt.loadNpmTasks( 'grunt-contrib-jshint' );
@@ -200,7 +163,6 @@ module.exports = function( grunt ) {
     grunt.loadNpmTasks( 'grunt-contrib-copy' );
     grunt.loadNpmTasks( 'grunt-contrib-watch' );
     grunt.loadNpmTasks( 'grunt-contrib-clean' );
-    grunt.loadNpmTasks( 'grunt-prompt' );
 
     // Register tasks.
     grunt.registerTask( 'default', [
