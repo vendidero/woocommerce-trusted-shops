@@ -406,7 +406,7 @@ final class WooCommerce_Trusted_Shops {
 	 */
 	public function action_links( $links ) {
 		return array_merge( array(
-			'<a href="' . admin_url( 'admin.php?page=wc-settings&tab=trusted-shops' ) . '">' . _x( 'Settings', 'trusted-shops', 'woocommerce-trusted-shops' ) . '</a>',
+			'<a href="' . esc_url( admin_url( 'admin.php?page=wc-settings&tab=trusted-shops' ) ) . '">' . _x( 'Settings', 'trusted-shops', 'woocommerce-trusted-shops' ) . '</a>',
 		), $links );
 	}
 

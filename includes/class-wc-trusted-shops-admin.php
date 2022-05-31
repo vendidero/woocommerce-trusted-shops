@@ -218,7 +218,7 @@ class WC_Trusted_Shops_Admin {
         $settings = array(
             array(
                 'title'             => _x( 'Trusted Shops Integration', 'trusted-shops', 'woocommerce-trusted-shops' ),
-                'desc'              => sprintf( _x( 'Do you need help with integrating your Trustbadge? %s', 'trusted-shops', 'woocommerce-trusted-shops' ), '<a href="' . $this->get_trusted_url( 'https://support.trustedshops.com/en/apps/woocommerce' ) . '" class="button button-secondary" target="_blank">' . _x( 'To the step-by-step instructions', 'trusted-shops', 'woocommerce-trusted-shops' ) .'</a>' ),
+                'desc'              => sprintf( _x( 'Do you need help with integrating your Trustbadge? %s', 'trusted-shops', 'woocommerce-trusted-shops' ), '<a href="' . esc_url( $this->get_trusted_url( 'https://support.trustedshops.com/en/apps/woocommerce' ) ) . '" class="button button-secondary" target="_blank">' . _x( 'To the step-by-step instructions', 'trusted-shops', 'woocommerce-trusted-shops' ) .'</a>' ),
                 'type'              => 'title',
                 'id'                => 'trusted_shops_options'
             ),
@@ -313,7 +313,7 @@ class WC_Trusted_Shops_Admin {
             array(
                 'title'             => _x( 'Display Shop Review Sticker', 'trusted-shops', 'woocommerce-trusted-shops' ),
                 'desc_tip'          => _x( 'To display the Shop Review Sticker, you have to assign the widget "Trusted Shops Review Sticker".', 'trusted-shops', 'woocommerce-trusted-shops' ),
-                'desc'              => sprintf( _x( 'Assign widget %s', 'trusted-shops', 'woocommerce-trusted-shops' ), '<a href="' . admin_url( 'widgets.php' ) . '" target="_blank">' . _x( 'here', 'trusted-shops', 'woocommerce-trusted-shops' ) . '</a>' ),
+                'desc'              => sprintf( _x( 'Assign widget %s', 'trusted-shops', 'woocommerce-trusted-shops' ), '<a href="' . esc_url( admin_url( 'widgets.php' ) ) . '" target="_blank">' . _x( 'here', 'trusted-shops', 'woocommerce-trusted-shops' ) . '</a>' ),
                 'id'                => 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_review_sticker_enable',
                 'type'              => 'ts_toggle',
                 'custom_attributes' => array( 'data-sidebar' => 'wc-ts-sidebar-shop-reviews' ),
@@ -429,7 +429,7 @@ class WC_Trusted_Shops_Admin {
 
             array(
                 'title'             => _x( 'Configure your Product Reviews ', 'trusted-shops', 'woocommerce-trusted-shops' ),
-                'desc'              => sprintf( _x( 'To use Product Reviews, activate them in your %s first.', 'trusted-shops', 'woocommerce-trusted-shops' ), '<a href="' . $this->get_trusted_url( 'https://www.trustedshops.com/uk/shop/login.html', array( 'lang_mapping' => array( 'en' => 'uk' ) ) ) . '" target="_blank">' . _x( 'Trusted Shops package', 'trusted-shops', 'woocommerce-trusted-shops' ) .'</a>' ),
+                'desc'              => sprintf( _x( 'To use Product Reviews, activate them in your %s first.', 'trusted-shops', 'woocommerce-trusted-shops' ), '<a href="' . esc_url( $this->get_trusted_url( 'https://www.trustedshops.com/uk/shop/login.html', array( 'lang_mapping' => array( 'en' => 'uk' ) ) ) ) . '" target="_blank">' . _x( 'Trusted Shops package', 'trusted-shops', 'woocommerce-trusted-shops' ) .'</a>' ),
                 'type'              => 'title',
                 'id'                => 'trusted_shops_reviews_options'
             ),
@@ -585,7 +585,7 @@ class WC_Trusted_Shops_Admin {
 
             array(
                 'title'             => _x( 'Brand attribute', 'trusted-shops', 'woocommerce-trusted-shops' ),
-                'desc'              => sprintf( _x( 'Create brand attribute %s', 'trusted-shops', 'woocommerce-trusted-shops' ), '<a href="' . admin_url( 'edit.php?post_type=product&page=product_attributes' ) . '" target="_blank">' . _x( 'here', 'trusted-shops', 'woocommerce-trusted-shops' ) . '</a>' ),
+                'desc'              => sprintf( _x( 'Create brand attribute %s', 'trusted-shops', 'woocommerce-trusted-shops' ), '<a href="' . esc_url( admin_url( 'edit.php?post_type=product&page=product_attributes' ) ) . '" target="_blank">' . _x( 'here', 'trusted-shops', 'woocommerce-trusted-shops' ) . '</a>' ),
                 'desc_tip'          => _x( 'Brand name of the product. By passing this information on to Google, you improve your chances of having Google identify your products. Assign your brand attribute. If your products don\'t have a GTIN, you can pass on the brand name and the MPN to use Google Integration.', 'trusted-shops', 'woocommerce-trusted-shops' ),
                 'id'                => 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_brand_attribute',
                 'css'               => 'min-width:250px;',
@@ -646,7 +646,7 @@ class WC_Trusted_Shops_Admin {
                     'default'           => '',
                     'id'                => 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_review_reminder_checkbox',
                     'type'              => 'html',
-                    'html'              => '<a href="' . admin_url( 'admin.php?page=wc-settings&tab=germanized-checkboxes&checkbox_id=review_reminder' ) . '" class="button button-secondary" target="_blank">' . _x( 'Edit checkbox', 'trusted-shops', 'woocommerce-trusted-shops' ) . '</a>',
+                    'html'              => '<a href="' . esc_url( admin_url( 'admin.php?page=wc-settings&tab=germanized-checkboxes&checkbox_id=review_reminder' ) . '" class="button button-secondary" target="_blank">' . _x( 'Edit checkbox', 'trusted-shops', 'woocommerce-trusted-shops' ) ) . '</a>',
                 ),
 
                 array(
@@ -753,41 +753,41 @@ class WC_Trusted_Shops_Admin {
             <div class="wc-gzd-admin-settings-sidebar-trusted-shops">
                 <div class="wc-ts-sidebar wc-ts-sidebar-active" id="wc-ts-sidebar-default">
                     <h3><?php echo _x( 'How does Trusted Shops make your shop better?', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></h3>
-                    <a href="<?php echo $this->get_signup_url(); ?>" target="_blank"><img style="width: 100%; height: auto" src="<?php echo $this->get_image( 'ts.png' ); ?>" /></a>
-                    <a class="button button-primary" href="<?php echo $this->get_signup_url(); ?>" target="_blank"><?php echo _x( 'Get your account', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></a>
+                    <a href="<?php echo esc_url( $this->get_signup_url() ); ?>" target="_blank"><img style="width: 100%; height: auto" src="<?php echo esc_url( $this->get_image( 'ts.png' ) ); ?>" /></a>
+                    <a class="button button-primary" href="<?php echo esc_url( $this->get_signup_url() ); ?>" target="_blank"><?php echo _x( 'Get your account', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></a>
                 </div>
 
                 <div class="wc-ts-sidebar wc-ts-sidebar-flex" id="wc-ts-sidebar-trustbadge">
                     <div class="wc-ts-sidebar-left wc-ts-sidebar-container">
-                        <img src="<?php echo $this->get_image( 'ts_trustbadge_trustmark_reviews.png' ); ?>" />
+                        <img src="<?php echo esc_url( $this->get_image( 'ts_trustbadge_trustmark_reviews.png' ) ); ?>" />
                         <span class="wc-ts-sidebar-desc"><?php echo _x( 'Display Trustbadge with review stars', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></span>
                     </div>
                     <div class="wc-ts-sidebar-right wc-ts-sidebar-container">
-                        <img src="<?php echo $this->get_image( 'ts_trustbadge_trustmark-only.png' ); ?>" />
+                        <img src="<?php echo esc_url( $this->get_image( 'ts_trustbadge_trustmark-only.png' ) ); ?>" />
                         <span class="wc-ts-sidebar-desc"><?php echo _x( 'Display Trustbadge without review stars', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></span>
                     </div>
                 </div>
 
                 <div class="wc-ts-sidebar" id="wc-ts-sidebar-shop-reviews">
-                    <img style="width: 100%; height: auto" src="<?php echo $this->get_image( 'ts_shop_review_sticker.jpg' ); ?>" />
+                    <img style="width: 100%; height: auto" src="<?php echo esc_url( $this->get_image( 'ts_shop_review_sticker.jpg' ) ); ?>" />
                 </div>
 
                 <div class="wc-ts-sidebar" id="wc-ts-sidebar-product-reviews">
-                    <img style="width: 100%; height: auto" src="<?php echo $this->get_image( 'ts_product_reviews.jpg' ); ?>" />
+                    <img style="width: 100%; height: auto" src="<?php echo esc_url( $this->get_image( 'ts_product_reviews.jpg' ) ); ?>" />
                     <span class="wc-ts-sidebar-desc"><?php echo _x( 'Product Reviews on the product detail page in an additional tab', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></span>
 
-                    <img style="width: 100%; height: auto" src="<?php echo $this->get_image( 'ts_woo.jpg' ); ?>" />
+                    <img style="width: 100%; height: auto" src="<?php echo esc_url( $this->get_image( 'ts_woo.jpg' ) ); ?>" />
                     <span class="wc-ts-sidebar-desc"><?php echo _x( 'Show Star-Ratings on the product detail page below your product name', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></span>
                 </div>
 
                 <div class="wc-ts-sidebar" id="wc-ts-sidebar-review-reminder">
                     <p><?php echo _x( 'Please note: If you want to send review requests through WooCommerce, you should deactivate automated review requests through Trusted Shops. To do so, please go to your My Trusted Shops account. Log in and go to Reviews >  Settings and deactivate "Collect reviews automatically"', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></p>
-                    <a class="button button-secondary" href="<?php echo $this->get_trusted_url( 'https://www.trustedshops.com/tsb2b/sa/ratings/shopRatingWidgetSettings.seam' ); ?>" target="_blank"><?php echo _x( 'To your My Trusted Shops account', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></a>
+                    <a class="button button-secondary" href="<?php echo esc_url( $this->get_trusted_url( 'https://www.trustedshops.com/tsb2b/sa/ratings/shopRatingWidgetSettings.seam' ) ); ?>" target="_blank"><?php echo _x( 'To your My Trusted Shops account', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></a>
                 </div>
 
                 <div class="wc-ts-sidebar" id="wc-ts-sidebar-review-collector">
                     <p><?php echo _x( 'Export your customer information here and upload it in the Trusted Shops Review Collector. To do so go to your My Trusted Shops account. Log in and go to Reviews > Shop Reviews > Review Collector', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></p>
-                    <a class="button button-secondary" href="<?php echo $this->get_trusted_url( 'https://www.trustedshops.com/tsb2b/sa/ratings/reviewCollector/reviewCollector.seam' ); ?>" target="_blank"><?php echo _x( 'To the Trusted Shops Review Collector', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></a>
+                    <a class="button button-secondary" href="<?php echo esc_url( $this->get_trusted_url( 'https://www.trustedshops.com/tsb2b/sa/ratings/reviewCollector/reviewCollector.seam' ) ); ?>" target="_blank"><?php echo _x( 'To the Trusted Shops Review Collector', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></a>
                 </div>
             </div>
         </div>
@@ -880,7 +880,7 @@ class WC_Trusted_Shops_Admin {
         ?>
         <h2><?php echo _x( 'Review Collector', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></h2>
         <div id="trusted_shops_review_collector_options-description">
-            <p class="description"><?php printf( _x( 'Want to collect reviews for orders that were placed before your Trusted Shops Integration? No problem. Export old orders here and upload them in your %s.', 'trusted-shops', 'woocommerce-trusted-shops' ), '<a href="' . $this->get_trusted_url( 'https://www.trustedshops.com/tsb2b/sa/ratings/reviewCollector/reviewCollector.seam' ) . '" target="_blank">' . _x( 'My Trusted Shops account', 'trusted-shops', 'woocommerce-trusted-shops' ) . '</a>' ); ?></p>
+            <p class="description"><?php printf( _x( 'Want to collect reviews for orders that were placed before your Trusted Shops Integration? No problem. Export old orders here and upload them in your %s.', 'trusted-shops', 'woocommerce-trusted-shops' ), '<a href="' . esc_url( $this->get_trusted_url( 'https://www.trustedshops.com/tsb2b/sa/ratings/reviewCollector/reviewCollector.seam' ) ) . '" target="_blank">' . _x( 'My Trusted Shops account', 'trusted-shops', 'woocommerce-trusted-shops' ) . '</a>' ); ?></p>
         </div>
         <table class="form-table">
             <tbody>
@@ -894,7 +894,7 @@ class WC_Trusted_Shops_Admin {
                         <option value="60" <?php selected( 60, $days_interval ); ?>><?php echo _x( '60 days', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></option>
                         <option value="90" <?php selected( 90, $days_interval ); ?>><?php echo _x( '90 days', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></option>
                     </select>
-                    <span class="description"><?php printf( _x( 'Upload customer and order information %s.', 'trusted-shops', 'woocommerce-trusted-shops' ), '<a href="' . $this->get_trusted_url( 'https://www.trustedshops.com/tsb2b/sa/ratings/reviewCollector/reviewCollector.seam' ) . '" target="_blank">' . _x( 'here', 'trusted-shops', 'woocommerce-trusted-shops' ) . '</a>' ); ?></span>
+                    <span class="description"><?php printf( _x( 'Upload customer and order information %s.', 'trusted-shops', 'woocommerce-trusted-shops' ), '<a href="' . esc_url( $this->get_trusted_url( 'https://www.trustedshops.com/tsb2b/sa/ratings/reviewCollector/reviewCollector.seam' ) ) . '" target="_blank">' . _x( 'here', 'trusted-shops', 'woocommerce-trusted-shops' ) . '</a>' ); ?></span>
                     <div class="trusted-shops-review-collector-wrap">
                         <div class="review-collector-days">
                             <label for="woocommerce_gzd_trusted_shops_review_collector"><?php echo _x( 'Days until reminder mail', 'trusted-shops', 'woocommerce-trusted-shops' ); ?> <?php echo wc_ts_help_tip( _x( 'Set the number of days to wait after the order date before having a Review Request sent to your customers.', 'trusted-shops', 'woocommerce-trusted-shops' ) ); ?></label>
@@ -946,7 +946,7 @@ class WC_Trusted_Shops_Admin {
                 'shop_id' => $args['shop_id'],
             ) );
 
-            return add_query_arg( $param_args, $url );
+            return esc_url_raw( add_query_arg( $param_args, $url ) );
         } else {
             return $url;
         }

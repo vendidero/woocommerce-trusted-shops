@@ -118,7 +118,7 @@ class WC_Trusted_Shops_Template_Hooks {
                         delete_post_meta( $order_id, '_ts_cancel_review_reminder_code' );
                         delete_post_meta( $order_id, '_ts_review_reminder_opted_in' );
 
-                        wp_die( sprintf( _x( 'Your review reminder e-mail has been cancelled successfully. Return to %s.', 'trusted-shops', 'woocommerce-trusted-shops' ), '<a href="' . get_site_url() . '">' . _x( 'Home', 'trusted-shops', 'woocommerce-trusted-shops' ) . '</a>' ) );
+                        wp_die( sprintf( _x( 'Your review reminder e-mail has been cancelled successfully. Return to %s.', 'trusted-shops', 'woocommerce-trusted-shops' ), '<a href="' . esc_url( get_site_url() ) . '">' . _x( 'Home', 'trusted-shops', 'woocommerce-trusted-shops' ) . '</a>' ) );
                     }
                 }
             }
@@ -158,7 +158,7 @@ class WC_Trusted_Shops_Template_Hooks {
             $link = add_query_arg( array( 'lang' => $lang ), $link );
         }
 
-        return apply_filters( 'woocommerce_trusted_shops_cancel_review_reminder_link', $link, $code, $order );
+        return esc_url_raw( apply_filters( 'woocommerce_trusted_shops_cancel_review_reminder_link', $link, $code, $order ) );
     }
 
     public function email_cancel_review_reminder( $order, $sent_to_admin, $plain_text ) {

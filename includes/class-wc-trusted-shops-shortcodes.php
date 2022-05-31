@@ -78,7 +78,7 @@ class WC_Trusted_Shops_Shortcodes {
     public function trusted_shops_badge( $atts ) {
         extract( shortcode_atts( array('width' => ''), $atts ) );
 
-        return $this->base->is_enabled() ? '<a class="trusted-shops-badge" style="' . ( $width ? 'background-size:' . ( $width - 1 ) . 'px auto; width: ' . $width . 'px; height: ' . $width . 'px;' : '' ) . '" href="' . $this->base->get_certificate_link() . '" target="_blank"></a>' : '';
+        return $this->base->is_enabled() ? '<a class="trusted-shops-badge" style="' . ( $width ? 'background-size:' . ( $width - 1 ) . 'px auto; width: ' . $width . 'px; height: ' . $width . 'px;' : '' ) . '" href="' . esc_url( $this->base->get_certificate_link() ) . '" target="_blank"></a>' : '';
     }
 
 }

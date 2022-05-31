@@ -25,7 +25,7 @@ $version_count = 0;
 
 			<?php endif; ?>
 
-			<p><a class="button button-secondary" href="<?php echo admin_url( "plugin-install.php?tab=search&s=" . urlencode( $data[ 'name' ] ) ); ?>"><?php printf( _x( 'Install %s', 'trusted-shops', 'woocommerce-trusted-shops' ), $data[ 'name' ] ); ?></a></p>
+			<p><a class="button button-secondary" href="<?php echo esc_url( admin_url( "plugin-install.php?tab=search&s=" . urlencode( $data[ 'name' ] ) ) ); ?>"><?php printf( _x( 'Install %s', 'trusted-shops', 'woocommerce-trusted-shops' ), $data[ 'name' ] ); ?></a></p>
 
 		<?php endif; ?>
 
@@ -46,7 +46,7 @@ $version_count = 0;
 	<?php if ( $version_count > 0 ) : ?>
 
 		<p>
-			<a class="button button-secondary" href="<?php echo admin_url( "update-core.php" ); ?>"><?php echo _x( 'Check for Updates', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></a>
+			<a class="button button-secondary" href="<?php echo esc_url( admin_url( "update-core.php" ) ); ?>"><?php echo _x( 'Check for Updates', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></a>
 			<?php echo _x( 'or', 'trusted-shops', 'woocommerce-trusted-shops' ); ?>
 			<a class="" href="https://wordpress.org/plugins/woocommerce-trusted-shops/developers/" target="_blank"><?php echo _x( 'Install an older version', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></a>
 		</p>
