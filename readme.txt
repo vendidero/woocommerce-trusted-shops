@@ -6,7 +6,7 @@ Requires at least: 4.9
 Tested up to: 5.9
 WC requires at least: 3.4
 WC tested up to: 6.1
-Stable tag: 4.0.14
+Stable tag: 4.0.15
 Requires PHP: 5.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -67,6 +67,9 @@ You can find out more about the products and benefits of Trusted Shops on our [w
 5. Screenshot 5
 
 == Changelog ==
+= 4.0.15 =
+* Improvement: PHP Code Sniffer fixes
+
 = 4.0.14 =
 * Improvement: Harden URL escaping
 
