@@ -9,9 +9,9 @@ use Vendidero\TrustedShops\Package;
 /**
  * Adds Germanized Email settings.
  *
- * @class 		WC_GZD_Settings_Tab_Emails
- * @version		3.0.0
- * @author 		Vendidero
+ * @class       WC_GZD_Settings_Tab_Emails
+ * @version     3.0.0
+ * @author      Vendidero
  */
 class WC_TS_GZD_Settings_Tab extends WC_GZD_Settings_Tab {
 
@@ -39,7 +39,7 @@ class WC_TS_GZD_Settings_Tab extends WC_GZD_Settings_Tab {
 	}
 
 	public function register_scripts() {
-		if ( isset( $_GET['tab'] ) && 'germanized-trusted_shops' === $_GET['tab'] ) {
+		if ( isset( $_GET['tab'] ) && 'germanized-trusted_shops' === $_GET['tab'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			do_action( 'woocommerce_trusted_shops_load_admin_scripts' );
 		}
 	}
@@ -66,8 +66,8 @@ class WC_TS_GZD_Settings_Tab extends WC_GZD_Settings_Tab {
 	}
 
 	public function get_sidebar( $current_section = '' ) {
-		$admin    = WC_trusted_shops()->trusted_shops->get_dependency( 'admin' );
-		$sidebar  = $admin->get_sidebar();
+		$admin   = WC_trusted_shops()->trusted_shops->get_dependency( 'admin' );
+		$sidebar = $admin->get_sidebar();
 
 		return $sidebar;
 	}

@@ -1,10 +1,11 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) )
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
 
 /**
- * The 
+ * The
  *
  * @class WC_GZD_Compatibility
  * @version  1.0.0
@@ -17,24 +18,29 @@ abstract class WC_TS_Compatibility {
 	private $version_data = array();
 
 	public function __construct( $plugin_name, $plugin_file, $version_data = array() ) {
-			
-		$version_data = wp_parse_args( $version_data, array(
-			'version' => '1.0.0',
-			'requires_at_least' => '',
-			'tested_up_to' => '',
-		) );
 
-		if ( empty( $version_data[ 'requires_at_least' ] ) && empty( $version_data[ 'tested_up_to' ] ) ) {
-			$version_data[ 'requires_at_least' ] = $version_data[ 'version' ];
-			$version_data[ 'tested_up_to' ] = $version_data[ 'version' ];
-		} elseif ( empty( $version_data[ 'tested_up_to' ] ) ) {
-			$version_data[ 'tested_up_to' ] = $version_data[ 'requires_at_least' ];
-			if ( WC_TS_Dependencies::instance()->compare_versions( $version_data[ 'version' ], $version_data[ 'requires_at_least' ], '>' ) )
-				$version_data[ 'tested_up_to' ] = $version_data[ 'version' ];
-		} elseif ( empty( $version_data[ 'requires_at_least' ] ) ) {
-			$version_data[ 'requires_at_least' ] = $version_data[ 'tested_up_to' ];
-			if ( WC_TS_Dependencies::instance()->compare_versions( $version_data[ 'version' ], $version_data[ 'requires_at_least' ], '<' ) )
-				$version_data[ 'requires_at_least' ] = $version_data[ 'version' ];
+		$version_data = wp_parse_args(
+			$version_data,
+			array(
+				'version'           => '1.0.0',
+				'requires_at_least' => '',
+				'tested_up_to'      => '',
+			)
+		);
+
+		if ( empty( $version_data['requires_at_least'] ) && empty( $version_data['tested_up_to'] ) ) {
+			$version_data['requires_at_least'] = $version_data['version'];
+			$version_data['tested_up_to']      = $version_data['version'];
+		} elseif ( empty( $version_data['tested_up_to'] ) ) {
+			$version_data['tested_up_to'] = $version_data['requires_at_least'];
+			if ( WC_TS_Dependencies::instance()->compare_versions( $version_data['version'], $version_data['requires_at_least'], '>' ) ) {
+				$version_data['tested_up_to'] = $version_data['version'];
+			}
+		} elseif ( empty( $version_data['requires_at_least'] ) ) {
+			$version_data['requires_at_least'] = $version_data['tested_up_to'];
+			if ( WC_TS_Dependencies::instance()->compare_versions( $version_data['version'], $version_data['requires_at_least'], '<' ) ) {
+				$version_data['requires_at_least'] = $version_data['version'];
+			}
 		}
 
 		$this->version_data = $version_data;
@@ -42,8 +48,9 @@ abstract class WC_TS_Compatibility {
 		$this->plugin_name = $plugin_name;
 		$this->plugin_file = $plugin_file;
 
-		if ( ! $this->is_applicable() )
+		if ( ! $this->is_applicable() ) {
 			return;
+		}
 
 		add_action( 'init', array( $this, 'early_execution' ), 0 );
 		add_action( 'init', array( $this, 'load' ), 15 );
@@ -64,9 +71,8 @@ abstract class WC_TS_Compatibility {
 	}
 
 	public function is_supported() {
-		return
-            WC_TS_Dependencies::instance()->compare_versions( $this->version_data[ 'version' ], $this->version_data[ 'requires_at_least' ], '>=' ) &&
-            WC_TS_Dependencies::instance()->compare_versions( $this->version_data[ 'version' ], $this->version_data[ 'tested_up_to' ], '<=' );
+		return WC_TS_Dependencies::instance()->compare_versions( $this->version_data['version'], $this->version_data['requires_at_least'], '>=' ) &&
+			WC_TS_Dependencies::instance()->compare_versions( $this->version_data['version'], $this->version_data['tested_up_to'], '<=' );
 	}
 
 	public function get_name() {
@@ -77,6 +83,5 @@ abstract class WC_TS_Compatibility {
 		return $this->version_data;
 	}
 
-	abstract function load();
-
+	abstract public function load();
 }

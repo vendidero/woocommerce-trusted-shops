@@ -10,7 +10,8 @@
     "automattic/jetpack-autoloader": "^2.2.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "6.5.14"
+    "phpunit/phpunit": "6.5.14",
+    "woocommerce/woocommerce-sniffs": "^0.1.3"
   },
   "scripts": {
     "post-install-cmd": [
@@ -18,6 +19,15 @@
     ],
     "post-update-cmd": [
       "composer dump-autoload"
+    ],
+    "phpcs": [
+      "phpcs -s -p"
+    ],
+    "phpcs-pre-commit": [
+      "phpcs -s -p -n"
+    ],
+    "phpcbf": [
+      "phpcbf -p"
     ]
   },
   "config": {

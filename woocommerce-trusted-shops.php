@@ -17,7 +17,7 @@
 defined( 'ABSPATH' ) || exit;
 
 if ( version_compare( PHP_VERSION, '5.6.0', '<' ) ) {
-    return;
+	return;
 }
 
 /**
@@ -32,41 +32,41 @@ if ( version_compare( PHP_VERSION, '5.6.0', '<' ) ) {
 $autoloader = __DIR__ . '/vendor/autoload_packages.php';
 
 if ( is_readable( $autoloader ) ) {
-    require $autoloader;
+	require $autoloader;
 } else {
-    if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+	if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
         error_log(  // phpcs:ignore
-            sprintf(
-            /* translators: 1: composer command. 2: plugin directory */
-                esc_html_x( 'Your installation of the Trustbadge Reviews for WooCommerce plugin is incomplete. Please run %1$s within the %2$s directory.', 'trusted-shops', 'woocommerce-trusted-shops' ),
-                '`composer install`',
-                '`' . esc_html( str_replace( ABSPATH, '', __DIR__ ) ) . '`'
-            )
-        );
-    }
-    /**
-     * Outputs an admin notice if composer install has not been ran.
-     */
-    add_action(
-        'admin_notices',
-        function() {
-            ?>
-            <div class="notice notice-error">
-                <p>
-                    <?php
-                    printf(
-                    /* translators: 1: composer command. 2: plugin directory */
-                        esc_html_x( 'Your installation of the Trustbadge Reviews for WooCommerce plugin is incomplete. Please run %1$s within the %2$s directory.', 'trusted-shops', 'woocommerce-trusted-shops' ),
-                        '<code>composer install</code>',
-                        '<code>' . esc_html( str_replace( ABSPATH, '', __DIR__ ) ) . '</code>'
-                    );
-                    ?>
-                </p>
-            </div>
-            <?php
-        }
-    );
-    return;
+			sprintf(
+			/* translators: 1: composer command. 2: plugin directory */
+				esc_html_x( 'Your installation of the Trustbadge Reviews for WooCommerce plugin is incomplete. Please run %1$s within the %2$s directory.', 'trusted-shops', 'woocommerce-trusted-shops' ),
+				'`composer install`',
+				'`' . esc_html( str_replace( ABSPATH, '', __DIR__ ) ) . '`'
+			)
+		);
+	}
+	/**
+	 * Outputs an admin notice if composer install has not been ran.
+	 */
+	add_action(
+		'admin_notices',
+		function() {
+			?>
+			<div class="notice notice-error">
+				<p>
+					<?php
+					printf(
+					/* translators: 1: composer command. 2: plugin directory */
+						esc_html_x( 'Your installation of the Trustbadge Reviews for WooCommerce plugin is incomplete. Please run %1$s within the %2$s directory.', 'trusted-shops', 'woocommerce-trusted-shops' ),
+						'<code>composer install</code>',
+						'<code>' . esc_html( str_replace( ABSPATH, '', __DIR__ ) ) . '</code>'
+					);
+					?>
+				</p>
+			</div>
+			<?php
+		}
+	);
+	return;
 }
 
 register_activation_hook( __FILE__, array( '\Vendidero\TrustedShops\Package', 'install' ) );

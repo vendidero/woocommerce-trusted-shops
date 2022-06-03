@@ -9,14 +9,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <script type="application/ld+json">
 {
-    "@context": "http://schema.org",
-    "@type": "Organization",
-    "name": "{name}",
-    "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "{average}",
-        "bestRating": "{maximum}",
-        "ratingCount": "{count}"
-    }
+	"@context": "http://schema.org",
+	"@type": "Organization",
+	"name": "{name}",
+	"aggregateRating": {
+		"@type": "AggregateRating",
+		"ratingValue": "{average}",
+		"bestRating": "{maximum}",
+		"ratingCount": "{count}"
+	}
 }
 </script>

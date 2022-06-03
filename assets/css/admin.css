@@ -26,6 +26,9 @@
 .wc-gzd-admin-settings-sidebar a.button {
   margin-top: 1em; }
 
+.wc-gzd-admin-settings-trusted_shops p.description {
+  display: inline; }
+
 .wc-gzd-admin-settings-trusted_shops a.woocommerce-ts-input-toggle-trigger {
   color: transparent;
   border: none;

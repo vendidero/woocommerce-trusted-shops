@@ -3,8 +3,9 @@
  * Admin View: Generator Editor
  */
 
-if ( ! defined( 'ABSPATH' ) )
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
 
 $missing_count = 0;
 $version_count = 0;
@@ -12,32 +13,33 @@ $version_count = 0;
 ?>
 
 <div id="message" class="error woocommerce-gzd-message wc-connect">
-	
-	<h3><?php echo _x( 'Dependencies Missing or Outdated', 'trusted-shops', 'woocommerce-trusted-shops' );?></h3>
+	<h3><?php echo esc_html_x( 'Dependencies Missing or Outdated', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></h3>
+	<?php foreach ( $dependencies->plugins_required as $plugin => $data ) : // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited ?>
 
-	<?php foreach ( $dependencies->plugins_required as $plugin => $data ) : ?>
+		<?php
+		if ( ! $dependencies->is_plugin_activated( $plugin ) ) :
+			$missing_count++;
+			?>
 
-		<?php if ( ! $dependencies->is_plugin_activated( $plugin ) ) : $missing_count++ ?>
+			<?php if ( 1 === $missing_count ) : ?>
 
-			<?php if ( $missing_count == 1 ) : ?>
-
-				<p><?php echo _x( 'To use WooCommerce Trusted Shops you may at first install the following plugins:', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></p>
+				<p><?php echo esc_html_x( 'To use WooCommerce Trusted Shops you may at first install the following plugins:', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></p>
 
 			<?php endif; ?>
 
-			<p><a class="button button-secondary" href="<?php echo esc_url( admin_url( "plugin-install.php?tab=search&s=" . urlencode( $data[ 'name' ] ) ) ); ?>"><?php printf( _x( 'Install %s', 'trusted-shops', 'woocommerce-trusted-shops' ), $data[ 'name' ] ); ?></a></p>
+			<p><a class="button button-secondary" href="<?php echo esc_url( admin_url( 'plugin-install.php?tab=search&s=' . rawurlencode( $data['name'] ) ) ); ?>"><?php printf( esc_html_x( 'Install %s', 'trusted-shops', 'woocommerce-trusted-shops' ), esc_html( $data['name'] ) ); ?></a></p>
 
 		<?php endif; ?>
 
-		<?php if ( $dependencies->is_plugin_outdated( $plugin ) ) : $version_count ++ ?>
-
-			<?php if ( $version_count == 1 ) : ?>
-
-				<p><?php echo _x( 'To use WooCommerce Trusted Shops you may at first update the following plugins to a newer version:', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></p>
-
+		<?php
+		if ( $dependencies->is_plugin_outdated( $plugin ) ) :
+			$version_count ++;
+			?>
+			<?php if ( 1 === $version_count ) : ?>
+				<p><?php echo esc_html_x( 'To use WooCommerce Trusted Shops you may at first update the following plugins to a newer version:', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></p>
 			<?php endif; ?>
 
-			<p>- <?php printf( _x( '%s required in at least version %s', 'trusted-shops', 'woocommerce-trusted-shops' ), $data[ 'name' ], '<strong>' . $data[ 'version' ] . '</strong>' ); ?></p>
+			<p>- <?php printf( _x( '%1$s required in at least version %2$s', 'trusted-shops', 'woocommerce-trusted-shops' ), esc_html( $data['name'] ), '<strong>' . esc_html( $data['version'] ) . '</strong>' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
 
 		<?php endif; ?>
 
@@ -46,9 +48,9 @@ $version_count = 0;
 	<?php if ( $version_count > 0 ) : ?>
 
 		<p>
-			<a class="button button-secondary" href="<?php echo esc_url( admin_url( "update-core.php" ) ); ?>"><?php echo _x( 'Check for Updates', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></a>
-			<?php echo _x( 'or', 'trusted-shops', 'woocommerce-trusted-shops' ); ?>
-			<a class="" href="https://wordpress.org/plugins/woocommerce-trusted-shops/developers/" target="_blank"><?php echo _x( 'Install an older version', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></a>
+			<a class="button button-secondary" href="<?php echo esc_url( admin_url( 'update-core.php' ) ); ?>"><?php echo esc_html_x( 'Check for Updates', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></a>
+			<?php echo esc_html_x( 'or', 'trusted-shops', 'woocommerce-trusted-shops' ); ?>
+			<a class="" href="https://wordpress.org/plugins/woocommerce-trusted-shops/developers/" target="_blank"><?php echo esc_html_x( 'Install an older version', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></a>
 		</p>
 
 	<?php endif; ?>

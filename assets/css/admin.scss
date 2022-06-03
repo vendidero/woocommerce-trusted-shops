@@ -42,6 +42,10 @@
 }
 
 .wc-gzd-admin-settings-trusted_shops {
+  p.description {
+    display: inline;
+  }
+
   a.woocommerce-ts-input-toggle-trigger {
     color: transparent;
     border: none;

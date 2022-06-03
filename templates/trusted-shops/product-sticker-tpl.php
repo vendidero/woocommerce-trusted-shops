@@ -14,15 +14,15 @@ _tsProductReviewsConfig = {
 	sku: ['{sku}'],
 	variant: 'productreviews',
 	borderColor: '{border_color}',
-    locale: '{locale}',
-    starColor: '{star_color}',
-    starSize: '{star_size}px',
-    ratingSummary: 'false',
-    maxHeight: '1200px',
-    element: '{element}',
-    hideEmptySticker: 'false',
-    richSnippets: 'off',
-    introtext: ''  /* optional */
+	locale: '{locale}',
+	starColor: '{star_color}',
+	starSize: '{star_size}px',
+	ratingSummary: 'false',
+	maxHeight: '1200px',
+	element: '{element}',
+	hideEmptySticker: 'false',
+	richSnippets: 'off',
+	introtext: ''  /* optional */
 };
 var scripts = document.getElementsByTagName('SCRIPT'), me = scripts[scripts.length - 1];
 var _ts = document.createElement('SCRIPT');

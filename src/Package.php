@@ -1,6 +1,7 @@
 <?php
 
 namespace Vendidero\TrustedShops;
+
 use Exception;
 use WC_TS_Install;
 
@@ -22,14 +23,14 @@ class Package {
 	 * Init the package - load the REST API Server class.
 	 */
 	public static function init() {
-	    if ( ! self::has_dependencies() ) {
+		if ( ! self::has_dependencies() ) {
 
-	        if ( ! self::is_integration() ) {
-		        add_action( 'admin_notices', array( __CLASS__, 'dependency_notice' ), 20 );
-	        }
+			if ( ! self::is_integration() ) {
+				add_action( 'admin_notices', array( __CLASS__, 'dependency_notice' ), 20 );
+			}
 
-		    return;
-        }
+			return;
+		}
 
 		self::init_hooks();
 		self::includes();
@@ -39,28 +40,28 @@ class Package {
 		self::includes();
 		include_once self::get_path() . '/includes/class-wc-ts-install.php';
 
-        WC_TS_Install::install_integration();
-    }
+		WC_TS_Install::install_integration();
+	}
 
 	public static function install() {
-	    if ( self::has_dependencies() ) {
-		    self::includes();
-		    include_once self::get_path() . '/includes/class-wc-ts-install.php';
+		if ( self::has_dependencies() ) {
+			self::includes();
+			include_once self::get_path() . '/includes/class-wc-ts-install.php';
 
-		    WC_TS_Install::install();
-        }
+			WC_TS_Install::install();
+		}
 	}
 
 	public static function dependency_notice() {
 		?>
 		<div class="notice notice-error">
-			<p><?php _ex( 'Trustbadge Reviews for WooCommerce needs at least WooCommerce version 3.1 to run.', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></p>
+			<p><?php echo esc_html_x( 'Trustbadge Reviews for WooCommerce needs at least WooCommerce version 3.1 to run.', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></p>
 		</div>
 		<?php
 	}
 
 	public static function has_dependencies() {
-		return class_exists(  'WooCommerce' ) && version_compare( WC()->version, '3.1', '>=' ) ? true : false;
+		return class_exists( 'WooCommerce' ) && version_compare( WC()->version, '3.1', '>=' ) ? true : false;
 	}
 
 	public static function is_integration() {

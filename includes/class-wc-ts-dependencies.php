@@ -1,7 +1,8 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) )
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
 
 class WC_TS_Dependencies {
 
@@ -17,7 +18,11 @@ class WC_TS_Dependencies {
 	public $plugins = array();
 
 	public $plugins_required = array(
-		'woocommerce' => array( 'version' => '2.4', 'version_prefix' => 'woocommerce', 'name' => 'WooCommerce' ),
+		'woocommerce' => array(
+			'version'        => '2.4',
+			'version_prefix' => 'woocommerce',
+			'name'           => 'WooCommerce',
+		),
 	);
 
 	public static function instance() {
@@ -33,7 +38,7 @@ class WC_TS_Dependencies {
 	 * @since 1.0
 	 */
 	public function __clone() {
-		_doing_it_wrong( __FUNCTION__, _x( 'Cheatin&#8217; huh?', 'trusted-shops', 'woocommerce-trusted-shops' ), '1.0' );
+		_doing_it_wrong( __FUNCTION__, esc_html_x( 'Cheating huh?', 'trusted-shops', 'woocommerce-trusted-shops' ), '1.0' );
 	}
 
 	/**
@@ -42,17 +47,17 @@ class WC_TS_Dependencies {
 	 * @since 1.0
 	 */
 	public function __wakeup() {
-		_doing_it_wrong( __FUNCTION__, _x( 'Cheatin&#8217; huh?', 'trusted-shops', 'woocommerce-trusted-shops' ), '1.0' );
+		_doing_it_wrong( __FUNCTION__, esc_html_x( 'Cheating huh?', 'trusted-shops', 'woocommerce-trusted-shops' ), '1.0' );
 	}
-	
+
 	public function __construct() {
 
 		$this->plugins = (array) get_option( 'active_plugins', array() );
-		
+
 		if ( is_multisite() ) {
 			$this->plugins = array_merge( $this->plugins, get_site_option( 'active_sitewide_plugins', array() ) );
 		}
-		
+
 		foreach ( $this->plugins_required as $plugin => $data ) {
 
 			if ( ! $this->is_plugin_activated( $plugin ) || $this->is_plugin_outdated( $plugin ) ) {
@@ -71,11 +76,11 @@ class WC_TS_Dependencies {
 
 		if ( ! $required ) {
 			return false;
-        }
+		}
 
-		if ( version_compare( $this->get_plugin_version( $required[ 'version_prefix' ] ), $required[ 'version' ], "<" ) ) {
+		if ( version_compare( $this->get_plugin_version( $required['version_prefix'] ), $required['version'], '<' ) ) {
 			return true;
-        }
+		}
 
 		return false;
 	}
@@ -86,7 +91,7 @@ class WC_TS_Dependencies {
 			$plugin = trailingslashit( $plugin ) . $plugin . '.php';
 		}
 
-		return in_array( $plugin, $this->plugins ) || array_key_exists( $plugin, $this->plugins );
+		return in_array( $plugin, $this->plugins, true ) || array_key_exists( $plugin, $this->plugins );
 	}
 
 	/**
@@ -98,7 +103,7 @@ class WC_TS_Dependencies {
 		$expl_ver2     = explode( '.', $ver2 );
 
 		// Check if ver2 string is more accurate than main_ver
-		if ( sizeof( $expl_main_ver ) == 2 && sizeof( $expl_ver2 ) > 2 ) {
+		if ( 2 === count( $expl_main_ver ) && count( $expl_ver2 ) > 2 ) {
 			$new_ver_2 = array_slice( $expl_ver2, 0, 2 );
 			$ver2      = implode( '.', $new_ver_2 );
 		}
@@ -108,7 +113,7 @@ class WC_TS_Dependencies {
 
 	/**
 	 * Checks if WooCommerce is activated
-	 *  
+	 *
 	 * @return boolean true if WooCommerce is activated
 	 */
 	public function is_woocommerce_activated() {
@@ -131,7 +136,7 @@ class WC_TS_Dependencies {
 		global $dependencies;
 		$dependencies = $this;
 
-		include_once( 'admin/views/html-notice-dependencies.php' );
+		include_once 'admin/views/html-notice-dependencies.php';
 	}
 
 }
