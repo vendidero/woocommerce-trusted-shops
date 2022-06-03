@@ -690,7 +690,7 @@ class WC_Trusted_Shops_Admin {
 						'default'  => '',
 						'id'       => 'woocommerce_' . $this->base->option_prefix . 'trusted_shops_review_reminder_checkbox',
 						'type'     => 'html',
-						'html'     => '<a href="' . esc_url( admin_url( 'admin.php?page=wc-settings&tab=germanized-checkboxes&checkbox_id=review_reminder' ) . '" class="button button-secondary" target="_blank">' . _x( 'Edit checkbox', 'trusted-shops', 'woocommerce-trusted-shops' ) ) . '</a>',
+						'html'     => '<a href="' . esc_url( admin_url( 'admin.php?page=wc-settings&tab=germanized-checkboxes&checkbox_id=review_reminder' ) ) . '" class="button button-secondary" target="_blank">' . _x( 'Edit checkbox', 'trusted-shops', 'woocommerce-trusted-shops' ) . '</a>',
 					),
 
 					array(
