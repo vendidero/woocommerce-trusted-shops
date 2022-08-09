@@ -32,14 +32,16 @@ class WC_Trusted_Shops_Admin {
 		add_action( 'admin_init', array( $this, 'review_collector_export_csv' ) );
 		add_action( 'woocommerce_trusted_shops_load_admin_scripts', array( $this, 'load_scripts' ) );
 
-		add_action( 'woocommerce_product_options_general_product_data', array( $this, 'output_fields' ) );
-		add_action( 'woocommerce_product_after_variable_attributes', array( $this, 'output_variation_fields' ), 20, 3 );
-		add_action( 'woocommerce_save_product_variation', array( $this, 'save_variation_fields' ), 0, 2 );
+		if ( ! \Vendidero\TrustedShops\Package::is_integration() ) {
+			add_action( 'woocommerce_product_options_general_product_data', array( $this, 'output_fields' ) );
+			add_action( 'woocommerce_product_after_variable_attributes', array( $this, 'output_variation_fields' ), 20, 3 );
+			add_action( 'woocommerce_save_product_variation', array( $this, 'save_variation_fields' ), 0, 2 );
 
-		if ( ! wc_ts_woocommerce_supports_crud() ) {
-			add_action( 'woocommerce_process_product_meta', array( $this, 'save_fields' ), 20, 2 );
-		} else {
-			add_action( 'woocommerce_admin_process_product_object', array( $this, 'save_fields' ), 10, 1 );
+			if ( ! wc_ts_woocommerce_supports_crud() ) {
+				add_action( 'woocommerce_process_product_meta', array( $this, 'save_fields' ), 20, 2 );
+			} else {
+				add_action( 'woocommerce_admin_process_product_object', array( $this, 'save_fields' ), 10, 1 );
+			}
 		}
 	}
 
