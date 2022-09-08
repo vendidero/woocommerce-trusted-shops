@@ -1,4 +1,4 @@
-=== Trustbadge Reviews for WooCommerce ===
+=== Trustbadge Reviews for WooCommerce (Outdated) ===
 Contributors: vendidero, trustbadge
 Tags: advanced reviews, badge, best reviews, business ratings, business reviews, confirm email reviews, google rating, google shopping, product ratings, product reviews, rate products, rating summary, Rating Widget, ratings, reputation, review widget, review, reviews easy, reviews, rich snippets, seal,  seo, star rating, stars, trust, trustbadge, trusted reviews, trusted shops, ts, user rating, user reviews, woocommerce trusted shops, woocommerce
 Donate link: http://www.trustbadge.com
@@ -14,22 +14,17 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Show that your customers love you with reviews in your online store and boost your business with the free Trustbadge Reviews Plugin for WooCommerce.
 == Description ==
 
-= Building trust - in just 5 minutes! =
+= We have news for you! =
 
-The well-known Trustmark, the Buyer Protection and the authentic reviews from Trusted Shops have stood for trust for over 20 years. More than 30,000 online shops throughout Europe use our Trust solutions for more traffic, higher sales and better conversion rates.
+Are you looking for the easiest and fastest way to link Trusted Shops to your WooCommerce? Then you are in the right place, just at the wrong time: The plugin on this page is outdated and technically no longer supported. But the new Trusted Shops plugin is already waiting for you in the WordPress Marketplace:
 
-Trustbadge Reviews for WooCommerce is the easiest and fastest way to convince visitors of the trustworthiness of your online shop. The simple installation guarantees product use in just 5 minutes and usually requires little to no prior technical knowledge. With our extension you are always technically up to date and have no additional maintenance effort.
+[Trusted Shops Easy Integration](https://wordpress.org/plugins/trusted-shops-easy-integration-for-woocommerce/)
 
-Your benefit: With just a few clicks, visitors to your online shop can see trust elements such as the Trustbadge or other on-site widgets, can benefit from buyer protection and are automatically asked for feedback after placing an order.
+If you are currently using the outdated plugin, you should switch to the new Trusted Shops Easy Integration today:
 
-= All features at a glance: =
-
-* Show Trustbadge, integrate Buyer Protection & collect shop reviews
-* Show Shop Review Sticker with rating comments
-* Collect and display Product Reviews
-* Configure multi-shops with multiple Trusted Shops IDs
-
-Please note: To use the extension Trustbadge Reviews for WooCommerce, you need an existing Trusted Shops membership. You can find out more about the products and benefits of Trusted Shops on our [website](https://business.trustedshops.com/) or by calling: +44 23364 5906
+* Uninstall the plugin using [these instructions](https://help.etrusted.com/hc/en-gb/articles/360046269991-Installing-the-WooCommerce-plugin#uninstallation).
+* Install the Trusted Shops Easy Integration using [these instructions](https://help.etrusted.com/hc/en-gb/articles/360046269991-Installing-the-WooCommerce-plugin#installation).
+* Configure the new plugin according to your wishes. [These instructions](https://help.etrusted.com/hc/en-gb/articles/4905016318237-Trusted-Shops-mit-einem-Plugin-nutzen) will help you with this.
 
 == Installation ==
 
