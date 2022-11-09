@@ -802,9 +802,7 @@ class WC_Trusted_Shops_Admin {
 		<div class="wc-gzd-admin-settings-sidebar-inner sticky">
 			<div class="wc-gzd-admin-settings-sidebar-trusted-shops">
 				<div class="wc-ts-sidebar wc-ts-sidebar-active" id="wc-ts-sidebar-default">
-					<h3><?php echo esc_html_x( 'How does Trusted Shops make your shop better?', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></h3>
-					<a href="<?php echo esc_url( $this->get_signup_url() ); ?>" target="_blank"><img style="width: 100%; height: auto" src="<?php echo esc_url( $this->get_image( 'ts.png' ) ); ?>" /></a>
-					<a class="button button-primary" href="<?php echo esc_url( $this->get_signup_url() ); ?>" target="_blank"><?php echo esc_html_x( 'Get your account', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></a>
+					<a href="<?php echo esc_url( \Vendidero\TrustedShops\Package::get_migration_url() ); ?>" target="_blank"><img style="width: 100%; height: auto" src="<?php echo esc_url( $this->get_image( 'outdated.png' ) ); ?>" /></a>
 				</div>
 
 				<div class="wc-ts-sidebar wc-ts-sidebar-flex" id="wc-ts-sidebar-trustbadge">
