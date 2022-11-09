@@ -255,12 +255,12 @@ class PluginsHelper {
 		} elseif ( ! self::is_plugin_installed( $plugin ) ) {
 			$result = self::install_plugins( $plugin );
 
-			if ( ! wc_gzd_wp_error_has_errors( $result['errors'] ) ) {
+			if ( ! wc_ts_wp_error_has_errors( $result['errors'] ) ) {
 				$result = self::activate_plugins( $plugin );
 			}
 		}
 
-		return ( ! wc_gzd_wp_error_has_errors( $result['errors'] ) ? true : false );
+		return ( ! wc_ts_wp_error_has_errors( $result['errors'] ) ? true : false );
 	}
 
 	/**

@@ -12,6 +12,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * @param WP_Error $error
+ */
+function wc_ts_wp_error_has_errors( $error ) {
+	if ( is_callable( array( $error, 'has_errors' ) ) ) {
+		return $error->has_errors();
+	} else {
+		$errors = $error->errors;
+
+		return ( ! empty( $errors ) ? true : false );
+	}
+}
+
 if ( ! function_exists( 'wc_ts_get_crud_data' ) ) {
 
 	function wc_ts_get_crud_data( $object, $key, $suppress_suffix = false ) {
