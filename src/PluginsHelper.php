@@ -417,7 +417,7 @@ class PluginsHelper {
 
 	protected static function get_whitelisted_plugins() {
 		return array(
-			'woocommerce'               => _x( 'WooCommerce', 'trusted-shops', 'woocommerce-trusted-shops' ),
+			'woocommerce' => _x( 'WooCommerce', 'trusted-shops', 'woocommerce-trusted-shops' ),
 			'trusted-shops-easy-integration-for-woocommerce' => _x( 'Trusted Shops', 'trusted-shops', 'woocommerce-trusted-shops' ),
 		);
 	}

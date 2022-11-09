@@ -14,5 +14,5 @@ use Vendidero\TrustedShops\Package;
 
 	<p>
 		<a class="button button-primary" href="<?php echo esc_url( Package::get_migration_url() ); ?>"><?php echo esc_html_x( 'Switch to the new plugin now', 'trusted-shops', 'woocommerce-trusted-shops' ); ?></a>
-    </p>
+	</p>
 </div>
