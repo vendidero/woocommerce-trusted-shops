@@ -83,7 +83,16 @@ class Package {
 				PluginsHelper::install_or_activate_trusted_shops();
 
 				if ( PluginsHelper::is_trusted_shops_plugin_active() ) {
-					wp_safe_redirect( esc_url_raw( self::is_integration() ? admin_url( 'admin.php?page=wc-settings&tab=germanized-trusted_shops_easy_integration' ) : admin_url( 'admin.php?page=wc-settings&tab=trusted_shops_easy_integration' ) ) );
+                    $redirect_url = self::is_integration() ? admin_url( 'admin.php?page=wc-settings&tab=germanized-trusted_shops_easy_integration' ) : admin_url( 'admin.php?page=wc-settings&tab=trusted_shops_easy_integration' );
+
+					/**
+					 * Deactivate Trusted Shops oldgen in case newgen has already been configured.
+					 */
+                    if ( is_callable( array( 'Vendidero\TrustedShopsEasyIntegration\Package', 'is_connected' ) ) && \Vendidero\TrustedShopsEasyIntegration\Package::is_connected() ) {
+	                    deactivate_plugins( 'woocommerce-trusted-shops/woocommerce-trusted-shops.php', true );
+                    }
+
+					wp_safe_redirect( esc_url_raw( $redirect_url ) );
 					exit();
 				}
 			}
